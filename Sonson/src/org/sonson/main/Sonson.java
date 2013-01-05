@@ -5,7 +5,7 @@ package org.sonson.main;
  * @author Matt
  *
  */
-public class Sonson extends AbsractApplication {
+public class Sonson extends AbstractApplication {
 	
 	public Sonson() {
 		
