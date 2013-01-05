@@ -15,7 +15,7 @@ public class Achat extends AbstractApplication {
 		this.id = id;
 		this.date = date;
 	}
-
+	// Bonjour :-)
 	//Getters et Setters
 	public int getId() {
 		return id;
