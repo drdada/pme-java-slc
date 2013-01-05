@@ -18,6 +18,7 @@ public class Produit extends AbstractApplication {
 		this.prix = prix;
 	}
 
+	//Getters et Setters
 	public int getId() {
 		return id;
 	}

@@ -2,7 +2,7 @@ package org.sonson.main;
 
 /**
  * Controller class for this application Sonson
- * @author Matt
+ * @author Matteo D'Addamio & Arnaud Booms (Henallux 2012 2013)
  *
  */
 public class Sonson extends AbstractApplication {

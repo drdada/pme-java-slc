@@ -4,7 +4,7 @@
 package org.sonson.main;
 
 /**
- * @author Matt
+ * @author Matteo D'Addamio & Arnaud Booms (Henallux 2012 2013)
  *
  */
 public class Main {

@@ -24,6 +24,8 @@ public class Client {
 		this.telPortable = telPortable;
 	}
 
+	
+	//Getters et Setters
 	public int getId() {
 		return id;
 	}

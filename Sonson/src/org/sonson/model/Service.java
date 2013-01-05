@@ -17,6 +17,7 @@ public class Service extends AbstractApplication {
 		this.prix = prix;
 	}
 
+	//Getters et Setters
 	public int getId() {
 		return id;
 	}

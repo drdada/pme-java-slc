@@ -8,6 +8,7 @@ public class Achat extends AbstractApplication {
 
 	private int id;
 	private GregorianCalendar date;
+	//A Verifier...
 	
 	public Achat(int id, GregorianCalendar date) {
 		super();
@@ -15,6 +16,7 @@ public class Achat extends AbstractApplication {
 		this.date = date;
 	}
 
+	//Getters et Setters
 	public int getId() {
 		return id;
 	}
