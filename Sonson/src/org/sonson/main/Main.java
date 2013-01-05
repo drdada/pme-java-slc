@@ -4,7 +4,7 @@
 package org.sonson.main;
 
 /**
- * @author akrogames
+ * @author Matt
  *
  */
 public class Main {
