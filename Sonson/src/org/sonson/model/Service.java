@@ -17,6 +17,19 @@ public class Service extends AbstractApplication {
 		this.prix = prix;
 	}
 
+	
+	public void ajouterService(){
+		//TODO ajouter service
+	}
+	
+	public void enleverService(){
+		//TODO enlever Service
+	}
+	
+	public void modifierService(){
+		//TODO modifier service
+	}
+	
 	//Getters et Setters
 	public int getId() {
 		return id;
