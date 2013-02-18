@@ -14,6 +14,11 @@ import java.sql.Statement;
 public final class Dal {
 	private static volatile Dal instance = null;
 	
+	final String host = "mysql://akrogames.com";
+	final String db = "push";
+	final String username = "push";
+	final String password = "azf1234";
+	
 	private Connection connect = null;
 	private Statement statement = null;
 	private ResultSet resultSet = null;
@@ -22,8 +27,8 @@ public final class Dal {
         super();
         
         try {
-			Class.forName("com.mysql.jdbc.Driver");
-			connect = DriverManager.getConnection("jdbc:mysql://akrogames.com/push?user=push&password=azf1234");
+			this.connexion();
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -42,4 +47,36 @@ public final class Dal {
         }
         return Dal.instance;
     }
+	
+	private void connexion() throws ClassNotFoundException, SQLException {
+		Class.forName("com.mysql.jdbc.Driver");
+		connect = DriverManager.getConnection("jdbc:"+host+"/"+db+"?user="+username+"&password="+password);
+	}
+	
+	public ResultSet getResult(String sql) throws SQLException {
+		ResultSet resultat;
+		Statement statement = connect.createStatement(
+		ResultSet.TYPE_FORWARD_ONLY,
+		ResultSet.CONCUR_READ_ONLY);
+		
+		return resultat = statement.executeQuery(sql);
+	}
+	
+	public void finalize() {
+		try {
+			if (resultSet != null) {
+				resultSet.close();
+			}
+
+			if (statement != null) {
+				statement.close();
+			}
+
+			if (connect != null) {
+				connect.close();
+			}
+		} catch (Exception e) {
+			System.out.println("ERREUR DE DECONNEXION A LA BASE");
+		}
+	}
 }
