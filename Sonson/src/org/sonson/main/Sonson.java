@@ -1,6 +1,7 @@
 package org.sonson.main;
 
 import org.sonson.dal.Dal;
+import org.sonson.dal.UpdateModel;
 
 /**
  * Controller class for this application Sonson
@@ -20,5 +21,7 @@ public class Sonson extends AbstractApplication {
 		
 		logger.info("Initialisation couche DAL");
 		this.dal = Dal.getInstance();
+		UpdateModel um = new UpdateModel();
+		um.updateClients();
 	}
 }
