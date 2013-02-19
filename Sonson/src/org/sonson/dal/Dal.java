@@ -62,6 +62,16 @@ public final class Dal {
 		return resultat = statement.executeQuery(sql);
 	}
 	
+	public void update(String sql) throws SQLException {
+		this.statement = connect.createStatement();
+		this.statement.executeUpdate(sql);
+	}
+	
+	public void insert(String sql) throws SQLException {
+		this.statement = connect.createStatement();
+		this.statement.executeUpdate(sql);
+	}
+	
 	public void finalize() {
 		try {
 			if (resultSet != null) {
