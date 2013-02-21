@@ -14,10 +14,10 @@ import java.sql.Statement;
 public final class Dal {
 	private static volatile Dal instance = null;
 	
-	final String host = "mysql://akrogames.com";
-	final String db = "push";
-	final String username = "push";
-	final String password = "azf1234";
+	final String host = "mysql://mysql.niloo.fr";
+	final String db = "java-pme";
+	final String username = "java-pme";
+	final String password = "projetjava";
 	
 	private Connection connect = null;
 	private Statement statement = null;

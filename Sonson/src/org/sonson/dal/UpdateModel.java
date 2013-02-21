@@ -12,9 +12,9 @@ public class UpdateModel {
 	 */
 	public void updateClients() {
 		try {
-			ResultSet rs = Dal.getInstance().getResult("SELECT * FROM ETAPE");
+			ResultSet rs = Dal.getInstance().getResult("SELECT * FROM client");
 			while(rs.next()) {
-				System.out.println(rs.getString("date_etape"));
+				System.out.println(rs.getString("nom"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
