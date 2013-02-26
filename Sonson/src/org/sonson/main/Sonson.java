@@ -23,5 +23,8 @@ public class Sonson extends AbstractApplication {
 		this.dal = Dal.getInstance();
 		UpdateModel um = new UpdateModel();
 		um.updateClients();
+		um.updateProduits();
+		um.updateServices();
+		um.updateAchats();
 	}
 }

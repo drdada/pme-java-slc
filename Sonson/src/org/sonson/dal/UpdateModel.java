@@ -20,4 +20,37 @@ public class UpdateModel {
 			e.printStackTrace();
 		}
 	}
+	
+	public void updateProduits(){
+		try {
+			ResultSet rs = Dal.getInstance().getResult("SELECT * FROM produit");
+			while(rs.next()) {
+				System.out.println(rs.getString("nom"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void updateServices(){
+		try {
+			ResultSet rs = Dal.getInstance().getResult("SELECT * FROM service");
+			while(rs.next()) {
+				System.out.println(rs.getString("nom"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void updateAchats(){
+		try {
+			ResultSet rs = Dal.getInstance().getResult("SELECT * FROM achat");
+			while(rs.next()) {
+				System.out.println(rs.getString("date"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }
