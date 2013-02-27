@@ -21,7 +21,7 @@ public class Sonson extends AbstractApplication {
 		
 		logger.info("Initialisation couche DAL");
 		this.dal = Dal.getInstance();
-		UpdateModel um = new UpdateModel();
+		UpdateModel um = new UpdateModel(this);
 		um.updateClients();
 		um.updateProduits();
 		um.updateServices();
