@@ -29,7 +29,7 @@ public class Accueil extends JFrame {
 		{public void windowClosing(WindowEvent e){System.exit(0);}});
 		
 		wlcm = new JLabel("Bienvenue");
-		credit = new JButton("Crédits");
+		credit = new JButton("Crï¿½dits");
 		
 		pan1 = new JPanel();
 		//Selection du layout
@@ -46,7 +46,7 @@ public class Accueil extends JFrame {
 	}
 	private class CreditsListener implements ActionListener{
 		public void actionPerformed(ActionEvent e){
-			JOptionPane.showMessageDialog(null,"Projet \"Gestion simplifiée de PME\" écrit en Java\nPar Matteo D'Addamio et Arnaud Booms\nPour le cour de conduite de projet (Mr Renson)\nHenallux 2012-2013","Crédits", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null,"Projet \"Gestion simplifiÃ©e de PME\" Ã©crit en Java\nPar Matteo D'Addamio et Arnaud Booms\nPour le cour de conduite de projet (Mr Renson)\nHenallux 2012-2013","CrÃ©dits", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 }
