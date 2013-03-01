@@ -27,21 +27,24 @@ public class Sonson extends AbstractApplication {
 		this.dal = Dal.getInstance();
 		UpdateModel um = new UpdateModel(this);
 		um.updateClients();
-		um.updateProduits();
-		um.updateServices();
-		um.updateAchats();
+//		um.updateProduits();
+//		um.updateServices();
+//		um.updateAchats();
 	}
 	
 	public void setClient(Client c){
-		int flag=0;
+		int flag=0,savecl = 0;
 		//boucle de recherche sur l'id du client
 		for (Client cl : arrayclient){
 			if (cl.getId() == (c.getId())){
 					flag=1;
+					savecl=arrayclient.indexOf(cl);
 				}
 			}
 		if(flag == 1){
 			//Le client existe donc on le modifie
+			arrayclient.remove(savecl);
+			arrayclient.add(savecl, c);
 		}else{
 			//Le client n'exite pas encore, donc on le rajoute
 			arrayclient.add(c);
