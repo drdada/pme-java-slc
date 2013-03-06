@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.sonson.dal.Dal;
 import org.sonson.dal.UpdateModel;
+import org.sonson.gui.Accueil;
 import org.sonson.model.Client;
 
 /**
@@ -30,6 +31,7 @@ public class Sonson extends AbstractApplication {
 //		um.updateProduits();
 //		um.updateServices();
 //		um.updateAchats();
+		Accueil accueil = new Accueil(this);
 	}
 	
 	public void setClient(Client c){

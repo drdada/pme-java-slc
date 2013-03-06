@@ -21,6 +21,7 @@ import javax.swing.KeyStroke;
 
 public class Accueil extends JFrame {
 	
+	private Sonson sonson;
 	private Container cont;
 	private JButton credit;
 	private JPanel pan1;
@@ -28,9 +29,9 @@ public class Accueil extends JFrame {
 	private JMenuBar barre;
 	private JMenu menuFichier, menuClient,menuInventaire,menuStats;
 	private JMenuItem bAide, bQuitter, bRechercheClient, bAjoutclient, bAjout, bStatFinancier, bStatClient, bStatServ;
-
-	public Accueil(){
-		
+	
+	public Accueil(Sonson ss){
+		this.sonson = ss;
 		//***
 		//Fenetre
 		super("Projet PME - Matteo D. et Arnaud B.");
@@ -69,6 +70,8 @@ public class Accueil extends JFrame {
 		//Boutons dans le menu Client
 		bRechercheClient = new JMenuItem("Recherche d'un client");
 		bRechercheClient.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F,InputEvent.CTRL_MASK));
+		RechercheClientListener rClientListener = new RechercheClientListener();
+		bRechercheClient.addActionListener(rClientListener);
 		bAjoutclient = new JMenuItem("Ajouter un client");
 		bAjoutclient.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N,InputEvent.CTRL_MASK));
 		menuClient.add(bRechercheClient);
@@ -97,13 +100,15 @@ public class Accueil extends JFrame {
 		pan1 = new JPanel();
 		//Selection du layout
 		pan1.setLayout(new FlowLayout());
+		
+		this.setJMenuBar(barre);
 		//Ajout
-		pan1.add(barre);
 		pan1.add(wlcm);
 		pan1.add(credit);
 		
 		
 		cont = getContentPane();
+		cont.setLayout(new FlowLayout());
 		cont.add(pan1);
 		setVisible(true);
 	}
@@ -114,14 +119,19 @@ public class Accueil extends JFrame {
 	}
 	private class QuitListnerX extends WindowAdapter{
 		public void windowClosing(WindowEvent e){
-			//System.out.println("EXIT");
+			System.out.println("EXIT");
 			System.exit(0);
 			}
 	}
 	private class QuitListner implements ActionListener{
 		public void actionPerformed(ActionEvent e){
-			//System.out.println("EXIT");
+			System.out.println("EXIT");
 			System.exit(0);
+		}
+	}
+	private class RechercheClientListener implements ActionListener {
+		public void actionPerformed (ActionEvent e){
+			//Ecouteur de Recherche client
 		}
 	}
 }
