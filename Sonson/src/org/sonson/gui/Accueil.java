@@ -19,6 +19,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
+import org.sonson.main.Sonson;
+
 public class Accueil extends JFrame {
 	
 	private Sonson sonson;
@@ -34,7 +36,7 @@ public class Accueil extends JFrame {
 		this.sonson = ss;
 		//***
 		//Fenetre
-		super("Projet PME - Matteo D. et Arnaud B.");
+		this.setTitle("Projet PME - Matteo D. et Arnaud B.");
 		// TODO Revoir les dimentions ?
 		setBounds(50,50, 1000, 800);
 		QuitListnerX quitx = new QuitListnerX();
