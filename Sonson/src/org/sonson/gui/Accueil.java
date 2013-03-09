@@ -76,6 +76,8 @@ public class Accueil extends JFrame {
 		bRechercheClient.addActionListener(rClientListener);
 		bAjoutclient = new JMenuItem("Ajouter un client");
 		bAjoutclient.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N,InputEvent.CTRL_MASK));
+		AjoutClientListener aClientListener = new AjoutClientListener();
+		bAjoutclient.addActionListener(aClientListener);
 		menuClient.add(bRechercheClient);
 		menuClient.add(bAjoutclient);
 		
@@ -134,6 +136,16 @@ public class Accueil extends JFrame {
 	private class RechercheClientListener implements ActionListener {
 		public void actionPerformed (ActionEvent e){
 			//Ecouteur de Recherche client
+			pan1.removeAll();
+			cont.repaint();
+			RechercheClient rcl =  new RechercheClient(sonson);
+			pan1.add(rcl);
+			Accueil.this.setVisible(true);
+		}
+	}
+	private class AjoutClientListener implements ActionListener {
+		public void actionPerformed (ActionEvent e){
+			//Ecouteur de l'ajout client
 		}
 	}
 }
