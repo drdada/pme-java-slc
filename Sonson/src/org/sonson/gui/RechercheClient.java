@@ -11,8 +11,8 @@ import org.sonson.main.Sonson;
 import org.sonson.model.Client;
 
 public class RechercheClient extends JPanel{
-	Sonson sonson;
-	JTable table;
+	private Sonson sonson;
+	private JTable table;
 	private ArrayList<Client> arrayclient;
 	public RechercheClient(Sonson sonson){
 		arrayclient=sonson.getArrayclient();

@@ -61,7 +61,9 @@ public class Accueil extends JFrame {
 		menuStats.setMnemonic('S');
 		
 		//Boutons dans le menu fichiers
+		AideListner aideL = new AideListner();
 		bAide = new JMenuItem("Aide");
+		bAide.addActionListener(aideL);
 		bQuitter = new JMenuItem("Quitter");
 		QuitListner quit = new QuitListner();
 		bQuitter.addActionListener(quit);
@@ -87,6 +89,7 @@ public class Accueil extends JFrame {
 		menuInventaire.add(bAjout);
 		
 		//Boutons dans le menu Stat
+		StatCListner statClistener = new StatCListner;
 		bStatClient = new JMenuItem("Statistiques des clients");
 		bStatFinancier = new JMenuItem("Statistiques financieres");
 		bStatServ = new JMenuItem("Statistiques services et produits");
@@ -146,6 +149,22 @@ public class Accueil extends JFrame {
 	private class AjoutClientListener implements ActionListener {
 		public void actionPerformed (ActionEvent e){
 			//Ecouteur de l'ajout client
+		}
+	}
+	private class AideListner implements ActionListener {
+		public void actionPerformed (ActionEvent e){
+			//Ecouteur de l'aide
+			Aide aide = new Aide();		
+		}
+	}
+	private class StatCListner implements ActionListener {
+		public void actionPerformed (ActionEvent e){
+			//Ecouteur du boutons statistiques des CLIENTS
+			pan1.removeAll();
+			cont.repaint();
+			
+			
+			Accueil.this.setVisible(true);
 		}
 	}
 }
