@@ -14,6 +14,7 @@ public class RechercheClient extends JPanel{
 	private Sonson sonson;
 	private JTable table;
 	private ArrayList<Client> arrayclient;
+	
 	public RechercheClient(Sonson sonson){
 		arrayclient=sonson.getArrayclient();
 		Object[][] data = new Object[arrayclient.size()][7];
@@ -27,10 +28,16 @@ public class RechercheClient extends JPanel{
 			data[i][5]=object.getTelFixe();
 			data[i][6]=object.getTelPortable();
 		}
+		
 		JLabel test = new JLabel("Test");
 		this.add(test);
-		JTable table = new JTable(data);
+		
+		String  title[] = {"Designation", "Prix", "", "", "", "", ""};
+		
+		
+		JTable table = new JTable(data, title);
 		add(new JScrollPane(table));
 		this.setVisible(true);
 		}
+	
 	}

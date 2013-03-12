@@ -51,7 +51,7 @@ public class Sonson extends AbstractApplication {
 			//Le client n'exite pas encore, donc on le rajoute
 			arrayclient.add(c);
 		}
-		}
+	}
 
 
 	public ArrayList<Client> getArrayclient() {
