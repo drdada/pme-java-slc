@@ -11,7 +11,6 @@ public class StatistiqueClient {
 		this.ss = ss;
 	}
 	public String calculClientTotal(){
-		//TODO transformer int en string
 		int tot;
 		tot= arrayclient.size();
 		return Integer.toString(tot);

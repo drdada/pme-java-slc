@@ -4,16 +4,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class StatistiqueClient extends JPanel {
+import org.sonson.main.StatistiqueClient;
+
+public class StatistiqueClientGUI extends JPanel {
 
 	private JLabel labTotClient;
 	private JTextField textFieldTotClient;
-	public StatistiqueClient(){
-		//org.sonson.main.StatistiqueClient stat = new org.sonson.main.StatistiqueClient(sonson);
+	public StatistiqueClientGUI(){
 		labTotClient = new JLabel("Total de clients:");
 		textFieldTotClient = new JTextField();
 		textFieldTotClient.setEditable(false);
-		//textFieldTotClient.setText(stat.calculClientTotal());
+		//textFieldTotClient.setText(StatistiqueClient.c);
 		this.add(labTotClient);
 		this.add(textFieldTotClient);
 	}

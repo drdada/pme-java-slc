@@ -17,7 +17,7 @@ public class RechercheClient extends JPanel{
 	
 	public RechercheClient(Sonson sonson){
 		arrayclient=sonson.getArrayclient();
-		Object[][] data = new Object[arrayclient.size()][7];
+		Object[][] data = new Object[arrayclient.size()][8];
 		int i=0;
 		for (Client object: arrayclient){
 			data[i][0]=object.getId();
@@ -25,14 +25,16 @@ public class RechercheClient extends JPanel{
 			data[i][2]=object.getPrenom();
 			data[i][3]=object.getAdresse();
 			data[i][4]=object.getCodePostal();
-			data[i][5]=object.getTelFixe();
-			data[i][6]=object.getTelPortable();
+			data[i][5]=object.getPays();
+			data[i][6]=object.getTelFixe();
+			data[i][7]=object.getTelPortable();
+			i++;
 		}
 		
 		JLabel test = new JLabel("Test");
 		this.add(test);
 		
-		String  title[] = {"Designation", "Prix", "", "", "", "", ""};
+		String  title[] = {"Id", "Nom", "Prenom", "Code Postal", "Adresse","Pays", "Telephone Fixe", "Telephone Portable"};
 		
 		
 		JTable table = new JTable(data, title);

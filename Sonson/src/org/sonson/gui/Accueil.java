@@ -91,6 +91,7 @@ public class Accueil extends JFrame {
 		//Boutons dans le menu Stat
 		StatCListner statClistener = new StatCListner();
 		bStatClient = new JMenuItem("Statistiques des clients");
+		bStatClient.addActionListener(statClistener);
 		bStatFinancier = new JMenuItem("Statistiques financieres");
 		bStatServ = new JMenuItem("Statistiques services et produits");
 		menuStats.add(bStatServ);
@@ -162,7 +163,8 @@ public class Accueil extends JFrame {
 			//Ecouteur du boutons statistiques des CLIENTS
 			pan1.removeAll();
 			cont.repaint();
-			
+			StatistiqueClientGUI sc = new StatistiqueClientGUI();
+			pan1.add(sc);
 			
 			Accueil.this.setVisible(true);
 		}
