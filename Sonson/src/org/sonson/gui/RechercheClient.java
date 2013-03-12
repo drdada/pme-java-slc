@@ -16,6 +16,9 @@ public class RechercheClient extends JPanel{
 	private ArrayList<Client> arrayclient;
 	
 	public RechercheClient(Sonson sonson){
+		//TODO mettre les tailles des collones et organisation graphique
+		//TODO Pouvoir selectionner une entree
+		//TODO Pouvoir trouver le client parmi la liste (tout les champs)
 		arrayclient=sonson.getArrayclient();
 		Object[][] data = new Object[arrayclient.size()][8];
 		int i=0;

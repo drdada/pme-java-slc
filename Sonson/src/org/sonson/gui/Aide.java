@@ -10,7 +10,8 @@ public class Aide extends JPanel{
 	private JLabel text;
 	public Aide(){
 		//TODO Aide
-		JLabel text = new JLabel("Texte D'aide ICI");
+		JLabel text = new JLabel("<html><body><h1>Texte D'aide ICI</h1>" +
+				"</body></html>");
 		this.add(text);
 	}
 }

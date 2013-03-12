@@ -16,7 +16,6 @@ public class StatistiqueClient {
 	public String calculClientTotal(){
 		int tot;
 		tot= arrayclient.size();
-		System.out.println("DEDNAS :"+ tot);
 		return Integer.toString(tot);
 	}
 }

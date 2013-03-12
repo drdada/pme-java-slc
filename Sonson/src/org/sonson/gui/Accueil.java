@@ -86,6 +86,8 @@ public class Accueil extends JFrame {
 		//Boutons dans le menu Inventaire
 		bAjout = new JMenuItem("Ajouter un Produit/Service");
 		bAjout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I,InputEvent.CTRL_MASK));
+		Inventaire inv = new Inventaire();
+		bAjout.add(inv);
 		menuInventaire.add(bAjout);
 		
 		//Boutons dans le menu Stat
@@ -150,6 +152,11 @@ public class Accueil extends JFrame {
 	private class AjoutClientListener implements ActionListener {
 		public void actionPerformed (ActionEvent e){
 			//Ecouteur de l'ajout client
+			pan1.removeAll();
+			cont.repaint();
+			AjoutClientGUI aj = new AjoutClientGUI();
+			pan1.add(aj);
+			Accueil.this.setVisible(true);
 		}
 	}
 	
@@ -160,6 +167,16 @@ public class Accueil extends JFrame {
 			cont.repaint();
 			Aide aide = new Aide();
 			pan1.add(aide);
+			Accueil.this.setVisible(true);
+		}
+	}
+	private class InventaireListener implements ActionListener {
+		public void actionPerformed (ActionEvent e){
+			//Ecouteur de l'aide
+			pan1.removeAll();
+			cont.repaint();
+			Inventaire inv = new Inventaire();
+			pan1.add(inv);
 			Accueil.this.setVisible(true);
 		}
 	}
