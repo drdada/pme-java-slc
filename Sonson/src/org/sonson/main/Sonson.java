@@ -52,4 +52,9 @@ public class Sonson extends AbstractApplication {
 			arrayclient.add(c);
 		}
 		}
+
+
+	public ArrayList<Client> getArrayclient() {
+		return arrayclient;
+	}
 }
