@@ -29,7 +29,6 @@ public class RechercheClient extends JPanel{
 			data[i][6]=object.getTelFixe();
 			data[i][7]=object.getTelPortable();
 			i++;
-			i++;
 		}
 		
 		JLabel test = new JLabel("Test");

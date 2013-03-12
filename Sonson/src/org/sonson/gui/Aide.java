@@ -2,13 +2,15 @@ package org.sonson.gui;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
-public class Aide {
+public class Aide extends JPanel{
+	private JLabel text;
 	public Aide(){
 		//TODO Aide
-		String message ="Aide\n" +
-				"Mettre l'aide ici";
-		JOptionPane.showMessageDialog(null, message,"Aide",JOptionPane.INFORMATION_MESSAGE);
+		JLabel text = new JLabel("Texte D'aide ICI");
+		this.add(text);
 	}
 }

@@ -156,7 +156,11 @@ public class Accueil extends JFrame {
 	private class AideListner implements ActionListener {
 		public void actionPerformed (ActionEvent e){
 			//Ecouteur de l'aide
-			Aide aide = new Aide();		
+			pan1.removeAll();
+			cont.repaint();
+			Aide aide = new Aide();
+			pan1.add(aide);
+			Accueil.this.setVisible(true);
 		}
 	}
 	
