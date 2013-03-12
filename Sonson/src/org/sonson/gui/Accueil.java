@@ -89,7 +89,7 @@ public class Accueil extends JFrame {
 		menuInventaire.add(bAjout);
 		
 		//Boutons dans le menu Stat
-		StatCListner statClistener = new StatCListner();
+		StatCListner statClistener = new StatCListner(ss);
 		bStatClient = new JMenuItem("Statistiques des clients");
 		bStatClient.addActionListener(statClistener);
 		bStatFinancier = new JMenuItem("Statistiques financieres");
@@ -152,18 +152,33 @@ public class Accueil extends JFrame {
 			//Ecouteur de l'ajout client
 		}
 	}
+	
 	private class AideListner implements ActionListener {
 		public void actionPerformed (ActionEvent e){
 			//Ecouteur de l'aide
 			Aide aide = new Aide();		
 		}
 	}
+	
+	/**
+	 * WTF de mettre 50 classes dans une autre classe ^^ Non mais allo quoi ?
+	 * Allo ? Tu me reçois ? Non mais allo.
+	 * C'est comme enfilé un chat sans verrouillé ces pattes ! Non mais allo.
+	 * @author 
+	 *
+	 */
 	private class StatCListner implements ActionListener {
+		Sonson ss;
+		
+		public StatCListner(Sonson ss) {
+			this.ss = ss;
+		}
+		
 		public void actionPerformed (ActionEvent e){
 			//Ecouteur du boutons statistiques des CLIENTS
 			pan1.removeAll();
 			cont.repaint();
-			StatistiqueClientGUI sc = new StatistiqueClientGUI();
+			StatistiqueClientGUI sc = new StatistiqueClientGUI(ss);
 			pan1.add(sc);
 			
 			Accueil.this.setVisible(true);

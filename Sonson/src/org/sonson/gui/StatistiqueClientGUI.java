@@ -15,10 +15,15 @@ public class StatistiqueClientGUI extends JPanel {
 	private JLabel labTotClient;
 	private JTextField textFieldTotClient;
 	private Sonson ss;
+	
 	public StatistiqueClientGUI(Sonson ss){
 		this.ss = ss;
+		
+		// On affiche les stats client
+		this.statClient();
 	}
-	public StatistiqueClientGUI(){
+	
+	public void statClient(){
 		labTotClient = new JLabel("Total de clients:");
 		StatistiqueClient sc = new StatistiqueClient(ss);
 		textFieldTotClient = new JTextField();
