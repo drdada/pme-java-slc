@@ -89,7 +89,7 @@ public class Accueil extends JFrame {
 		menuInventaire.add(bAjout);
 		
 		//Boutons dans le menu Stat
-		StatCListner statClistener = new StatCListner;
+		StatCListner statClistener = new StatCListner();
 		bStatClient = new JMenuItem("Statistiques des clients");
 		bStatFinancier = new JMenuItem("Statistiques financieres");
 		bStatServ = new JMenuItem("Statistiques services et produits");
