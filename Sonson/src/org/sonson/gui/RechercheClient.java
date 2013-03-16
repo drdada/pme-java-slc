@@ -41,6 +41,7 @@ public class RechercheClient extends JPanel{
 		
 		
 		JTable table = new JTable(data, title);
+		table.setEnabled(false);
 		add(new JScrollPane(table));
 		this.setVisible(true);
 		}

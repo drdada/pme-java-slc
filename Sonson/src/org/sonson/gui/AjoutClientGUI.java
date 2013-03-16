@@ -1,6 +1,8 @@
 package org.sonson.gui;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -16,7 +18,7 @@ public class AjoutClientGUI extends JPanel {
 	public AjoutClientGUI(){
 		this.setLayout(new GridLayout(0,2));
 		texte = new JLabel("Ajout d'un nouvel utilisateur\nEntrez les informations du clients");
-		nomL = new JLabel("Entrez le nom:");
+		nomL = new JLabel("Nom:");
 		nom = new JTextField();
 		prenomL = new JLabel("Prénom:");
 		prenom = new JTextField();
@@ -33,6 +35,8 @@ public class AjoutClientGUI extends JPanel {
 		
 		envoi = new JButton("Envoi");
 		
+		
+		//TODO mettre le titre et arranger les menus
 		//this.add(texte);
 		this.add(nomL);
 		this.add(nom);
@@ -49,5 +53,14 @@ public class AjoutClientGUI extends JPanel {
 		this.add(telPortableL);
 		this.add(telPortable);
 		this.add(envoi);
+	}
+	
+}
+
+
+private class EnvoiListener implements ActionListener  {
+	public void actionPerformed (ActionEvent e){
+		//Ecouteur de l'aide
+		this
 	}
 }

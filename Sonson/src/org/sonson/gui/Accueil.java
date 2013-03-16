@@ -86,8 +86,8 @@ public class Accueil extends JFrame {
 		//Boutons dans le menu Inventaire
 		bAjout = new JMenuItem("Ajouter un Produit/Service");
 		bAjout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I,InputEvent.CTRL_MASK));
-		Inventaire inv = new Inventaire();
-		bAjout.add(inv);
+		InventaireListener invl = new InventaireListener();
+		bAjout.addActionListener(invl);
 		menuInventaire.add(bAjout);
 		
 		//Boutons dans le menu Stat

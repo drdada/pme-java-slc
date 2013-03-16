@@ -22,9 +22,8 @@ public class UpdateModel {
 		try {
 			ResultSet rs = Dal.getInstance().getResult("SELECT * FROM client");
 			while(rs.next()) {
-				Client c = new Client(rs.getInt("id"),rs.getString("nom"),rs.getString("prenom"),rs.getString("codePostal"),rs.getString("adresse"),rs.getString("pays"),rs.getInt("telFixe"),rs.getInt("telPortable"));
+				Client c = new Client(rs.getInt("id"),rs.getString("nom"),rs.getString("prenom"),rs.getString("codePostal"),rs.getString("adresse"),rs.getString("pays"),rs.getString("telFixe"),rs.getString("telPortable"));
 				sonson.setClient(c);
-				//System.out.println(rs.getString("id")+rs.getString("nom")+rs.getString("prenom")+rs.getString("codePostal")+rs.getString("adresse")+rs.getString("pays")+rs.getInt("telFixe")+rs.getInt("telPortable"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

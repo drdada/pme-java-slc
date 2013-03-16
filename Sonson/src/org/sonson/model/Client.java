@@ -8,11 +8,11 @@ public class Client {
 	private String codePostal;
 	private String adresse;
 	private String pays;
-	private int telFixe;
-	private int telPortable;
+	private String telFixe;
+	private String telPortable;
 	
 	public Client(int id, String nom, String prenom, String codePostal,
-			String adresse, String pays, int telFixe, int telPortable) {
+			String adresse, String pays, String telFixe, String telPortable) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -83,21 +83,26 @@ public class Client {
 		this.pays = pays;
 	}
 
-	public int getTelFixe() {
+
+	public String getTelFixe() {
 		return telFixe;
 	}
 
-	public void setTelFixe(int telFixe) {
+
+	public void setTelFixe(String telFixe) {
 		this.telFixe = telFixe;
 	}
 
-	public int getTelPortable() {
+
+	public String getTelPortable() {
 		return telPortable;
 	}
 
-	public void setTelPortable(int telPortable) {
+
+	public void setTelPortable(String telPortable) {
 		this.telPortable = telPortable;
 	}
+
 	
 	
 }
