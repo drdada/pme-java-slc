@@ -22,7 +22,7 @@ public class Achat extends AbstractApplication {
 		this.idProduit = idProduit;
 	}
 	
-
+// Commentaire inutile
 	public void ajouterAchat(){
 		//TODO ajouter un achat a la bdd ?
 	}
