@@ -58,9 +58,8 @@ public class AjoutClientGUI extends JPanel {
 }
 
 
-private class EnvoiListener implements ActionListener  {
+/*private class EnvoiListener implements ActionListener  {
 	public void actionPerformed (ActionEvent e){
 		//Ecouteur de l'aide
 		//@TODO this
-	}
-}
+	}*/
