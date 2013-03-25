@@ -18,5 +18,20 @@ public class Inventaire extends JPanel{
 	public Inventaire(){
 		this.setLayout(new GridLayout(0,2));
 		
+		texte = new JLabel("Type :");
+		choixProduit = new ButtonGroup();
+		service = new JRadioButton("Service");
+		produit = new JRadioButton("Produit");
+		nom = new JTextField("Nom du produit");
+		
+		choixProduit.add(produit);
+		choixProduit.add(service);
+		
+		this.add(texte);
+		this.add(produit);
+		this.add(service);
+		this.add(nom);
+		
 	}
+	
 }

@@ -11,12 +11,13 @@ import javax.swing.JTextField;
 
 public class AjoutClientGUI extends JPanel {
 
-	private JLabel texte,nomL,prenomL,adresseL,codePostalL,paysL,telFixeL,telPortableL;
+	private JLabel emptylabel,texte,nomL,prenomL,adresseL,codePostalL,paysL,telFixeL,telPortableL;
 	private JTextField nom,prenom,adresse,codePostal,pays,telFixe,telPortable;
 	private JButton envoi;
 	
-	public AjoutClientGUI(){
+	public void AjoutClientGUI(){
 		this.setLayout(new GridLayout(0,2));
+		emptylabel = new JLabel(" ");
 		texte = new JLabel("Ajout d'un nouvel utilisateur\nEntrez les informations du clients");
 		nomL = new JLabel("Nom:");
 		nom = new JTextField();
@@ -32,12 +33,14 @@ public class AjoutClientGUI extends JPanel {
 		telFixe = new JTextField();
 		telPortableL = new JLabel("Telephone portable:");
 		telPortable = new JTextField();
-		
+		EnvoiListener envlist = new EnvoiListener();
 		envoi = new JButton("Envoi");
+		envoi.addActionListener(envlist);
 		
 		
 		//TODO mettre le titre et arranger les menus
-		//this.add(texte);
+		this.add(emptylabel);
+		this.add(texte);
 		this.add(nomL);
 		this.add(nom);
 		this.add(prenomL);
@@ -55,11 +58,14 @@ public class AjoutClientGUI extends JPanel {
 		this.add(envoi);
 	}
 	
-}
 
 
-/*private class EnvoiListener implements ActionListener  {
+
+private class EnvoiListener implements ActionListener  {
 	public void actionPerformed (ActionEvent e){
 		//Ecouteur de l'aide
-		//@TODO this
-	}*/
+
+	}
+}
+
+}
