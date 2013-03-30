@@ -37,7 +37,8 @@ private Connection connexionDB ;
 		pass = new JPasswordField();
 		ok = new JButton("OK");
 		
-		
+		EnvoiListener envoilist = new EnvoiListener();
+		ok.addActionListener(envoilist);
 		
 		this.add(connexionLabel);
 		this.add(url);
