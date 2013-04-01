@@ -95,7 +95,9 @@ public class Accueil extends JFrame {
 		bStatClient = new JMenuItem("Statistiques des clients");
 		bStatClient.addActionListener(statClistener);
 		bStatFinancier = new JMenuItem("Statistiques financieres");
+		StatProListener statpro = new StatProListener();
 		bStatServ = new JMenuItem("Statistiques services et produits");
+		bStatServ.addActionListener(statpro);
 		menuStats.add(bStatServ);
 		menuStats.add(bStatFinancier);
 		menuStats.add(bStatClient);
@@ -181,6 +183,16 @@ public class Accueil extends JFrame {
 		}
 	}
 	
+	private class StatProListener implements ActionListener {
+		public void actionPerformed (ActionEvent e){
+			//Ecouteur de l'aide
+			pan1.removeAll();
+			cont.repaint();
+			StatistiqueProduitGUI sp = new StatistiqueProduitGUI();
+			pan1.add(sp);
+			Accueil.this.setVisible(true);
+		}
+	}
 	/**
 	 * WTF de mettre 50 classes dans une autre classe ^^ Non mais allo quoi ?
 	 * Allo ? Tu me reçois ? Non mais allo.
