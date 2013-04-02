@@ -94,14 +94,18 @@ public class Accueil extends JFrame {
 		StatCListner statClistener = new StatCListner(ss);
 		bStatClient = new JMenuItem("Statistiques des clients");
 		bStatClient.addActionListener(statClistener);
+		
+		StatFinListener statFinListener = new StatFinListener();
 		bStatFinancier = new JMenuItem("Statistiques financieres");
+		bStatFinancier.addActionListener(statFinListener);
+		
 		StatProListener statpro = new StatProListener();
 		bStatServ = new JMenuItem("Statistiques services et produits");
 		bStatServ.addActionListener(statpro);
+		
 		menuStats.add(bStatServ);
 		menuStats.add(bStatFinancier);
 		menuStats.add(bStatClient);
-		
 		
 		barre.add(menuFichier);
 		barre.add(menuClient);
@@ -185,11 +189,21 @@ public class Accueil extends JFrame {
 	
 	private class StatProListener implements ActionListener {
 		public void actionPerformed (ActionEvent e){
-			//Ecouteur de l'aide
+			//Ecouteur des Stat produit
 			pan1.removeAll();
 			cont.repaint();
 			StatistiqueProduitGUI sp = new StatistiqueProduitGUI();
 			pan1.add(sp);
+			Accueil.this.setVisible(true);
+		}
+	}
+	private class StatFinListener implements ActionListener{
+		public void actionPerformed (ActionEvent e){
+			//Ecouteur des Stat Financieres
+			pan1.removeAll();
+			cont.repaint();
+			StatistiquesFinancesGUI sf= new StatistiquesFinancesGUI();
+			pan1.add(sf);
 			Accueil.this.setVisible(true);
 		}
 	}
