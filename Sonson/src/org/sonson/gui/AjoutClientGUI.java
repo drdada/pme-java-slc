@@ -18,7 +18,7 @@ public class AjoutClientGUI extends JPanel {
 	public AjoutClientGUI(){
 		this.setLayout(new GridLayout(0,2));
 		emptylabel = new JLabel(" ");
-		texte = new JLabel("Ajout d'un nouvel utilisateur\nEntrez les informations du clients");
+		texte = new JLabel("Ajout d'un nouveau client, entrez les informations");
 		nomL = new JLabel("Nom:");
 		nom = new JTextField();
 		prenomL = new JLabel("Prénom:");
@@ -39,8 +39,8 @@ public class AjoutClientGUI extends JPanel {
 		
 		
 		//TODO mettre le titre et arranger les menus
-		this.add(emptylabel);
 		this.add(texte);
+		this.add(emptylabel);
 		this.add(nomL);
 		this.add(nom);
 		this.add(prenomL);

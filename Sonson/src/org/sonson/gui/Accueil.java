@@ -25,12 +25,11 @@ public class Accueil extends JFrame {
 	
 	private Sonson sonson;
 	private Container cont;
-	private JButton credit;
 	private JPanel pan1;
 	private JLabel wlcm;
 	private JMenuBar barre;
-	private JMenu menuFichier, menuClient,menuInventaire,menuStats;
-	private JMenuItem bAide, bQuitter, bRechercheClient, bAjoutclient, bAjout, bStatFinancier, bStatClient, bStatServ;
+	private JMenu menuFichier, menuClient,menuInventaire,menuStats, menuAide;
+	private JMenuItem bAide, bQuitter, bRechercheClient, bAjoutclient, bAjout, bStatFinancier, bStatClient, bStatServ, bCredit;
 	
 	public Accueil(Sonson ss){
 		this.sonson = ss;
@@ -44,9 +43,6 @@ public class Accueil extends JFrame {
 		
 		wlcm = new JLabel("Bienvenue");
 		
-		credit = new JButton("Crédits");
-		CreditsListener creditlist = new CreditsListener();
-		credit.addActionListener(creditlist);
 		
 		//***
 		//Menu
@@ -59,16 +55,13 @@ public class Accueil extends JFrame {
 		menuInventaire.setMnemonic('I');
 		menuStats = new JMenu("Statistiques");
 		menuStats.setMnemonic('S');
+		menuAide = new JMenu("?");
 		
 		//Boutons dans le menu fichiers
-		AideListner aideL = new AideListner();
-		bAide = new JMenuItem("Aide");
-		bAide.addActionListener(aideL);
 		bQuitter = new JMenuItem("Quitter");
 		QuitListner quit = new QuitListner();
 		bQuitter.addActionListener(quit);
 		bQuitter.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q,InputEvent.CTRL_MASK));
-		menuFichier.add(bAide);
 		menuFichier.add(bQuitter);
 		
 		//Boutons dans le menu Client
@@ -107,11 +100,26 @@ public class Accueil extends JFrame {
 		menuStats.add(bStatFinancier);
 		menuStats.add(bStatClient);
 		
+		
+		//Boutons dans le menu aide
+		AideListner aideL = new AideListner();
+		bAide = new JMenuItem("Aide");
+		bAide.addActionListener(aideL);
+		bAide.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A,InputEvent.CTRL_MASK));
+		CreditListener creditL = new CreditListener();
+		bCredit = new JMenuItem("Crédits");
+		bCredit.addActionListener(creditL);
+		menuAide.add(bAide);
+		menuAide.add(bCredit);
+		
+	
+		
 		barre.add(menuFichier);
 		barre.add(menuClient);
 		barre.add(menuInventaire);
 		barre.add(menuStats);
-		
+		barre.add(menuAide);
+
 		
 		pan1 = new JPanel();
 		//Selection du layout
@@ -120,18 +128,12 @@ public class Accueil extends JFrame {
 		this.setJMenuBar(barre);
 		//Ajout
 		pan1.add(wlcm);
-		pan1.add(credit);
 		
 		
 		cont = getContentPane();
 		cont.setLayout(new FlowLayout());
 		cont.add(pan1);
 		setVisible(true);
-	}
-	private class CreditsListener implements ActionListener{
-		public void actionPerformed(ActionEvent e){
-			JOptionPane.showMessageDialog(null,"Projet \"Gestion simplifiée de PME\" écrit en Java\nPar Matteo D'Addamio et Arnaud Booms\nPour le cour de conduite de projet (Mr Renson)\nHenallux 2012-2013","Crédits", JOptionPane.INFORMATION_MESSAGE);
-		}
 	}
 	private class QuitListnerX extends WindowAdapter{
 		public void windowClosing(WindowEvent e){
@@ -152,6 +154,16 @@ public class Accueil extends JFrame {
 			cont.repaint();
 			Inventaire inv = new Inventaire();
 			pan1.add(inv);
+			Accueil.this.setVisible(true);
+		}
+	}
+	private class CreditListener implements ActionListener {
+		public void actionPerformed (ActionEvent e){
+			//Ecouteur de l'aide
+			pan1.removeAll();
+			cont.repaint();
+			CreditGUI cgui = new CreditGUI();
+			pan1.add(cgui);
 			Accueil.this.setVisible(true);
 		}
 	}
