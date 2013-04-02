@@ -1,13 +1,15 @@
 package org.sonson.gui;
 
-import javax.swing.*;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class StatistiquesFinancesGUI extends JPanel{
 	
 	private JTextField chiffreTotal,chiffreProduit,chiffreService;
 	private JLabel textTotal,textProduit,textService;
 	
-	public void StatistiquesFinancesGUI(){
+	public StatistiquesFinancesGUI(){
 		this.setLayout(null);
 		
 		textTotal = new JLabel("Chiffre d'affaire total : ");

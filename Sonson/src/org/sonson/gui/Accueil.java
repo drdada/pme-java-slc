@@ -145,6 +145,16 @@ public class Accueil extends JFrame {
 			System.exit(0);
 		}
 	}
+	private class InventaireListener implements ActionListener {
+		public void actionPerformed (ActionEvent e){
+			//Ecouteur de l'aide
+			pan1.removeAll();
+			cont.repaint();
+			Inventaire inv = new Inventaire();
+			pan1.add(inv);
+			Accueil.this.setVisible(true);
+		}
+	}
 	private class RechercheClientListener implements ActionListener {
 		public void actionPerformed (ActionEvent e){
 			//Ecouteur de Recherche client
@@ -173,16 +183,6 @@ public class Accueil extends JFrame {
 			cont.repaint();
 			Aide aide = new Aide();
 			pan1.add(aide);
-			Accueil.this.setVisible(true);
-		}
-	}
-	private class InventaireListener implements ActionListener {
-		public void actionPerformed (ActionEvent e){
-			//Ecouteur de l'aide
-			pan1.removeAll();
-			cont.repaint();
-			Inventaire inv = new Inventaire();
-			pan1.add(inv);
 			Accueil.this.setVisible(true);
 		}
 	}

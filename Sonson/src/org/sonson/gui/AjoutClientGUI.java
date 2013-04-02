@@ -15,7 +15,7 @@ public class AjoutClientGUI extends JPanel {
 	private JTextField nom,prenom,adresse,codePostal,pays,telFixe,telPortable;
 	private JButton envoi;
 	
-	public void AjoutClientGUI(){
+	public AjoutClientGUI(){
 		this.setLayout(new GridLayout(0,2));
 		emptylabel = new JLabel(" ");
 		texte = new JLabel("Ajout d'un nouvel utilisateur\nEntrez les informations du clients");
