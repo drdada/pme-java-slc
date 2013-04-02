@@ -12,7 +12,7 @@ public class StatistiqueProduitGUI extends JPanel{
 	private JLabel textServiceP, textProduitP, textServiceV, textProduitV;
 	
 	public void StatistiqueProduitGUI(){
-		this.setLayout(new GridLayout(2,4));
+		this.setLayout(new GridLayout(2,4,5,5));
 		
 		textServiceP = new JLabel("Nombre de services proposés: ");
 		textProduitP = new JLabel("Nombre de produits proposés: ");
