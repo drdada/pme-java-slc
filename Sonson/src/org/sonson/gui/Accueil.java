@@ -29,7 +29,7 @@ public class Accueil extends JFrame {
 	private JLabel wlcm;
 	private JMenuBar barre;
 	private JMenu menuFichier, menuClient,menuInventaire,menuStats, menuAide;
-	private JMenuItem bAide, bQuitter, bRechercheClient, bAjoutclient, bAjout, bStatFinancier, bStatClient, bStatServ, bCredit;
+	private JMenuItem bAide, bQuitter, bRechercheClient, bAjoutclient, bAjout, bStatFinancier, bStatClient, bStatServ, bCredit, bListInv;
 	
 	public Accueil(Sonson ss){
 		this.sonson = ss;
@@ -81,7 +81,11 @@ public class Accueil extends JFrame {
 		bAjout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I,InputEvent.CTRL_MASK));
 		InventaireListener invl = new InventaireListener();
 		bAjout.addActionListener(invl);
+		bListInv = new JMenuItem("Modifier un Produit/Service");
+		ListInvListener listInvL = new ListInvListener();
+		bListInv.addActionListener(listInvL);
 		menuInventaire.add(bAjout);
+		menuInventaire.add(bListInv);
 		
 		//Boutons dans le menu Stat
 		StatCListner statClistener = new StatCListner(ss);
@@ -164,6 +168,16 @@ public class Accueil extends JFrame {
 			cont.repaint();
 			CreditGUI cgui = new CreditGUI();
 			pan1.add(cgui);
+			Accueil.this.setVisible(true);
+		}
+	}
+	private class ListInvListener implements ActionListener {
+		public void actionPerformed (ActionEvent e){
+			//Ecouteur de l'aide
+			pan1.removeAll();
+			cont.repaint();
+			ListInventaireGUI lv = new ListInventaireGUI();
+			pan1.add(lv);
 			Accueil.this.setVisible(true);
 		}
 	}
