@@ -1,20 +1,19 @@
 package org.sonson.gui;
 
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import javax.swing.*;
+
 
 public class Aide extends JPanel{
-	private JLabel text;
+	private JEditorPane jep;
+			
 	public Aide(){
-		
 		//TODO Aide
-		JLabel text = new JLabel("<html>"+
+		
+		jep = new JEditorPane();
+		jep.setContentType("text/html");
+		jep.setText("<html>"+
 				"<body>"+
 				"<h1>Bienvenue dans l'aide</h1>"+
 				"<h2>Table des matiéres</h2>"+
@@ -182,6 +181,6 @@ public class Aide extends JPanel{
 				""+
 				"</body>"+
 				"</html>");
-		this.add(text);
+		this.add(jep);
 	}
 }
