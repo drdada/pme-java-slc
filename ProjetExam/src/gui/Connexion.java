@@ -23,7 +23,6 @@ private JPasswordField pass;
 private JButton ok;	
 private Connection connexionDB ; 
 
-
 	public Connexion(){
 		//TODO redimentionner le panel
 		this.setBorder(BorderFactory.createLineBorder(Color.CYAN));
@@ -54,11 +53,15 @@ private Connection connexionDB ;
 			String logins = login.getText(); //Lit le contenu du champ login et le met dans la variable login
 			String pw = new String (pass.getPassword()); //Lit (et transforme ) le mot de passe
 			try{
-				AccessBDGen.connecter(urll, logins, pw);
+				connexionDB = AccessBDGen.connecter(urll, logins, pw);
+				JOptionPane.showMessageDialog(null, 
+						"Connexion établie", "Connexion DB", JOptionPane.INFORMATION_MESSAGE); // On affiche le message de bonne connexion
+				main.Projet.setConnexion(connexionDB);
+				
 			}
 			catch(SQLException ex)					//Si une erreur a la base de donnée se produit	
 			{	JOptionPane.showMessageDialog(null, ex,	 
-					"Erreur de connexion avec la base de donnée", JOptionPane.ERROR_MESSAGE);}
+					"Erreur de connexion avec la base de donnée", JOptionPane.ERROR_MESSAGE);} // On affiche une boite d'erreur qui contient l'erreur retournée par le systeme
 			}
 		
 	}
