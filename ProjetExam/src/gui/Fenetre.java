@@ -50,13 +50,26 @@ public class Fenetre extends JFrame{
 		//TODO Listener ici !
 		
 		//Jmenu Intervention
-		
+		intervention = new JMenu("Intervention");
+		ajout = new JMenuItem("Ajouter une intervention");
+		suppression= new JMenuItem("Supprimer une intervention");
+		intervention.add(ajout);
+		intervention.add(suppression);
 		//Jmenu Liste
+		liste = new JMenu("Recherche");
+		listel = new JMenuItem("Liste des interventions");
+		liste.add(listel);
 		
 		//Jmenu BDD
-		
+		bdd = new JMenu("Base de données");
+		connexion = new JMenuItem("Connexion");
+		deconnexion = new JMenuItem("Deconnexion");
+		bdd.add(connexion);
+		bdd.add(deconnexion);
 		//Jmenu aide
-		
+		aide = new JMenu("Aide");
+		aidea = new JMenuItem("Credits");
+		aide.add(aidea);
 		//JMENU
 		barre.add(fichier); //On ajoute le menu fichier dans la barre
 		this.setJMenuBar(barre);
