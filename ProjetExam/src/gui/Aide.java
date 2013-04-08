@@ -11,5 +11,6 @@ public class Aide extends JPanel{
 				"Dans le cadre du cours de java de deuxieme TI" +
 				"Henallux 2012-2013" +
 				" </center></body></html>");
+		this.add(texte);
 	}
 }

@@ -2,6 +2,8 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -9,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+
 
 public class Fenetre extends JFrame{
 
@@ -42,12 +45,14 @@ public class Fenetre extends JFrame{
 	private void barre(){
 		
 		barre = new JMenuBar();
+		BarreListener barreListener = new BarreListener(); //On crée l'objet BarreListener qui va ecouter les boutons de la barre
+		
 		
 		//Jmenu Fichier
 		fichier = new JMenu("Fichier"); //On crée le jmenu fichier
 		quitter = new JMenuItem("Quitter"); //On crée le jmenuitem Quitter
 		fichier.add(quitter); //On insere le bouton quitter dans le menu fichier
-		//TODO Listener ici !
+		quitter.addActionListener(barreListener); //On ajoute l'action au bouton
 		
 		//Jmenu Intervention
 		intervention = new JMenu("Intervention");
@@ -55,6 +60,7 @@ public class Fenetre extends JFrame{
 		suppression= new JMenuItem("Supprimer une intervention");
 		intervention.add(ajout);
 		intervention.add(suppression);
+		
 		//Jmenu Liste
 		liste = new JMenu("Recherche");
 		listel = new JMenuItem("Liste des interventions");
@@ -66,10 +72,14 @@ public class Fenetre extends JFrame{
 		deconnexion = new JMenuItem("Deconnexion");
 		bdd.add(connexion);
 		bdd.add(deconnexion);
+		connexion.addActionListener(barreListener);
+		
 		//Jmenu aide
 		aide = new JMenu("Aide");
 		aidea = new JMenuItem("Credits");
 		aide.add(aidea);
+		aidea.addActionListener(barreListener);
+
 		//JMENU
 		barre.add(fichier); //On ajoute le menu fichier dans la barre
 		barre.add(intervention);
@@ -81,8 +91,22 @@ public class Fenetre extends JFrame{
 	
 	private class QuitListnerX extends WindowAdapter{
 		public void windowClosing(WindowEvent e){
-			System.out.println("EXIT");
+			//TODO Deconnexion
 			System.exit(0);
 			}
+	}
+	private class BarreListener implements ActionListener {
+		public void actionPerformed (ActionEvent e){
+			if (e.getSource().equals(quitter)){ //Si on appuie sur le bouton quitter
+				//TODO Deconnexion
+				System.exit(0); //On ferme le programme
+			}
+			if (e.getSource().equals(aidea)){
+				Aide aide = new Aide();
+				cont.removeAll();
+				cont.repaint();
+				cont.add(aide);
+			}
+		}
 	}
 }
