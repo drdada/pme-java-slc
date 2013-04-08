@@ -72,6 +72,10 @@ public class Fenetre extends JFrame{
 		aide.add(aidea);
 		//JMENU
 		barre.add(fichier); //On ajoute le menu fichier dans la barre
+		barre.add(intervention);
+		barre.add(liste);
+		barre.add(bdd);
+		barre.add(aide);
 		this.setJMenuBar(barre);
 	}
 	
