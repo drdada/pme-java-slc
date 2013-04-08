@@ -9,6 +9,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import org.sonson.dal.UpdateModel;
+import org.sonson.model.Client;
+
 public class AjoutClientGUI extends JPanel {
 
 	private JLabel emptylabel,texte,nomL,prenomL,adresseL,codePostalL,paysL,telFixeL,telPortableL;
@@ -63,8 +66,9 @@ public class AjoutClientGUI extends JPanel {
 
 private class EnvoiListener implements ActionListener  {
 	public void actionPerformed (ActionEvent e){
-		//Ecouteur de l'aide
-
+		//Ecouteur du bouton envoi
+		
+		
 	}
 }
 

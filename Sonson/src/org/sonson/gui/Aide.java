@@ -4,6 +4,7 @@ import java.awt.FlowLayout;
 
 import javax.swing.*;
 
+import javax.swing.JScrollPane;
 
 public class Aide extends JPanel{
 	private JEditorPane jep;
