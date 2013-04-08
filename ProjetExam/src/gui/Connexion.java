@@ -31,8 +31,8 @@ private Connection connexionDB ;
 
 		
 		connexionLabel = new JLabel("<html><body><center>Connexion<br>Veuillez rentrer les informations de connexion de la base de donnée</center></body></html>");
-		url = new JTextField("Url");
-		login = new JTextField("Login");
+		url = new JTextField("URL");
+		login = new JTextField("Administrateur");
 		pass = new JPasswordField();
 		ok = new JButton("OK");
 		

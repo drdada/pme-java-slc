@@ -14,8 +14,8 @@ public class Fenetre extends JFrame{
 
 	private Container cont;
 	private JMenuBar barre;
-	private JMenu x;
-	private JMenuItem y;
+	private JMenu fichier,intervention,liste,bdd,aide;
+	private JMenuItem quitter,ajout,suppression,listel,connexion,deconnexion,aidea;
 
 	public Fenetre(){
 		this.parametres(); // Parametres de la fenetres
@@ -24,10 +24,10 @@ public class Fenetre extends JFrame{
 		this.addWindowListener(quitx);
 		
 		this.barre();
-		
-		Connexion connexionW = new Connexion();
-		
-		this.add(connexionW, BorderLayout.CENTER);
+	
+
+		Accueil accueil = new Accueil();
+		this.add(accueil, BorderLayout.CENTER);
 		
 		cont = getContentPane();
 		setVisible(true);
@@ -42,6 +42,23 @@ public class Fenetre extends JFrame{
 	private void barre(){
 		
 		barre = new JMenuBar();
+		
+		//Jmenu Fichier
+		fichier = new JMenu("Fichier"); //On crée le jmenu fichier
+		quitter = new JMenuItem("Quitter"); //On crée le jmenuitem Quitter
+		fichier.add(quitter); //On insere le bouton quitter dans le menu fichier
+		//TODO Listener ici !
+		
+		//Jmenu Intervention
+		
+		//Jmenu Liste
+		
+		//Jmenu BDD
+		
+		//Jmenu aide
+		
+		//JMENU
+		barre.add(fichier); //On ajoute le menu fichier dans la barre
 		this.setJMenuBar(barre);
 	}
 	
