@@ -1,18 +1,54 @@
 TODO list du projet Sonson
 
-Accueil : message d'accueil (arnaud)
-Aide: Affichage correct du message d'accueil (probleme!)
+Accueil : 
+- message d'accueil (arnaud)
 
-Recherche d'un client: filtre sur la table
-Recherche d'un client: Accés a la fiche client
+Aide: 
+- Affichage correct du message d'accueil (probleme!)
+- Terminer les explications (quand programme fini)
+
+Recherche d'un client: 
+- Filtre de recherche sur la table
+- Accés a la fiche client
+	Clic sur une personne et pop up d'une fiche contenant ses informations
+	
 Fiche client: a faire
-
-Modification des client
-Ajout d'un client
+	- derniers achats
+	- date dernier achat
+	- infos perso
+	- Modification des client(bouton pour pouvoir modifier les infos clients.
+	- Ajout de Produits, Services
+	
+	Ajout de Produits, Services à un clients : 
+		- Recherche d'un produit
+		- Bouton ajout au client
+	
+	Modification client : 
+		- Panel avec fiche client
+		- Panel avec champ pour modifier
+	
+Ajout d'un client : 
+	- Disposition
+	- Messages de confirmation
 
 Ajout de produit service
+	- Disposition
+	- Messages de confirmation
+	
 Modification des produits et services
+	- Recherche d'un produit
+	- Clic pour aficher la fiche
+		- Panel avec fiche produit
+		- Panel avec champ pour modifier
 
-Statistiques des clients: 
-Stat des produit:
-Stat des finances:
+
+Statistiques des clients : 
+	- Nb Clients Tot
+	- Nom clients plus récurents
+Stat des produit :
+	- Quantités vendus (produits et services)
+	
+Stat des finances :
+	- Revenu total 
+	- Revenu Services
+	- Revenu Produits
