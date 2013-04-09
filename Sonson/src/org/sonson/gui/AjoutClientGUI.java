@@ -10,15 +10,17 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import org.sonson.dal.UpdateModel;
+import org.sonson.main.Sonson;
 import org.sonson.model.Client;
 
 public class AjoutClientGUI extends JPanel {
-
+	private Sonson ss;
 	private JLabel emptylabel,texte,nomL,prenomL,adresseL,codePostalL,paysL,telFixeL,telPortableL;
 	private JTextField nom,prenom,adresse,codePostal,pays,telFixe,telPortable;
 	private JButton envoi;
 	
-	public AjoutClientGUI(){
+	public AjoutClientGUI(Sonson ss){
+		this.ss = ss;
 		this.setLayout(new GridLayout(0,2));
 		emptylabel = new JLabel(" ");
 		texte = new JLabel("Ajout d'un nouveau client, entrez les informations");
@@ -68,7 +70,7 @@ private class EnvoiListener implements ActionListener  {
 	public void actionPerformed (ActionEvent e){
 		//Ecouteur du bouton envoi
 		
-		
+		ss.addClientBdd(nom.getText(), prenom.getText(), codePostal.getText(), adresse.getText(), pays.getText(), telFixe.getText(), telPortable.getText());
 	}
 }
 

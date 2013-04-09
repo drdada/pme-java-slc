@@ -18,7 +18,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
-
 import org.sonson.main.Sonson;
 
 public class Accueil extends JFrame {
@@ -43,6 +42,7 @@ public class Accueil extends JFrame {
 		
 		wlcm = new JLabel("Bienvenue");
 		
+		BaListener baListener = new BaListener(sonson);
 		
 		//***
 		//Menu
@@ -59,46 +59,38 @@ public class Accueil extends JFrame {
 		
 		//Boutons dans le menu fichiers
 		bQuitter = new JMenuItem("Quitter");
-		QuitListner quit = new QuitListner();
-		bQuitter.addActionListener(quit);
+		bQuitter.addActionListener(baListener);
 		bQuitter.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q,InputEvent.CTRL_MASK));
 		menuFichier.add(bQuitter);
 		
 		//Boutons dans le menu Client
 		bRechercheClient = new JMenuItem("Recherche d'un client");
 		bRechercheClient.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F,InputEvent.CTRL_MASK));
-		RechercheClientListener rClientListener = new RechercheClientListener();
-		bRechercheClient.addActionListener(rClientListener);
+		bRechercheClient.addActionListener(baListener);
 		bAjoutclient = new JMenuItem("Ajouter un client");
 		bAjoutclient.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N,InputEvent.CTRL_MASK));
-		AjoutClientListener aClientListener = new AjoutClientListener();
-		bAjoutclient.addActionListener(aClientListener);
+		bAjoutclient.addActionListener(baListener);
 		menuClient.add(bRechercheClient);
 		menuClient.add(bAjoutclient);
 		
 		//Boutons dans le menu Inventaire
 		bAjout = new JMenuItem("Ajouter un Produit/Service");
 		bAjout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I,InputEvent.CTRL_MASK));
-		InventaireListener invl = new InventaireListener();
-		bAjout.addActionListener(invl);
+		bAjout.addActionListener(baListener);
 		bListInv = new JMenuItem("Modifier un Produit/Service");
-		ListInvListener listInvL = new ListInvListener();
-		bListInv.addActionListener(listInvL);
+		bListInv.addActionListener(baListener);
 		menuInventaire.add(bAjout);
 		menuInventaire.add(bListInv);
 		
 		//Boutons dans le menu Stat
-		StatCListner statClistener = new StatCListner(ss);
 		bStatClient = new JMenuItem("Statistiques des clients");
-		bStatClient.addActionListener(statClistener);
+		bStatClient.addActionListener(baListener);
 		
-		StatFinListener statFinListener = new StatFinListener();
 		bStatFinancier = new JMenuItem("Statistiques financieres");
-		bStatFinancier.addActionListener(statFinListener);
+		bStatFinancier.addActionListener(baListener);
 		
-		StatProListener statpro = new StatProListener();
 		bStatServ = new JMenuItem("Statistiques services et produits");
-		bStatServ.addActionListener(statpro);
+		bStatServ.addActionListener(baListener);
 		
 		menuStats.add(bStatServ);
 		menuStats.add(bStatFinancier);
@@ -106,13 +98,11 @@ public class Accueil extends JFrame {
 		
 		
 		//Boutons dans le menu aide
-		AideListner aideL = new AideListner();
 		bAide = new JMenuItem("Aide");
-		bAide.addActionListener(aideL);
+		bAide.addActionListener(baListener);
 		bAide.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A,InputEvent.CTRL_MASK));
-		CreditListener creditL = new CreditListener();
 		bCredit = new JMenuItem("Crédits");
-		bCredit.addActionListener(creditL);
+		bCredit.addActionListener(baListener);
 		menuAide.add(bAide);
 		menuAide.add(bCredit);
 		
@@ -145,116 +135,81 @@ public class Accueil extends JFrame {
 			System.exit(0);
 			}
 	}
-	private class QuitListner implements ActionListener{
-		public void actionPerformed(ActionEvent e){
-			System.out.println("EXIT");
-			System.exit(0);
-		}
-	}
-	private class InventaireListener implements ActionListener {
-		public void actionPerformed (ActionEvent e){
-			//Ecouteur de l'aide
-			pan1.removeAll();
-			cont.repaint();
-			Inventaire inv = new Inventaire();
-			pan1.add(inv);
-			Accueil.this.setVisible(true);
-		}
-	}
-	private class CreditListener implements ActionListener {
-		public void actionPerformed (ActionEvent e){
-			//Ecouteur de l'aide
-			pan1.removeAll();
-			cont.repaint();
-			CreditGUI cgui = new CreditGUI();
-			pan1.add(cgui);
-			Accueil.this.setVisible(true);
-		}
-	}
-	private class ListInvListener implements ActionListener {
-		public void actionPerformed (ActionEvent e){
-			//Ecouteur de l'aide
-			pan1.removeAll();
-			cont.repaint();
-			ListInventaireGUI lv = new ListInventaireGUI();
-			pan1.add(lv);
-			Accueil.this.setVisible(true);
-		}
-	}
-	private class RechercheClientListener implements ActionListener {
-		public void actionPerformed (ActionEvent e){
-			//Ecouteur de Recherche client
-			pan1.removeAll();
-			cont.repaint();
-			RechercheClient rcl =  new RechercheClient(sonson);
-			pan1.add(rcl);
-			Accueil.this.setVisible(true);
-		}
-	}
-	private class AjoutClientListener implements ActionListener {
-		public void actionPerformed (ActionEvent e){
-			//Ecouteur de l'ajout client
-			pan1.removeAll();
-			cont.repaint();
-			AjoutClientGUI aj = new AjoutClientGUI();
-			pan1.add(aj);
-			Accueil.this.setVisible(true);
-		}
-	}
-	
-	private class AideListner implements ActionListener {
-		public void actionPerformed (ActionEvent e){
-			//Ecouteur de l'aide
-			pan1.removeAll();
-			cont.repaint();
-			Aide aide = new Aide();
-			pan1.add(aide);
-			Accueil.this.setVisible(true);
-		}
-	}
-	
-	private class StatProListener implements ActionListener {
-		public void actionPerformed (ActionEvent e){
-			//Ecouteur des Stat produit
-			pan1.removeAll();
-			cont.repaint();
-			StatistiqueProduitGUI sp = new StatistiqueProduitGUI();
-			pan1.add(sp);
-			Accueil.this.setVisible(true);
-		}
-	}
-	private class StatFinListener implements ActionListener{
-		public void actionPerformed (ActionEvent e){
-			//Ecouteur des Stat Financieres
-			pan1.removeAll();
-			cont.repaint();
-			StatistiquesFinancesGUI sf= new StatistiquesFinancesGUI();
-			pan1.add(sf);
-			Accueil.this.setVisible(true);
-		}
-	}
-	/**
-	 * WTF de mettre 50 classes dans une autre classe ^^ Non mais allo quoi ?
-	 * Allo ? Tu me reçois ? Non mais allo.
-	 * C'est comme enfilé un chat sans verrouillé ces pattes ! Non mais allo.
-	 * @author 
-	 *
-	 */
-	private class StatCListner implements ActionListener {
+	private class BaListener implements ActionListener{
 		Sonson ss;
 		
-		public StatCListner(Sonson ss) {
+		public BaListener(Sonson ss) {
 			this.ss = ss;
 		}
-		
-		public void actionPerformed (ActionEvent e){
-			//Ecouteur du boutons statistiques des CLIENTS
-			pan1.removeAll();
-			cont.repaint();
-			StatistiqueClientGUI sc = new StatistiqueClientGUI(ss);
-			pan1.add(sc);
-			
-			Accueil.this.setVisible(true);
-		}
-	}
+		public void actionPerformed(ActionEvent e){
+				if (e.getSource().equals(bQuitter)){ //Si on appuie sur le bouton quitter
+					System.out.println("EXIT");
+					System.exit(0);
+				}
+				if(e.getSource().equals(bAjoutclient)){
+					pan1.removeAll();
+					cont.repaint();
+					AjoutClientGUI aj = new AjoutClientGUI(ss);
+					pan1.add(aj);
+					Accueil.this.setVisible(true);
+				}
+				if(e.getSource().equals(bRechercheClient)){
+					pan1.removeAll();
+					cont.repaint();
+					RechercheClient rcl =  new RechercheClient(sonson);
+					pan1.add(rcl);
+					Accueil.this.setVisible(true);
+				}
+				if(e.getSource().equals(bListInv)){
+					pan1.removeAll();
+					cont.repaint();
+					ListInventaireGUI lv = new ListInventaireGUI();
+					pan1.add(lv);
+					Accueil.this.setVisible(true);
+				}
+				if(e.getSource().equals(bAjout)){
+					pan1.removeAll();
+					cont.repaint();
+					Inventaire inv = new Inventaire();
+					pan1.add(inv);
+					Accueil.this.setVisible(true);
+				}
+				if(e.getSource().equals(bStatClient)){
+					pan1.removeAll();
+					cont.repaint();
+					StatistiqueClientGUI sc = new StatistiqueClientGUI(ss);
+					pan1.add(sc);
+					
+					Accueil.this.setVisible(true);
+				}
+				if(e.getSource().equals(bStatFinancier)){
+					pan1.removeAll();
+					cont.repaint();
+					StatistiquesFinancesGUI sf= new StatistiquesFinancesGUI();
+					pan1.add(sf);
+					Accueil.this.setVisible(true);
+				}
+				if(e.getSource().equals(bStatServ)){
+					pan1.removeAll();
+					cont.repaint();
+					StatistiqueProduitGUI sp = new StatistiqueProduitGUI();
+					pan1.add(sp);
+					Accueil.this.setVisible(true);
+				}
+				if(e.getSource().equals(bAide)){
+					pan1.removeAll();
+					cont.repaint();
+					Aide aide = new Aide();
+					pan1.add(aide);
+					Accueil.this.setVisible(true);
+				}
+				if(e.getSource().equals(bCredit)){
+					pan1.removeAll();
+					cont.repaint();
+					CreditGUI cgui = new CreditGUI();
+					pan1.add(cgui);
+					Accueil.this.setVisible(true);
+				}
+			}
+	}	
 }

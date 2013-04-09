@@ -15,6 +15,7 @@ import org.sonson.model.Client;
 public class Sonson extends AbstractApplication {
 	private Dal dal; 
 	private ArrayList<Client> arrayclient;
+	private UpdateModel um;
 	
 	public Sonson() {
 		arrayclient = new ArrayList<Client>();
@@ -26,7 +27,7 @@ public class Sonson extends AbstractApplication {
 		
 		logger.info("Initialisation couche DAL");
 		this.dal = Dal.getInstance();
-		UpdateModel um = new UpdateModel(this);
+		um = new UpdateModel(this);
 		um.updateClients();
 //		um.updateProduits();
 //		um.updateServices();
@@ -51,6 +52,10 @@ public class Sonson extends AbstractApplication {
 			//Le client n'exite pas encore, donc on le rajoute
 			arrayclient.add(c);
 		}
+	}
+	public void addClientBdd(String noml, String prenoml, String codePostall, String adressel, String paysl, String telFixel, String telPortablel)
+	{
+		um.addClient(noml, prenoml, codePostall, adressel, paysl, telFixel, telPortablel);
 	}
 
 

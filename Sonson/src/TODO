@@ -37,14 +37,15 @@ Ajout de produit service
 	
 Modification des produits et services
 	- Recherche d'un produit
-	- Clic pour aficher la fiche
+	- Clic pour afficher la fiche
 		- Panel avec fiche produit
 		- Panel avec champ pour modifier
 
 
 Statistiques des clients : 
-	- Nb Clients Tot
+	- Nb Clients Tot (fait!)
 	- Nom clients plus récurents
+	
 Stat des produit :
 	- Quantités vendus (produits et services)
 	
