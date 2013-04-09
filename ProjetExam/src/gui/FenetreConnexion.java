@@ -15,14 +15,14 @@ public class FenetreConnexion extends JFrame{
 		
 		this.parametres(); //apelle la fonction parametres qui regle les parametres de la fenetre
 		
-		Connexion fenConnexion = new Connexion(); // On crée un objet Jpanel de la classe Connexion
+		Connexion fenConnexion = new Connexion(this); // On crée un objet Jpanel de la classe Connexion
 		contDB.add(fenConnexion); // On ajoute ce jpanel dans le conteneur
 		
 		this.setVisible(true); // rendre fenetre visible
 	}
 	
 	private void parametres(){
-		this.setSize(300, 150); // donne la taille à la fenetre DB
+		this.setSize(300, 200); // donne la taille à la fenetre DB
 		this.setLocationRelativeTo(null); // place la fenetre DB au centre de l'écran
 		this.setResizable(false); // empèche redimensionnement de la fenetre DB
 		//this.setAlwaysOnTop(true); // toujours en avant plan

@@ -6,11 +6,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.SQLException;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+
+
+import main.Projet;
 
 
 public class Fenetre extends JFrame{
@@ -73,6 +78,7 @@ public class Fenetre extends JFrame{
 		bdd.add(connexion);
 		bdd.add(deconnexion);
 		connexion.addActionListener(barreListener);
+		deconnexion.addActionListener(barreListener);
 		
 		//Jmenu aide
 		aide = new JMenu("Aide");
@@ -105,7 +111,39 @@ public class Fenetre extends JFrame{
 				Aide aide = new Aide();
 				cont.removeAll();
 				cont.repaint();
-				cont.add(aide);
+				cont.add(aide,BorderLayout.CENTER);
+				cont.setVisible(true);
+				
+			}
+			if (e.getSource().equals(connexion)){
+				try{
+					if (Projet.getConnexion()== null || Projet.getConnexion().isClosed()){
+						new FenetreConnexion();
+						
+					}
+					else{
+						JOptionPane.showMessageDialog(null, "Vous êtes déjà connecté !","Attention", JOptionPane.WARNING_MESSAGE); // sinon l'objet connexion est ouvert
+					}
+				}
+				catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+			if (e.getSource().equals(deconnexion)){
+				try {
+					if(Projet.getConnexion() != null && Projet.getConnexion().isClosed() == false){
+						Projet.getConnexion().close(); // on ferme la connection à la BDD
+						//On redirige la personne vers la page d'accueil
+
+						
+						JOptionPane.showMessageDialog(null, "Vous êtes maintenant déconnecté !",
+								"Success", JOptionPane.INFORMATION_MESSAGE); // message de déconnexion réussie
+					}
+					else JOptionPane.showMessageDialog(null, "Vous n'êtes pas connecté !",
+							"Attention", JOptionPane.WARNING_MESSAGE); // Message d'erreur, on n'a pas pu se déconnecter
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
 			}
 		}
 	}

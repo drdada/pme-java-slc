@@ -13,4 +13,8 @@ public class Projet {
 	public static void setConnexion(Connection c){
 		connexionDB =c;
 	}
+	
+	public static Connection getConnexion(){
+		return connexionDB;
+	}
 }
