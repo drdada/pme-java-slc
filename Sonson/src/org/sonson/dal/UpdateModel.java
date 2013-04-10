@@ -31,7 +31,7 @@ public class UpdateModel {
 	}
 	public void addClient(String noml, String prenoml, String codePostall, String adressel, String paysl, String telFixel, String telPortablel) {
 		try {
-			Dal.getInstance().insert("INTERT INTO client (nom,prenom,codePostal,adresse,pays,telFixe,telPortable) VALUES (noml,prenoml,codePostall,adressel,paysl,telFixel,telPortablel)");
+			Dal.getInstance().insert("INSERT INTO client(nom,prenom,codePostal,adresse,pays,telFixe,telPortable) VALUES('"+noml+"','"+prenoml+"','"+codePostall+"','"+adressel+"','"+paysl+"','"+telFixel+"','"+telPortablel+"')");
 				
 		} catch (SQLException e) {
 			e.printStackTrace();

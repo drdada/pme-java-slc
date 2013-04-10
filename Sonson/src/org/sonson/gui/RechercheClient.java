@@ -1,8 +1,11 @@
 package org.sonson.gui;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -18,11 +21,10 @@ public class RechercheClient extends JPanel{
 	private JLabel text;
 	private JTextField form;
 	private ArrayList<Client> arrayclient;
+	private JButton fiche;
 	
 	public RechercheClient(Sonson sonson){
-		//TODO mettre les tailles des collones et organisation graphique
-		//TODO Pouvoir selectionner une entree
-		//TODO Pouvoir trouver le client parmi la liste (tout les champs)
+
 		this.setLayout(new BorderLayout());
 		arrayclient=sonson.getArrayclient();
 		Object[][] data = new Object[arrayclient.size()][8];
@@ -38,9 +40,9 @@ public class RechercheClient extends JPanel{
 			data[i][7]=object.getTelPortable();
 			i++;
 		}
-
 		form = new JTextField("Recherche");
-		
+		fiche = new JButton("Fiche Client");
+		EnvoiListener envList = new EnvoiListener();
 		JLabel text = new JLabel("Recherche d'un client");
 		this.add(form,BorderLayout.SOUTH);
 		this.add(text,BorderLayout.NORTH);
@@ -49,8 +51,20 @@ public class RechercheClient extends JPanel{
 		
 		JTable table = new JTable(data, title);
 		table.setEnabled(false);
+		table.setRowSelectionAllowed(true);
+		table.setCellSelectionEnabled(true);
 		this.add(new JScrollPane(table),BorderLayout.CENTER);
+		this.add(fiche,BorderLayout.SOUTH);
+		fiche.addActionListener(envList);
 		this.setVisible(true);
 		}
 	
+	private class EnvoiListener implements ActionListener  {
+		public void actionPerformed (ActionEvent e){
+			//Ecouteur du bouton envoi
+
+			System.out.println(table.getSelectedRow());
+		}
+
+	}
 	}
