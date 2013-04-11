@@ -1,7 +1,6 @@
 package gui;
 
 
-import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,7 +27,6 @@ private FenetreConnexion fenCon;
 		
 		this.fenCon = fenCon;
 		//TODO redimentionner le panel
-		this.setBorder(BorderFactory.createLineBorder(Color.CYAN));
 		this.setLayout(new GridLayout(4,1));
 		
 

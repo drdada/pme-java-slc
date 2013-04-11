@@ -63,12 +63,15 @@ public class Fenetre extends JFrame{
 		intervention = new JMenu("Intervention");
 		ajout = new JMenuItem("Ajouter une intervention");
 		suppression= new JMenuItem("Supprimer une intervention");
+		ajout.addActionListener(barreListener);
+		suppression.addActionListener(barreListener);
 		intervention.add(ajout);
 		intervention.add(suppression);
 		
 		//Jmenu Liste
 		liste = new JMenu("Recherche");
 		listel = new JMenuItem("Liste des interventions");
+		listel.addActionListener(barreListener);
 		liste.add(listel);
 		
 		//Jmenu BDD
@@ -107,22 +110,38 @@ public class Fenetre extends JFrame{
 				//TODO Deconnexion
 				System.exit(0); //On ferme le programme
 			}
-			if (e.getSource().equals(aidea)){
+			if (e.getSource().equals(ajout)){
+				try {
+					// si l'objet connexion est vide OU qu'il est fermé
+					if(Projet.getConnexion() == null || Projet.getConnexion().isClosed()){
+						JOptionPane.showMessageDialog(null, "Vous n'êtes pas connecté à une Base de donnée!\n" +
+								"Veuillez-vous connecter.", "Attention", JOptionPane.WARNING_MESSAGE);
+						new FenetreConnexion(); // On lance la fenetre de connexion
+					}// sinon
+					else{
+						
+						//TODO on affiche le jpanel ajout
+					}
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+			if (e.getSource().equals(aidea)){ 
 				Aide aide = new Aide();
 				cont.removeAll();
-				cont.repaint();
 				cont.add(aide,BorderLayout.CENTER);
 				cont.setVisible(true);
+				cont.repaint();
 				
 			}
 			if (e.getSource().equals(connexion)){
 				try{
-					if (Projet.getConnexion()== null || Projet.getConnexion().isClosed()){
-						new FenetreConnexion();
+					if (Projet.getConnexion()== null || Projet.getConnexion().isClosed()){ // SI l'objet connexion est vide OU qu'il est fermé (cad pas connecté)
+						new FenetreConnexion(); //On lance la fenetre de connexion
 						
 					}
-					else{
-						JOptionPane.showMessageDialog(null, "Vous êtes déjà connecté !","Attention", JOptionPane.WARNING_MESSAGE); // sinon l'objet connexion est ouvert
+					else{ // sinon l'objet connexion est ouvert , on ne va pas connecter quelque chose qui est déja connecté...
+						JOptionPane.showMessageDialog(null, "Vous êtes déjà connecté !","Attention", JOptionPane.WARNING_MESSAGE); //Message d'erreur
 					}
 				}
 				catch (SQLException e1) {
