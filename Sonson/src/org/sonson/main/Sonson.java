@@ -6,6 +6,7 @@ import org.sonson.dal.Dal;
 import org.sonson.dal.UpdateModel;
 import org.sonson.gui.Accueil;
 import org.sonson.model.Client;
+import org.sonson.model.Produit;
 
 /**
  * Controller class for this application Sonson
@@ -15,10 +16,12 @@ import org.sonson.model.Client;
 public class Sonson extends AbstractApplication {
 	private Dal dal; 
 	private ArrayList<Client> arrayclient;
+	private ArrayList<Produit> arrayproduit;
 	private UpdateModel um;
 	
 	public Sonson() {
 		arrayclient = new ArrayList<Client>();
+		arrayproduit = new ArrayList<Produit>();
 	}
 
 	
@@ -29,10 +32,13 @@ public class Sonson extends AbstractApplication {
 		this.dal = Dal.getInstance();
 		um = new UpdateModel(this);
 		um.updateClients();
-//		um.updateProduits();
+		um.updateProduits();
 //		um.updateServices();
 //		um.updateAchats();
 		Accueil accueil = new Accueil(this);
+	}
+	public void updateClients(){
+		um.updateClients();
 	}
 	
 	public void setClient(Client c){
@@ -58,7 +64,29 @@ public class Sonson extends AbstractApplication {
 		um.addClient(noml, prenoml, codePostall, adressel, paysl, telFixel, telPortablel);
 	}
 
+	public void setProduit(Produit p){
+		int flag=0,savecl = 0;
 
+		for (Produit pr : arrayproduit){
+			if (pr.getId() == (p.getId())){
+					flag=1;
+					savecl=arrayproduit.indexOf(pr);
+				}
+			}
+		if(flag == 1){
+			//Le produit existe donc on le modifie
+			arrayproduit.remove(savecl);
+			arrayproduit.add(savecl, p);
+		}else{
+			//Le produit n'exite pas encore, donc on le rajoute
+			arrayproduit.add(p);
+		}
+	}
+	
+	public void addProduitBdd(String noml,String descriptionl,double prixl){
+		um.addProduit(noml, descriptionl, prixl);
+	}
+	
 	public ArrayList<Client> getArrayclient() {
 		return arrayclient;
 	}

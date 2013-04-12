@@ -18,17 +18,6 @@ public class Produit extends AbstractApplication {
 		this.prix = prix;
 	}
 
-	public void ajouterProduit(){
-		//TODO ajouter produit
-	}
-	
-	public void enleverProduit(){
-		//TODO enlever produit
-	}
-	
-	public void modifierProduit(){
-		//TODO modifier produit
-	}
 	
 	//Getters et Setters
 	public int getId() {

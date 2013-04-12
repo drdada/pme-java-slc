@@ -13,6 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import org.sonson.main.Sonson;
+
 public class Inventaire extends JPanel{
 
 	private ButtonGroup choixProduit;
@@ -20,8 +22,10 @@ public class Inventaire extends JPanel{
 	private JLabel texte;
 	private JTextField nom, description, prix;
 	private JButton envoi;
+	private Sonson ss;
 	
-	public Inventaire(){
+	public Inventaire(Sonson ss){
+		this.ss = ss;
 		this.setLayout(new GridLayout(5,2,5,5));
 		
 		texte = new JLabel("Type :");
@@ -50,20 +54,20 @@ public class Inventaire extends JPanel{
 		
 	}
 	private class EnregListener implements ActionListener{
-		private int type = 0; //1 = produit / 2 = Service
 		public void actionPerformed(ActionEvent e){
 			//TODO Verification des champs
+			String nomb = nom.getText();
+			String desc = description.getText();
+			double prixb = Double.parseDouble(prix.getText());
 			if (produit.isSelected())
 			{
-				type=1;
+				//Si c'est un produit
+				ss.addProduitBdd(nomb, desc, prixb);
 			}
 			else
 			{
-				type=2;
+
 			}
-			String nomb = nom.getName();
-			String desc = description.getName();
-			double prixb = Double.parseDouble(prix.getName());
 		}
 	}
 }

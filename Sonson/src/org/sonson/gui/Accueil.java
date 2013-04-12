@@ -170,7 +170,7 @@ public class Accueil extends JFrame {
 				if(e.getSource().equals(bAjout)){
 					pan1.removeAll();
 					cont.repaint();
-					Inventaire inv = new Inventaire();
+					Inventaire inv = new Inventaire(ss);
 					pan1.add(inv);
 					Accueil.this.setVisible(true);
 				}

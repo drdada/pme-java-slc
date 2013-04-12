@@ -112,8 +112,20 @@ private class EnvoiListener implements ActionListener  {
 				
 				if (flag==0){
 					//TODO Confirmation a faire ici
-					ss.addClientBdd(nom.getText(), prenom.getText(), codePostal.getText(), adresse.getText(), pays.getText(), telFixe.getText(), telPortable.getText()); // On l'envoie a la BDD
-					//System.out.println("BDD!");
+					Object[] options = {"Oui","Non"};
+					int n= JOptionPane.showOptionDialog(null,"Voulez-vous vraiment ajouter cet utilisateur ?", "Vérification", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+					if(n==0){
+						ss.addClientBdd(nom.getText(), prenom.getText(), codePostal.getText(), adresse.getText(), pays.getText(), telFixe.getText(), telPortable.getText()); // On l'envoie a la BDD
+						ss.updateClients(); //On refait toute l'arraylist interne
+						JOptionPane.showMessageDialog(null, "Client bien ajouté","Bravo!", JOptionPane.INFORMATION_MESSAGE);
+						nom.setText(""); //On reset tout les champs
+						prenom.setText("");
+						adresse.setText("");
+						codePostal.setText("");
+						pays.setText("");
+						telFixe.setText("");
+						telPortable.setText("");
+					}
 				}
 			}
 		if(e.getSource().equals(reinitialiser)){ //Si on appuie sur reset

@@ -28,12 +28,12 @@ Fiche client: a faire
 		- Panel avec champ pour modifier
 	
 Ajout d'un client : 
-	- Verification des données (Fait et a tester !)
-	- Disposition
-	- Messages de confirmation
+	+ Verification des données (Fait et a tester !) Precision: Accent et max lenght ?
+	- Disposition (Arnaud)
+	+ Messages de confirmation (FAIT !)
 
 Ajout de produit service
-	- Disposition
+	- Disposition (Arnaud)
 	- Messages de confirmation
 	
 Modification des produits et services
@@ -44,7 +44,7 @@ Modification des produits et services
 
 
 Statistiques des clients : 
-	- Nb Clients Tot (fait!)
+	+ Nb Clients Tot (fait!)
 	- Nom clients plus récurents
 	
 Stat des produit :

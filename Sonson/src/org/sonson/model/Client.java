@@ -25,14 +25,6 @@ public class Client {
 	}
 
 	
-	public void ajouterClient(){
-	//TODO ajouter un client	
-	}
-	
-	public void modifierClient(){
-		//TODO modifier un client
-	}
-	
 	
 	//Getters et Setters
 	public int getId() {
