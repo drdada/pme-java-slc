@@ -23,7 +23,7 @@ public class Fenetre extends JFrame{
 	private Container cont;
 	private JMenuBar barre;
 	private JMenu fichier,intervention,liste,bdd,aide;
-	private JMenuItem quitter,ajout,suppression,listel,connexion,deconnexion,aidea;
+	private JMenuItem quitter,ajout,suppression,listel,recherche,connexion,deconnexion,aidea;
 
 	public Fenetre(){
 		this.parametres(); // Parametres de la fenetres
@@ -72,7 +72,10 @@ public class Fenetre extends JFrame{
 		liste = new JMenu("Recherche");
 		listel = new JMenuItem("Liste des interventions");
 		listel.addActionListener(barreListener);
+		recherche = new JMenuItem("Recherche");
+		recherche.addActionListener(barreListener);
 		liste.add(listel);
+		liste.add(recherche);
 		
 		//Jmenu BDD
 		bdd = new JMenu("Base de données");
@@ -97,6 +100,9 @@ public class Fenetre extends JFrame{
 		barre.add(aide);
 		this.setJMenuBar(barre);
 	}
+	public Container getCont(){
+		return cont;
+	}
 	
 	private class QuitListnerX extends WindowAdapter{
 		public void windowClosing(WindowEvent e){
@@ -119,18 +125,19 @@ public class Fenetre extends JFrame{
 						new FenetreConnexion(); // On lance la fenetre de connexion
 					}// sinon
 					else{
-						
-						//TODO on affiche le jpanel ajout
+						AjoutGUI ajoutGUI = new AjoutGUI();
+						cont.removeAll();
+						cont.add(ajoutGUI);
+						cont.repaint();
 					}
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
 			}
 			if (e.getSource().equals(aidea)){ 
-				Aide aide = new Aide();
+				Aide aidex = new Aide(cont);
 				cont.removeAll();
-				cont.add(aide,BorderLayout.CENTER);
-				cont.setVisible(true);
+				cont.add(aidex);
 				cont.repaint();
 				
 			}
