@@ -75,7 +75,7 @@ private class EnvoiListener implements ActionListener  {
 	private String alpha="([a-zA-Z ]*)";
 	private String num="([0-9 ]*)";
 	private int flag;
-	
+	private String erreur="";
 	public void actionPerformed (ActionEvent e){
 		//Ecouteur du bouton envoi
 		if(e.getSource().equals(envoi)){ //Si on appuie sur envoi
@@ -83,31 +83,31 @@ private class EnvoiListener implements ActionListener  {
 			//Vérification
 				if(!nom.getText().matches(alpha) || nom.getText().length()==0){ //Si le champ ne rentre pas dans le regex ou si il est vide
 					flag=1;
-					JOptionPane.showMessageDialog(null, "Oups, le champs Nom a un soucis, veuillez vérifier!","Erreur", JOptionPane.ERROR_MESSAGE); //On affiche un message d'erreur	
+					erreur +="nom, ";
 				}
 				if(!prenom.getText().matches(alpha) || prenom.getText().length()==0){
 					flag=1;
-					JOptionPane.showMessageDialog(null, "Oups, le champs Prenom a un soucis, veuillez vérifier!","Erreur", JOptionPane.ERROR_MESSAGE); //On affiche un message d'erreur	
+					erreur +="prénom, ";
 				}
 				if(codePostal.getText().length()==0){
 					flag=1;
-					JOptionPane.showMessageDialog(null, "Oups, le champs Code Postal a un soucis, veuillez vérifier!","Erreur", JOptionPane.ERROR_MESSAGE); //On affiche un message d'erreur	
+					erreur+="code postal, ";
 				}
 				if(!adresse.getText().matches(alpha)|| adresse.getText().length()==0){
 					flag=1;
-					JOptionPane.showMessageDialog(null, "Oups, le champs Adresse a un soucis, veuillez vérifier!","Erreur", JOptionPane.ERROR_MESSAGE); //On affiche un message d'erreur	
+					erreur+="adresse, ";
 				}
 				if(!pays.getText().matches(alpha)|| pays.getText().length()==0){
 					flag=1;
-					JOptionPane.showMessageDialog(null, "Oups, le champs Pays a un soucis, veuillez vérifier!","Erreur", JOptionPane.ERROR_MESSAGE); //On affiche un message d'erreur	
+					erreur+="pays, ";
 				}
 				if(!telFixe.getText().matches(num)|| telFixe.getText().length()==0){
 					flag=1;
-					JOptionPane.showMessageDialog(null, "Oups, le champs Telephone fixe a un soucis, veuillez vérifier!","Erreur", JOptionPane.ERROR_MESSAGE); //On affiche un message d'erreur	
+					erreur+="telephone fixe, ";
 				}
 				if(!telPortable.getText().matches(num)|| telPortable.getText().length()==0){
 					flag=1;
-					JOptionPane.showMessageDialog(null, "Oups, le champs Telephone Portable a un soucis, veuillez vérifier!","Erreur", JOptionPane.ERROR_MESSAGE); //On affiche un message d'erreur	
+					erreur+="telephone portable, ";
 				}
 				
 				if (flag==0){
@@ -126,6 +126,11 @@ private class EnvoiListener implements ActionListener  {
 						telFixe.setText("");
 						telPortable.setText("");
 					}
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null, "Oups, le/les champs "+erreur+" a/ont un soucis, veuillez vérifier!","Erreur", JOptionPane.ERROR_MESSAGE); //On affiche un seul message d'erreur
+					erreur=""; //On reinitialise erreur a blanc
 				}
 			}
 		if(e.getSource().equals(reinitialiser)){ //Si on appuie sur reset

@@ -86,6 +86,9 @@ public class Sonson extends AbstractApplication {
 	public void addProduitBdd(String noml,String descriptionl,double prixl){
 		um.addProduit(noml, descriptionl, prixl);
 	}
+	public void updateProduit(){
+		um.updateProduits();
+	}
 	
 	public ArrayList<Client> getArrayclient() {
 		return arrayclient;

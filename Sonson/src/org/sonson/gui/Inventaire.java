@@ -56,17 +56,53 @@ public class Inventaire extends JPanel{
 	private class EnregListener implements ActionListener{
 		public void actionPerformed(ActionEvent e){
 			//TODO Verification des champs
+			int flag=0;
+			String erreur="";
 			String nomb = nom.getText();
 			String desc = description.getText();
-			double prixb = Double.parseDouble(prix.getText());
-			if (produit.isSelected())
-			{
-				//Si c'est un produit
-				ss.addProduitBdd(nomb, desc, prixb);
+			double prixb1 = 0;
+			try{
+				prixb1 = Double.parseDouble(prix.getText());
 			}
-			else
-			{
-
+			catch(NumberFormatException e1){
+				flag=1;
+				erreur+="prix, ";
+			}
+			if (nomb.length()==0){
+				flag=1;
+				erreur+="nom, ";
+			}
+			if (desc.length()==0){
+				flag=1;
+				erreur+="description, ";
+			}
+			if(flag==0){
+				if (produit.isSelected())
+				{
+					//Si c'est un produit
+					Object[] options = {"Oui","Non"};
+					int n= JOptionPane.showOptionDialog(null,"Voulez-vous vraiment ajouter ce produit ?", "Vérification", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+					if(n==0){
+						ss.addProduitBdd(nomb, desc, prixb1); //On insere dans la bdd
+						ss.updateProduit(); //On recalcule l'arraylist
+						JOptionPane.showMessageDialog(null, "Produit bien ajouté","Bravo!", JOptionPane.INFORMATION_MESSAGE);
+						nom.setText("");
+						description.setText("");
+						prix.setText("");
+					}
+				}
+				else
+				{
+					//Si c'est un service
+					
+				}
+			}
+			else{
+				JOptionPane.showMessageDialog(null, "Oups, le/les champs "+erreur+"a/ont un soucis, veuillez vérifier!","Erreur", JOptionPane.ERROR_MESSAGE);
+				erreur="";
+				nom.setText("");
+				description.setText("");
+				prix.setText("");
 			}
 		}
 	}

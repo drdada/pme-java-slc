@@ -33,8 +33,9 @@ Ajout d'un client :
 	+ Messages de confirmation (FAIT !)
 
 Ajout de produit service
+	+ Vérification des données (il ne manque plus qu'a regler le probleme du .00 du double)
 	- Disposition (Arnaud)
-	- Messages de confirmation
+	+ Messages de confirmation (Fait)
 	
 Modification des produits et services
 	- Recherche d'un produit
