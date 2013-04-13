@@ -106,15 +106,29 @@ public class Fenetre extends JFrame{
 	
 	private class QuitListnerX extends WindowAdapter{
 		public void windowClosing(WindowEvent e){
-			//TODO Deconnexion
-			System.exit(0);
+			try{ //On déconnecte de la BDD avant de quitter
+				if(Projet.getConnexion() != null && Projet.getConnexion().isClosed() == false){
+					Projet.getConnexion().close();
+				}
+			System.exit(0); //On ferme le programme
+			}
+			catch(SQLException er){
+				System.out.println("Erreur de déconnexion");
+			}
 			}
 	}
 	private class BarreListener implements ActionListener {
 		public void actionPerformed (ActionEvent e){
 			if (e.getSource().equals(quitter)){ //Si on appuie sur le bouton quitter
-				//TODO Deconnexion
-				System.exit(0); //On ferme le programme
+				try{ //On déconnecte de la BDD avant de quitter
+					if(Projet.getConnexion() != null && Projet.getConnexion().isClosed() == false){
+						Projet.getConnexion().close();
+					}
+					System.exit(0); //On ferme le programme
+				}
+				catch(SQLException er){
+					System.out.println("Erreur de déconnexion");
+				}
 			}
 			if (e.getSource().equals(ajout)){
 				try {
@@ -129,6 +143,26 @@ public class Fenetre extends JFrame{
 						cont.removeAll();
 						cont.add(ajoutGUI);
 						cont.repaint();
+						cont.validate();
+					}
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+			if (e.getSource().equals(listel)){
+				try {
+					// si l'objet connexion est vide OU qu'il est fermé
+					if(Projet.getConnexion() == null || Projet.getConnexion().isClosed()){
+						JOptionPane.showMessageDialog(null, "Vous n'êtes pas connecté à une Base de donnée!\n" +
+								"Veuillez-vous connecter.", "Attention", JOptionPane.WARNING_MESSAGE);
+						new FenetreConnexion(); // On lance la fenetre de connexion
+					}// sinon
+					else{
+						ListeIntervention lI = new ListeIntervention(cont);
+						cont.removeAll();
+						cont.add(lI);
+						cont.repaint();
+						cont.validate();
 					}
 				} catch (SQLException e1) {
 					e1.printStackTrace();
@@ -139,7 +173,7 @@ public class Fenetre extends JFrame{
 				cont.removeAll();
 				cont.add(aidex);
 				cont.repaint();
-				
+				cont.validate();
 			}
 			if (e.getSource().equals(connexion)){
 				try{

@@ -1,7 +1,7 @@
 TODO list du projet java (ProjetExam)
 
 IMPORTANT
-	-Affichage des jpanel dans le containaire !
+	+Affichage des jpanel dans le containaire !(FIXED ! cont.validate;)
 
 Accueil
 	-Message de bienvenue
@@ -10,4 +10,20 @@ Connexion
 	-Probleme d'affichage du jlabel
 	
 Aide
+	-Texte a faire
+
+Liste
+	-Organisation a faire
+	+Fonctionne
 	
+Ajout Intervention
+	-Disposition
+	-Ajout
+	
+Recherche
+	-Disposition
+	-Recherche
+
+Suppression
+	-Disposition
+	-Suprime

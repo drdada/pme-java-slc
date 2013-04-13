@@ -32,8 +32,8 @@ public class Aide extends JPanel{
 			Accueil acc = new Accueil();
 			cont.removeAll();
 			cont.add(acc);
-			cont.setVisible(true);
 			cont.repaint();
+			cont.validate();
 		}
 	}
 }
