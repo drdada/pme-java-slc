@@ -25,7 +25,6 @@ public class FenetreConnexion extends JFrame{
 		this.setSize(400, 200); // donne la taille à la fenetre DB
 		this.setLocationRelativeTo(null); // place la fenetre DB au centre de l'écran
 		this.setResizable(false); // empèche redimensionnement de la fenetre DB
-		//this.setAlwaysOnTop(true); // toujours en avant plan
 		contDB.setLayout(new BorderLayout()); // outil mise en page de la fenetre DB 
 	}
 }

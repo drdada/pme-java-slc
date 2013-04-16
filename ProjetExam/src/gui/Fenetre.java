@@ -20,7 +20,7 @@ import main.Projet;
 
 public class Fenetre extends JFrame{
 
-	private Container cont;
+	private static Container cont;
 	private JMenuBar barre;
 	private JMenu fichier,intervention,liste,bdd,aide;
 	private JMenuItem quitter,ajout,suppression,listel,recherche,connexion,deconnexion,aidea;
@@ -100,7 +100,7 @@ public class Fenetre extends JFrame{
 		barre.add(aide);
 		this.setJMenuBar(barre);
 	}
-	public Container getCont(){
+	public static Container getCont(){
 		return cont;
 	}
 	

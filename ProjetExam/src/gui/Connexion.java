@@ -1,6 +1,7 @@
 package gui;
 
 
+import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,13 +25,14 @@ private JPasswordField pass;
 private JButton ok,annuler;	
 private Connection connexionDB ; 
 private FenetreConnexion fenCon;
+private Container cont;
 
 	public Connexion(FenetreConnexion fenCon){
 		
 		this.fenCon = fenCon;
 		//TODO redimentionner le panel
 		this.setLayout(new GridLayout(4,1));
-		
+		cont = Fenetre.getCont();
 
 		
 //		connexionLabel = new JLabel("<html><body><br>Veuillez rentrer les informations de connexion de la BDD</body></html>");
@@ -78,6 +80,8 @@ private FenetreConnexion fenCon;
 							"Connexion établie", "Connexion DB", JOptionPane.INFORMATION_MESSAGE); // On affiche le message de bonne connexion
 					main.Projet.setConnexion(connexionDB);
 					fenCon.dispose();
+					cont.repaint();
+					cont.validate();
 				}
 				catch(SQLException ex)					//Si une erreur a la base de donnée se produit	
 				{	JOptionPane.showMessageDialog(null, ex,	 
