@@ -13,10 +13,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
 import dal.AccessBDGen;
 
 public class Connexion extends JPanel {
-private JLabel connexionLabel;
+private JLabel connexionLabel,user,mdp,address;
 private JTextField login,url;
 private JPasswordField pass;
 private JButton ok,annuler;	
@@ -31,20 +33,30 @@ private FenetreConnexion fenCon;
 		
 
 		
-		connexionLabel = new JLabel("<html><body>Connexion<br>Veuillez rentrer les informations de connexion de la BDD</body></html>");
+//		connexionLabel = new JLabel("<html><body><br>Veuillez rentrer les informations de connexion de la BDD</body></html>");
+		address = new JLabel("Nom de la base de données : ");
 		url = new JTextField("URL");
+		user = new JLabel("Utilisateur : ");
 		login = new JTextField("Administrateur");
+		mdp = new JLabel("Mot de passe : ");
 		pass = new JPasswordField();
 		ok = new JButton("OK");
 		annuler = new JButton("Annuler");
 		
+		address.setHorizontalAlignment(SwingConstants.RIGHT);
+		user.setHorizontalAlignment(SwingConstants.RIGHT);
+		mdp.setHorizontalAlignment(SwingConstants.RIGHT);
+				
 		EnvoiListener envoilist = new EnvoiListener();
 		ok.addActionListener(envoilist);
 		annuler.addActionListener(envoilist);
 		
-		this.add(connexionLabel);
+//		this.add(connexionLabel);
+		this.add(address);
 		this.add(url);
+		this.add(user);
 		this.add(login);
+		this.add(mdp);
 		this.add(pass);
 		this.add(ok);
 		this.add(annuler);
