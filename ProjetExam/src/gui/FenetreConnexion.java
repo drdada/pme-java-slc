@@ -17,7 +17,6 @@ public class FenetreConnexion extends JFrame{
 		
 		Connexion fenConnexion = new Connexion(this); // On crée un objet Jpanel de la classe Connexion
 		contDB.add(fenConnexion); // On ajoute ce jpanel dans le conteneur
-		
 		this.setVisible(true); // rendre fenetre visible
 	}
 	
