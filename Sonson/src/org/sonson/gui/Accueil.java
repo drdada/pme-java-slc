@@ -1,6 +1,8 @@
 package org.sonson.gui;
 
+import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,6 +11,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -37,6 +40,8 @@ public class Accueil extends JFrame {
 		this.setTitle("Projet PME - Matteo D. et Arnaud B.");
 		// TODO Revoir les dimentions ?
 		setBounds(50,50, 1000, 800);
+		this.setMinimumSize(new Dimension(1000, 800));
+		
 		QuitListnerX quitx = new QuitListnerX();
 		this.addWindowListener(quitx);
 		
@@ -118,6 +123,10 @@ public class Accueil extends JFrame {
 		pan1 = new JPanel();
 		//Selection du layout
 		pan1.setLayout(new FlowLayout());
+		pan1.setMinimumSize(new Dimension(1000, 800));
+		pan1.setPreferredSize(new Dimension(1000, 800));
+		pan1.setBackground(Color.red);
+		
 		
 		this.setJMenuBar(barre);
 		//Ajout
@@ -125,16 +134,22 @@ public class Accueil extends JFrame {
 		
 		
 		cont = getContentPane();
+		cont.setSize(1000, 800);
+		cont.setMinimumSize(new Dimension(1000, 800));
+		cont.setPreferredSize(new Dimension(1000, 800));
+		cont.setBackground(Color.green);
 		cont.setLayout(new FlowLayout());
 		cont.add(pan1);
 		setVisible(true);
 	}
+	
 	private class QuitListnerX extends WindowAdapter{
 		public void windowClosing(WindowEvent e){
 			System.out.println("EXIT");
 			System.exit(0);
 			}
 	}
+	
 	private class BaListener implements ActionListener{
 		Sonson ss;
 		
