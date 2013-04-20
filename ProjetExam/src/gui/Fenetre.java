@@ -198,6 +198,7 @@ public class Fenetre extends JFrame{
 						
 						JOptionPane.showMessageDialog(null, "Vous êtes maintenant déconnecté !",
 								"Success", JOptionPane.INFORMATION_MESSAGE); // message de déconnexion réussie
+						Accueil.modifierEtat(2);
 					}
 					else JOptionPane.showMessageDialog(null, "Vous n'êtes pas connecté !",
 							"Attention", JOptionPane.WARNING_MESSAGE); // Message d'erreur, on n'a pas pu se déconnecter

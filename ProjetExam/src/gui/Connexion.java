@@ -78,6 +78,7 @@ private FenetreConnexion fenCon;
 							"Connexion établie", "Connexion DB", JOptionPane.INFORMATION_MESSAGE); // On affiche le message de bonne connexion
 					main.Projet.setConnexion(connexionDB);
 					fenCon.dispose();
+					Accueil.modifierEtat(1);
 				}
 				catch(SQLException ex)					//Si une erreur a la base de donnée se produit	
 				{	JOptionPane.showMessageDialog(null, ex,	 

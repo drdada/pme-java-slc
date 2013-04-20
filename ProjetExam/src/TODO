@@ -2,6 +2,7 @@ TODO list du projet java (ProjetExam)
 
 IMPORTANT
 	+Affichage des jpanel dans le containaire !(FIXED ! cont.validate;)
+	-Commenter le code déja écrit
 
 Accueil
 	-Message de bienvenue
@@ -11,6 +12,7 @@ Connexion
 	
 Aide
 	-Texte a faire
+	-Disposition (probleme de centrageà
 
 Liste
 	-Organisation a faire
@@ -18,12 +20,17 @@ Liste
 	
 Ajout Intervention
 	-Disposition
-	-Ajout
+	-Code d'insert dans la BDD
+	-Jcombobox -> fournisseur, pc et types d'interventions (+code BDD)
+	-Caratere facultatif (gestion des jtextfield)
 	
 Recherche
 	-Disposition
 	-Recherche
+		-Date
+		-temps
 
 Suppression
 	-Disposition
-	-Suprime
+	-Code delete BDD
+	
