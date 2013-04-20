@@ -35,7 +35,7 @@ private FenetreConnexion fenCon;
 		
 //		connexionLabel = new JLabel("<html><body><br>Veuillez rentrer les informations de connexion de la BDD</body></html>");
 		address = new JLabel("Nom de la base de données : ");
-		url = new JTextField("URL");
+		url = new JTextField("ProjetExam");
 		user = new JLabel("Utilisateur : ");
 		login = new JTextField("Administrateur");
 		mdp = new JLabel("Mot de passe : ");

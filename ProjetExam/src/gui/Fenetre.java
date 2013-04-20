@@ -194,7 +194,11 @@ public class Fenetre extends JFrame{
 					if(Projet.getConnexion() != null && Projet.getConnexion().isClosed() == false){
 						Projet.getConnexion().close(); // on ferme la connection à la BDD
 						//On redirige la personne vers la page d'accueil
-
+						Accueil ac = new Accueil();
+						cont.removeAll();
+						cont.add(ac);
+						cont.repaint();
+						cont.validate();
 						
 						JOptionPane.showMessageDialog(null, "Vous êtes maintenant déconnecté !",
 								"Success", JOptionPane.INFORMATION_MESSAGE); // message de déconnexion réussie

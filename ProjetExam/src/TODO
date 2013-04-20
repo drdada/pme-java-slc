@@ -16,7 +16,7 @@ Aide
 
 Liste
 	-Organisation a faire
-	+Fonctionne
+	-!Valeurs d'arguments non valides
 	
 Ajout Intervention
 	-Disposition
@@ -27,8 +27,8 @@ Ajout Intervention
 Recherche
 	-Disposition
 	-Recherche
-		-Date
-		-temps
+		-Date + lot de config
+		-temps + type d'intervention
 
 Suppression
 	-Disposition
