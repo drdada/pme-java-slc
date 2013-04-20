@@ -19,7 +19,7 @@ public class AjoutGUI extends JPanel {
 	private JComboBox fournisseur,intervention,pc;
 	private JLabel lDateSignalement,lDescriptifbref,lSignaleur,lPreneurEnCharge,lEtatInterv,lSuiviViaFournisseur,lDateContact,lDatePrise,lDateRetour,lEtatRetour,lDateRemiseService,lTempsInterne,lResultat,lFkPcUnit,lFkTypeInterv,lFkFournisseurIntervenant,lNoInterv;
 	private JTextField tfNoInterv,tfSignaleur,tfPreneurEnCharge,tfSuiviViaFournisseur,tfTempsInterne;
-	private JRadioButton ok,declasse,suspens,signale,encours,cloture;
+	private JRadioButton ok1,declasse1,suspens1,ok2,declasse2,suspens2,signale,encours,cloture;
 	private ButtonGroup bgEtatInterv,bgEtatRetour,bgResulstat;
 	
 	public AjoutGUI(){
@@ -51,13 +51,13 @@ public class AjoutGUI extends JPanel {
 		this.add(lDateRetour);
 		
 		this.add(lEtatRetour);
-		this.add(ok);this.add(declasse);this.add(suspens);
+		this.add(ok1);this.add(declasse1);this.add(suspens1);
 		this.add(lDateRemiseService);
 		
 		this.add(lTempsInterne);
 		this.add(tfTempsInterne);
 		this.add(lResultat);
-		this.add(ok);this.add(declasse);this.add(suspens);
+		this.add(ok2);this.add(declasse2);this.add(suspens2);
 		this.add(lFkFournisseurIntervenant);
 		this.add(fournisseur);
 		this.add(lFkTypeInterv);
@@ -79,9 +79,13 @@ public class AjoutGUI extends JPanel {
 	}
 	
 	private void buildButtonGroup(){
-		ok = new JRadioButton("Ok", false);
-		declasse = new JRadioButton("Déclassé", false);
-		suspens = new JRadioButton("En Suspens", false);
+		ok1 = new JRadioButton("Ok", false);
+		declasse1 = new JRadioButton("Déclassé", false);
+		suspens1 = new JRadioButton("En Suspens", false);
+		
+		ok2 = new JRadioButton("Ok", false);
+		declasse2 = new JRadioButton("Déclassé", false);
+		suspens2 = new JRadioButton("En Suspens", false);
 		
 		signale = new JRadioButton("Signalé", false);
 		encours = new JRadioButton("En Cours", false);
@@ -93,14 +97,14 @@ public class AjoutGUI extends JPanel {
 		bgEtatInterv.add(cloture);
 		
 		bgEtatRetour = new ButtonGroup();
-		bgEtatRetour.add(ok);
-		bgEtatRetour.add(declasse);
-		bgEtatRetour.add(suspens);
+		bgEtatRetour.add(ok1);
+		bgEtatRetour.add(declasse1);
+		bgEtatRetour.add(suspens1);
 		
 		bgResulstat = new ButtonGroup();
-		bgResulstat.add(ok);
-		bgResulstat.add(declasse);
-		bgResulstat.add(suspens);
+		bgResulstat.add(ok2);
+		bgResulstat.add(declasse2);
+		bgResulstat.add(suspens2);
 	}
 	
 	private void buildJlabel(){
