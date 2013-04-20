@@ -4,9 +4,11 @@ import java.awt.GridLayout;
 import java.sql.SQLException;
 import java.util.Vector;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
@@ -17,13 +19,16 @@ public class AjoutGUI extends JPanel {
 	private JComboBox fournisseur,intervention,pc;
 	private JLabel lDateSignalement,lDescriptifbref,lSignaleur,lPreneurEnCharge,lEtatInterv,lSuiviViaFournisseur,lDateContact,lDatePrise,lDateRetour,lEtatRetour,lDateRemiseService,lTempsInterne,lResultat,lFkPcUnit,lFkTypeInterv,lFkFournisseurIntervenant,lNoInterv;
 	private JTextField tfNoInterv,tfSignaleur,tfPreneurEnCharge,tfSuiviViaFournisseur,tfTempsInterne;
+	private JRadioButton ok,declasse,suspens,signale,encours,cloture;
+	private ButtonGroup bgEtatInterv,bgEtatRetour,bgResulstat;
 	
 	public AjoutGUI(){
 		
-		this.setLayout(new GridLayout(7,2,5,5));
+		this.setLayout(new GridLayout(15,2,5,5));
 		buildJlabel();
 		buildJcomboBox();
 		buildJTextField();
+		buildButtonGroup();
 		
 		this.add(lNoInterv);
 		this.add(tfNoInterv);
@@ -36,7 +41,7 @@ public class AjoutGUI extends JPanel {
 		this.add(lPreneurEnCharge);
 		this.add(tfPreneurEnCharge);
 		this.add(lEtatInterv);
-		
+		this.add(signale);this.add(encours);this.add(cloture);
 		this.add(lSuiviViaFournisseur);
 		this.add(tfSuiviViaFournisseur);
 		this.add(lDateContact);
@@ -46,12 +51,13 @@ public class AjoutGUI extends JPanel {
 		this.add(lDateRetour);
 		
 		this.add(lEtatRetour);
-		
+		this.add(ok);this.add(declasse);this.add(suspens);
 		this.add(lDateRemiseService);
 		
 		this.add(lTempsInterne);
 		this.add(tfTempsInterne);
 		this.add(lResultat);
+		this.add(ok);this.add(declasse);this.add(suspens);
 		this.add(lFkFournisseurIntervenant);
 		this.add(fournisseur);
 		this.add(lFkTypeInterv);
@@ -70,6 +76,31 @@ public class AjoutGUI extends JPanel {
 		tfSuiviViaFournisseur = new JTextField();
 		
 		tfTempsInterne = new JTextField();
+	}
+	
+	private void buildButtonGroup(){
+		ok = new JRadioButton("Ok", false);
+		declasse = new JRadioButton("Déclassé", false);
+		suspens = new JRadioButton("En Suspens", false);
+		
+		signale = new JRadioButton("Signalé", false);
+		encours = new JRadioButton("En Cours", false);
+		cloture = new JRadioButton("Cloturé", false);
+		
+		bgEtatInterv = new ButtonGroup();
+		bgEtatInterv.add(signale);
+		bgEtatInterv.add(encours);
+		bgEtatInterv.add(cloture);
+		
+		bgEtatRetour = new ButtonGroup();
+		bgEtatRetour.add(ok);
+		bgEtatRetour.add(declasse);
+		bgEtatRetour.add(suspens);
+		
+		bgResulstat = new ButtonGroup();
+		bgResulstat.add(ok);
+		bgResulstat.add(declasse);
+		bgResulstat.add(suspens);
 	}
 	
 	private void buildJlabel(){
