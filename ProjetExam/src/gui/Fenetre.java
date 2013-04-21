@@ -139,7 +139,7 @@ public class Fenetre extends JFrame{
 						new FenetreConnexion(); // On lance la fenetre de connexion
 					}// sinon
 					else{
-						AjoutGUI ajoutGUI = new AjoutGUI();
+						AjoutGUI ajoutGUI = new AjoutGUI(cont);
 						cont.removeAll();
 						cont.add(ajoutGUI);
 						cont.repaint();

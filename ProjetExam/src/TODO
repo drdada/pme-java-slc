@@ -5,14 +5,14 @@ IMPORTANT
 	-Commenter le code déja écrit
 
 Accueil
-	-Message de bienvenue
+	+Message de bienvenue(Fait)
 	
 Connexion
-	-Probleme d'affichage du jlabel
+	+Probleme d'affichage du jlabel(Fait)
 	
 Aide
-	-Texte a faire
-	-Disposition (probleme de centrageà
+	+Texte a faire(FAIT)
+	+Disposition (probleme de centrageà(Fait)
 
 Liste
 	-Organisation a faire
@@ -21,8 +21,9 @@ Liste
 Ajout Intervention
 	-Disposition
 	-Code d'insert dans la BDD
-	-Jcombobox -> fournisseur, pc et types d'interventions (+code BDD)
+	+Jcombobox -> fournisseur, pc et types d'interventions (+code BDD)
 	-Caratere facultatif (gestion des jtextfield)
+	-Jspinner -> date
 	
 Recherche
 	-Disposition
