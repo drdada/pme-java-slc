@@ -4,6 +4,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -12,6 +13,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
@@ -26,9 +28,9 @@ import dal.AccessBDGen;
 public class PanelFormAjout extends JPanel {
 	private JComboBox fournisseur,intervention,pc;
 	private JLabel lDateSignalement,lDescriptifbref,lSignaleur,lPreneurEnCharge,lEtatInterv,lSuiviViaFournisseur,lDateContact,lDatePrise,lDateRetour,lEtatRetour,lDateRemiseService,lTempsInterne,lResultat,lFkPcUnit,lFkTypeInterv,lFkFournisseurIntervenant,lNoInterv;
-	private JTextField tfNoInterv,tfSignaleur,tfPreneurEnCharge,tfSuiviViaFournisseur,tfTempsInterne;
-	private JRadioButton ok1,declasse1,suspens1,ok2,declasse2,suspens2,signale,encours,cloture;
-	private ButtonGroup bgEtatInterv,bgEtatRetour,bgResulstat;
+	private JTextField tfNoInterv,tfSignaleur,tfPreneurEnCharge,tfTempsInterne;
+	private JRadioButton ok1,declasse1,suspens1,ok2,declasse2,suspens2,signale,encours,cloture,suivi,nonSuivi;
+	private ButtonGroup bgEtatInterv,bgEtatRetour,bgResulstat,bgSuiviViaFournisseur;
 	private JButton envoi;
 	private JSpinner dateSignalement,dateContact,datePrise,dateRetour,dateRemiseService;
 	private JTextArea desciptif;
@@ -60,7 +62,7 @@ public class PanelFormAjout extends JPanel {
 		this.add(lEtatInterv);
 		this.add(signale);this.add(encours);this.add(cloture);
 		this.add(lSuiviViaFournisseur);
-		this.add(tfSuiviViaFournisseur);
+		this.add(suivi);this.add(nonSuivi);
 		this.add(lDateContact);
 		this.add(dateContact);
 		this.add(lDatePrise);
@@ -88,11 +90,15 @@ public class PanelFormAjout extends JPanel {
 		String requete = "SELECT TOP 1 NoInterv FROM Intervention ORDER BY NoInterv DESC"; //Récupere la derniere entrée de la table
 		try{
 			int dernierEntree = AccessBDGen.executerInstruction(Projet.getConnexion(), requete);
-			System.out.println(dernierEntree);
-			//tfNoInterv.setText(dernierEntree);
+			dernierEntree++;
+			//System.out.println(dernierEntree);
+			tfNoInterv.setText(""+dernierEntree);//On met le champ tfNoINterv avec la valeur de l'id (dernier id + 1)
 		}
-		catch (SQLException er) {
-			er.printStackTrace();
+		catch (SQLException er) { //Si la table est vide il renvoie une erreur
+			//er.printStackTrace();
+			int dernierEntree = 0; //C'est donc l'entrée 0, la premiere entrée de la table
+			tfNoInterv.setText(""+dernierEntree); //On affiche le 0 (concaténation moin ennuyante qu'une transformation int -> String)
+			
 		}
 	}
 	private void buildJTextField(){
@@ -102,8 +108,6 @@ public class PanelFormAjout extends JPanel {
 		tfPreneurEnCharge = new JTextField();
 		
 		tfSignaleur = new JTextField();
-		
-		tfSuiviViaFournisseur = new JTextField();
 		
 		tfTempsInterne = new JTextField(4);
 	}
@@ -123,6 +127,13 @@ public class PanelFormAjout extends JPanel {
 		signale = new JRadioButton("Signalé", false);
 		encours = new JRadioButton("En Cours", false);
 		cloture = new JRadioButton("Cloturé", false);
+		
+		suivi = new JRadioButton("Suivi",false);
+		nonSuivi = new JRadioButton("Non Suivi", false);
+		
+		bgSuiviViaFournisseur = new ButtonGroup();
+		bgSuiviViaFournisseur.add(suivi);
+		bgSuiviViaFournisseur.add(nonSuivi);
 		
 		bgEtatInterv = new ButtonGroup();
 		bgEtatInterv.add(signale);
@@ -223,9 +234,9 @@ public class PanelFormAjout extends JPanel {
 			fournisseur = new JComboBox(tableFourn);
 			fournisseur.setMaximumRowCount(3);
 			intervention = new JComboBox(tableIntervention);
-			intervention.setMaximumRowCount(8);
+			intervention.setMaximumRowCount(3);
 			pc = new JComboBox(tablePC);
-			pc.setMaximumRowCount(11);
+			pc.setMaximumRowCount(3); 
 			
 		}catch (SQLException e) {
 			e.printStackTrace();
@@ -263,8 +274,65 @@ public class PanelFormAjout extends JPanel {
 	private class MyListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource().equals(envoi)){
+				int flag=0;
+				String erreurText=" ";
 				//Si on a appuyé sur le bouton envoi
-
+				if(desciptif.getText().length()==0){ //Si on ne remplis pas le champs descriptif
+					desciptif.setText(" "); //On écrit un blanc dedans
+				}
+				if(tfSignaleur.getText().length()==0){
+					tfSignaleur.setText(" ");
+				}
+				if(tfPreneurEnCharge.getText().length()==0){
+					flag=1;
+					erreurText+=" l'administrateur prenant en charge, ";
+				}
+				if(!signale.isSelected() && !encours.isSelected() && !cloture.isSelected()){
+					flag=1;
+					erreurText+=" l'état de l'intervention, ";
+				}
+				else{
+					//On associe la réponse a un String
+				}
+				if(!suivi.isSelected() && !nonSuivi.isSelected()){
+					flag=1;
+					erreurText+=" suivi via le fournisseur, ";
+				}
+				else{
+					//On associe la réponse a un int
+				}
+				String retourDateContact = new SimpleDateFormat("dd/MM/yyyy").format(dateContact.getValue());
+				String retourDatePrise = new SimpleDateFormat("dd/MM/yyyy").format(datePrise.getValue());
+//				if(retourDatePrise.equals("01/01/1970")){
+//					retourDatePrise="null";
+//				}
+				String retourDateRetour = new SimpleDateFormat("dd/MM/yyyy").format(dateRetour.getValue());
+				String retourDateRemise = new SimpleDateFormat("dd/MM/yyyy").format(dateRemiseService.getValue());
+				if(retourDateRemise.equals("01/01/1970")){
+					retourDateRemise="null";
+				}
+				//Probleme champ int à null
+				int retourTempInterne;
+				if(tfTempsInterne.getText().length()==0){
+					//retourTempInterne=null;
+				}else{
+					String text =tfTempsInterne.getText();
+					retourTempInterne= Integer.parseInt(text);
+				}
+				//TODO Verif Jbox
+				
+				
+				if(flag==1){
+					JOptionPane.showMessageDialog(null, "Oups, le/les champs "+erreurText+" a/ont un soucis, veuillez vérifier!","Erreur", JOptionPane.ERROR_MESSAGE);
+				}
+				else{
+					Object[] options = {"Oui","Non"};
+					int n= JOptionPane.showOptionDialog(null,"Voulez-vous vraiment ajouter cet utilisateur ?", "Vérification", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+					if(n==0){
+						//TODO Ajout
+						//TODO Reset
+					}
+				}
 			}
 		}
 	}

@@ -23,7 +23,13 @@ Ajout Intervention
 	-Code d'insert dans la BDD
 	+Jcombobox -> fournisseur, pc et types d'interventions (+code BDD)
 	-Caratere facultatif (gestion des jtextfield)
-	-Jspinner -> date
+	+Jspinner -> date
+	+Recuperation de l'ID
+	*mineur : limitation des choix, supprimer les blancs dans le jchoosebox
+	-TempsInterne int à null ?
+	-Verification JcomboBox
+	-Ajout a la BDD
+	-Remise a zero
 	
 Recherche
 	-Disposition
