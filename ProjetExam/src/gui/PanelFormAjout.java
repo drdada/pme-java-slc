@@ -34,7 +34,11 @@ public class PanelFormAjout extends JPanel {
 	private JButton envoi;
 	private JSpinner dateSignalement,dateContact,datePrise,dateRetour,dateRemiseService;
 	private JTextArea desciptif;
-
+	private Object[] tableIntervention,tablePC,tableFourn,tableInterventionID,tablePCID,tableFournID;
+	private int dernierEntree;
+	private String resSignal,resEtatRetour,resRes;
+	private boolean resSuivi;
+	
 	public PanelFormAjout(){
 		this.setLayout(new GridLayout(15,2,5,5));
 		buildJlabel();
@@ -89,7 +93,7 @@ public class PanelFormAjout extends JPanel {
 	private void setID(){
 		String requete = "SELECT TOP 1 NoInterv FROM Intervention ORDER BY NoInterv DESC"; //Récupere la derniere entrée de la table
 		try{
-			int dernierEntree = AccessBDGen.executerInstruction(Projet.getConnexion(), requete);
+			dernierEntree = AccessBDGen.executerInstruction(Projet.getConnexion(), requete);
 			dernierEntree++;
 			//System.out.println(dernierEntree);
 			tfNoInterv.setText(""+dernierEntree);//On met le champ tfNoINterv avec la valeur de l'id (dernier id + 1)
@@ -226,10 +230,17 @@ public class PanelFormAjout extends JPanel {
 		String requestPC="SELECT IdPcUnit FROM PcUnit"; //Idem pour le nom des PC
 		String requestFournisseur="SELECT NomFourn FROM Fournisseur"; //Idem pou
 		
+		String requestInterventionID = "SELECT CodeTypeInt FROM TypeIntervention"; //Code SQL pour recuperer les IDs des types d'interventions
+		String requestPCID ="SELECT IdPcUnit FROM PcUnit";
+		String requestFournisseurID ="SELECT FournisseurId FROM Fournisseur";
 		try{
-			Object[] tableFourn = AccessBDGen.creerListe1Colonne(Projet.getConnexion(), requestFournisseur);
-			Object[] tableIntervention = AccessBDGen.creerListe1Colonne(Projet.getConnexion(), requestIntervention);
-			Object[] tablePC = AccessBDGen.creerListe1Colonne(Projet.getConnexion(), requestPC);
+			tableFourn = AccessBDGen.creerListe1Colonne(Projet.getConnexion(), requestFournisseur);
+			tableIntervention = AccessBDGen.creerListe1Colonne(Projet.getConnexion(), requestIntervention);
+			tablePC = AccessBDGen.creerListe1Colonne(Projet.getConnexion(), requestPC);
+			
+			tableFournID = AccessBDGen.creerListe1Colonne(Projet.getConnexion(), requestFournisseurID);
+			tableInterventionID = AccessBDGen.creerListe1Colonne(Projet.getConnexion(), requestInterventionID);
+			tablePCID = AccessBDGen.creerListe1Colonne(Projet.getConnexion(), requestPCID);
 			
 			fournisseur = new JComboBox(tableFourn);
 			fournisseur.setMaximumRowCount(3);
@@ -245,11 +256,14 @@ public class PanelFormAjout extends JPanel {
 	}
 	
 	private void buildDate(){
+		Calendar calendarr = new GregorianCalendar(1970,Calendar.JANUARY,1);
+		
 		SpinnerDateModel modelDate = new SpinnerDateModel(new Date(), null, null, Calendar.DATE); //modele de data + initialisation
 		dateSignalement = new JSpinner(modelDate); //Création JSpinner
 		dateSignalement.setEditor(new JSpinner.DateEditor(dateSignalement, "dd/MM/yyyy")); //Editeur jour/mois/annee
+		dateSignalement.setValue(calendarr.getTime());
 		
-		Calendar calendarr = new GregorianCalendar(1970,Calendar.JANUARY,1);
+		
 		SpinnerDateModel modelDate2 = new SpinnerDateModel(new Date(), null, null, Calendar.DATE); //modele de data + initialisation
 		dateContact = new JSpinner(modelDate2);
 		dateContact.setEditor(new JSpinner.DateEditor(dateContact, "dd/MM/yyyy"));
@@ -293,23 +307,52 @@ public class PanelFormAjout extends JPanel {
 				}
 				else{
 					//On associe la réponse a un String
+					if(signale.isSelected()){
+						resSignal="Signalé";
+					}
+					else if(encours.isSelected()){
+						resSignal="EnCours";
+					}else{
+						resSignal="Clôturé";
+					}
 				}
 				if(!suivi.isSelected() && !nonSuivi.isSelected()){
 					flag=1;
 					erreurText+=" suivi via le fournisseur, ";
 				}
 				else{
+					if(suivi.isSelected()){
+						resSuivi=true;
+					}
+					else{
+						resSuivi=false;
+					}
 					//On associe la réponse a un int
 				}
+				String retourDateSignalement = new SimpleDateFormat("dd/MM/yyyy").format(dateSignalement.getValue());
+				if(retourDateSignalement.equals("01/01/1970")){
+					flag=1;
+					erreurText+=" la date du signalement ";
+				}
+				
 				String retourDateContact = new SimpleDateFormat("dd/MM/yyyy").format(dateContact.getValue());
 				String retourDatePrise = new SimpleDateFormat("dd/MM/yyyy").format(datePrise.getValue());
-//				if(retourDatePrise.equals("01/01/1970")){
-//					retourDatePrise="null";
-//				}
 				String retourDateRetour = new SimpleDateFormat("dd/MM/yyyy").format(dateRetour.getValue());
 				String retourDateRemise = new SimpleDateFormat("dd/MM/yyyy").format(dateRemiseService.getValue());
-				if(retourDateRemise.equals("01/01/1970")){
-					retourDateRemise="null";
+
+				if(!ok1.isSelected() && !declasse1.isSelected() && !suspens1.isSelected()){
+					resEtatRetour="null";
+				}
+				else{
+					if(ok1.isSelected()){
+						resEtatRetour="OK";
+					}
+					else if(declasse1.isSelected()){
+						resEtatRetour="Déclassé";
+					}
+					else{
+						resEtatRetour="Suspens";
+					}
 				}
 				//Probleme champ int à null
 				int retourTempInterne;
@@ -318,6 +361,21 @@ public class PanelFormAjout extends JPanel {
 				}else{
 					String text =tfTempsInterne.getText();
 					retourTempInterne= Integer.parseInt(text);
+				}
+				
+				if(!ok2.isSelected() && !declasse2.isSelected() && !suspens2.isSelected()){
+					resRes="null";
+				}
+				else{
+					if(ok2.isSelected()){
+						resRes="OK";
+					}
+					else if(declasse2.isSelected()){
+						resRes="Déclassé";
+					}
+					else{
+						resRes="Suspens";
+					}
 				}
 				//TODO Verif Jbox
 				
@@ -330,6 +388,9 @@ public class PanelFormAjout extends JPanel {
 					int n= JOptionPane.showOptionDialog(null,"Voulez-vous vraiment ajouter cet utilisateur ?", "Vérification", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 					if(n==0){
 						//TODO Ajout
+						String insert ="INSERT INTO Intervention(NoInterv,DateSignalement,DescriptifBrefProbleme,SignaleurIncident,PreneurEnCharge,EtatInterv,SuiviViaFournisseur,DateContact,DatePrise,DateRetour,EtatRetour,DateRemiseService,TempsInterne,Resultat,FkPcUnit,FkTypeInterv,FkFournisseurIntervenant) " +
+								"VALUES('"+dernierEntree+"','"+retourDateSignalement+"','"+desciptif+"','"+tfSignaleur.getText()+"','"+tfPreneurEnCharge+"','"+resSignal+"','"+resSuivi+"','"+retourDateContact+"','"+retourDatePrise+"','"+retourDateRetour+"','"+resEtatRetour+"','"+retourDateRemise+"','"++"','"+resRes+"'";
+						//AccessBDGen.executerInstruction(Projet.getConnexion(), insert);
 						//TODO Reset
 					}
 				}

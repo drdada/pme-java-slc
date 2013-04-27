@@ -29,33 +29,27 @@ public class ListeIntervention extends JPanel{
 		this.cont = cont;
 		this.setLayout(new BorderLayout()); //On défini le layout (borderlayout)
 		
-		titre = new JLabel("Listes des installations");
-		this.add(titre,BorderLayout.NORTH);
+		titre = new JLabel("Listes des interventions"); //On affiche le titre
+		this.add(titre,BorderLayout.NORTH); //On ajoute le titre au dessus (borderlayout)
+		
+		requete = "SELECT * FROM Intervention"; //On écrit la requete SQL
 
 		try{
-            MyTableModel table = AccessBDGen.creerTableModel(Projet.getConnexion(), requete);
-            JTable tableR = new JTable(table);
-            JScrollPane scrollTable = new JScrollPane(tableR);
-            
-            ListeIntervention.this.removeAll();
-            ListeIntervention.this.setLayout(new BorderLayout());
-            
-            //ListeIntervention.this.add(liste,BorderLayout.NORTH);
-            ListeIntervention.this.add(scrollTable,BorderLayout.CENTER);
-            ListeIntervention.this.repaint();
-            ListeIntervention.this.validate();
-            ListeIntervention.this.setVisible(true);
+            MyTableModel table = AccessBDGen.creerTableModel(Projet.getConnexion(), requete); //on envoie la requete 
+            JTable tableR = new JTable(table); //On crée le tableau
+            JScrollPane scrollTable = new JScrollPane(tableR); //On met le tableau dans un jscrollpane
+        
+            this.add(scrollTable,BorderLayout.CENTER); //on ajoute le scrollpane au centre
 		}
 		catch(SQLException er){
-			JOptionPane.showMessageDialog(null, er.getMessage());
+			er.printStackTrace(); //On affiche l'erreur eventuelle a la console
 		}
 		
-		requete = "SELECT * FROM Intervention";
 		
-		MyListener myListener = new MyListener();
-		retour = new JButton("Retour");
-		retour.addActionListener(myListener);
-		this.add(retour,BorderLayout.SOUTH);
+		MyListener myListener = new MyListener(); //On crée l'objet listener
+		retour = new JButton("Retour"); //On crée le bouton
+		retour.addActionListener(myListener); //ON lie le bouton et le listener
+		this.add(retour,BorderLayout.SOUTH); //On ajoute le bonton en bas
 	}
 	private class MyListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {

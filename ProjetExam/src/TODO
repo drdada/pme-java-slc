@@ -3,6 +3,7 @@ TODO list du projet java (ProjetExam)
 IMPORTANT
 	+Affichage des jpanel dans le containaire !(FIXED ! cont.validate;)
 	-Commenter le code déja écrit
+	-Verifier les traces de installations !
 
 Accueil
 	+Message de bienvenue(Fait)
@@ -16,20 +17,21 @@ Aide
 
 Liste
 	-Organisation a faire
-	-!Valeurs d'arguments non valides
+	+Valeurs d'arguments non valides(FAIT, la requete etais mal placée)
 	
 Ajout Intervention
 	-Disposition
 	-Code d'insert dans la BDD
 	+Jcombobox -> fournisseur, pc et types d'interventions (+code BDD)
-	-Caratere facultatif (gestion des jtextfield)
+	/Caratere facultatif (gestion des jtextfield)(A TESTER)
 	+Jspinner -> date
 	+Recuperation de l'ID
-	*mineur : limitation des choix, supprimer les blancs dans le jchoosebox
+	*mineur : limitation des choix, supprimer les blancs dans le jcombobox
 	-TempsInterne int à null ?
 	-Verification JcomboBox
 	-Ajout a la BDD
 	-Remise a zero
+	-Associer jbox
 	
 Recherche
 	-Disposition
