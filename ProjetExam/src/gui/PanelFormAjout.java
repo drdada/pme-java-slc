@@ -292,10 +292,10 @@ public class PanelFormAjout extends JPanel {
 				String erreurText=" ";
 				//Si on a appuyé sur le bouton envoi
 				if(desciptif.getText().length()==0){ //Si on ne remplis pas le champs descriptif
-					desciptif.setText(" "); //On écrit un blanc dedans
+					desciptif.setText("null""); //On écrit un blanc dedans
 				}
 				if(tfSignaleur.getText().length()==0){
-					tfSignaleur.setText(" ");
+					tfSignaleur.setText("null");
 				}
 				if(tfPreneurEnCharge.getText().length()==0){
 					flag=1;

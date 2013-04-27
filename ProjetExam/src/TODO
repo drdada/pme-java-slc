@@ -42,4 +42,7 @@ Recherche
 Suppression
 	-Disposition
 	-Code delete BDD
+	-Recherche par Fournisseur
+	-Jtable en fonction de la recherche
+	-Suppression bouton et verification
 	
