@@ -6,30 +6,29 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-
-public class SupprimerGUI extends JPanel {
+public class RechercheGUI extends JPanel {
 	private JButton retour;
 	private JLabel titre;
-	private PanelFormSupprimer supp;
+	private PanelFormRecherche rech;
 	private Container cont;
 	
-	public SupprimerGUI(Container cont){
-		this.cont = cont;
+	public RechercheGUI(Container cont){
+		this.cont= cont;
 		this.setLayout(new BorderLayout());
-		supp= new PanelFormSupprimer();
-		titre = new JLabel("Suppression");
 		retour = new JButton("Retour");
+		titre = new JLabel("Recherche d'une intervention");
+		rech = new PanelFormRecherche() ;
+		
 		MyListener my = new MyListener();
 		retour.addActionListener(my);
-
 		
-		this.add(supp,BorderLayout.CENTER);
+		this.add(rech,BorderLayout.CENTER);
 		this.add(retour,BorderLayout.SOUTH);
 		this.add(titre,BorderLayout.NORTH);
+		
 	}
 	private class MyListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {

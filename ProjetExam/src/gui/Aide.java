@@ -20,7 +20,7 @@ public class Aide extends JPanel{
 		RetourListener retourL = new RetourListener(); //Création de l'objet retourL (Listener)
 		retour = new JButton("Retour"); //Création de l'objet jbutton retour
 		texte = new JLabel("<html><body><center>" +
-				"Programme réalisé par Mr Arnaud Booms et Mr Matteo D'Addamio<br>" +
+				"Programme réalisé par M. Arnaud Booms et M. Matteo D'Addamio<br>" +
 				"Dans le cadre du cours de java de deuxieme TI<br>" +
 				"Henallux 2012-2013<br>" +
 				" </center></body></html>"); //On crée le jlabel

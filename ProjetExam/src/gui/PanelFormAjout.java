@@ -34,7 +34,7 @@ public class PanelFormAjout extends JPanel {
 	private JButton envoi;
 	private JSpinner dateSignalement,dateContact,datePrise,dateRetour,dateRemiseService;
 	private JTextArea desciptif;
-	private Object[] tableIntervention,tablePC,tableFourn,tableInterventionID,tablePCID,tableFournID;
+	private Object[] tableIntervention,tablePC,tableFourn;
 	private int dernierEntree;
 	private String resSignal,resEtatRetour,resRes;
 	private boolean resSuivi;
@@ -238,16 +238,10 @@ public class PanelFormAjout extends JPanel {
 			tableIntervention = AccessBDGen.creerListe1Colonne(Projet.getConnexion(), requestIntervention);
 			tablePC = AccessBDGen.creerListe1Colonne(Projet.getConnexion(), requestPC);
 			
-			tableFournID = AccessBDGen.creerListe1Colonne(Projet.getConnexion(), requestFournisseurID);
-			tableInterventionID = AccessBDGen.creerListe1Colonne(Projet.getConnexion(), requestInterventionID);
-			tablePCID = AccessBDGen.creerListe1Colonne(Projet.getConnexion(), requestPCID);
-			
 			fournisseur = new JComboBox(tableFourn);
-			fournisseur.setMaximumRowCount(3);
 			intervention = new JComboBox(tableIntervention);
-			intervention.setMaximumRowCount(3);
 			pc = new JComboBox(tablePC);
-			pc.setMaximumRowCount(3); 
+
 			
 		}catch (SQLException e) {
 			e.printStackTrace();
@@ -292,10 +286,10 @@ public class PanelFormAjout extends JPanel {
 				String erreurText=" ";
 				//Si on a appuyé sur le bouton envoi
 				if(desciptif.getText().length()==0){ //Si on ne remplis pas le champs descriptif
-					desciptif.setText("null""); //On écrit un blanc dedans
+					desciptif.setText("NULL"); //On écrit un blanc dedans
 				}
 				if(tfSignaleur.getText().length()==0){
-					tfSignaleur.setText("null");
+					tfSignaleur.setText("NULL");
 				}
 				if(tfPreneurEnCharge.getText().length()==0){
 					flag=1;
@@ -341,7 +335,7 @@ public class PanelFormAjout extends JPanel {
 				String retourDateRemise = new SimpleDateFormat("dd/MM/yyyy").format(dateRemiseService.getValue());
 
 				if(!ok1.isSelected() && !declasse1.isSelected() && !suspens1.isSelected()){
-					resEtatRetour="null";
+					resEtatRetour="NULL";
 				}
 				else{
 					if(ok1.isSelected()){
@@ -355,16 +349,16 @@ public class PanelFormAjout extends JPanel {
 					}
 				}
 				//Probleme champ int à null
-				int retourTempInterne;
+				Integer retourTempInterne; //Classe Integer
 				if(tfTempsInterne.getText().length()==0){
-					//retourTempInterne=null;
+					retourTempInterne=null;
 				}else{
 					String text =tfTempsInterne.getText();
 					retourTempInterne= Integer.parseInt(text);
 				}
 				
 				if(!ok2.isSelected() && !declasse2.isSelected() && !suspens2.isSelected()){
-					resRes="null";
+					resRes="NULL";
 				}
 				else{
 					if(ok2.isSelected()){
@@ -389,7 +383,7 @@ public class PanelFormAjout extends JPanel {
 					if(n==0){
 						//TODO Ajout
 						String insert ="INSERT INTO Intervention(NoInterv,DateSignalement,DescriptifBrefProbleme,SignaleurIncident,PreneurEnCharge,EtatInterv,SuiviViaFournisseur,DateContact,DatePrise,DateRetour,EtatRetour,DateRemiseService,TempsInterne,Resultat,FkPcUnit,FkTypeInterv,FkFournisseurIntervenant) " +
-								"VALUES('"+dernierEntree+"','"+retourDateSignalement+"','"+desciptif+"','"+tfSignaleur.getText()+"','"+tfPreneurEnCharge+"','"+resSignal+"','"+resSuivi+"','"+retourDateContact+"','"+retourDatePrise+"','"+retourDateRetour+"','"+resEtatRetour+"','"+retourDateRemise+"','"++"','"+resRes+"'";
+								"VALUES('"+dernierEntree+"','"+retourDateSignalement+"','"+desciptif+"','"+tfSignaleur.getText()+"','"+tfPreneurEnCharge+"','"+resSignal+"','"+resSuivi+"','"+retourDateContact+"','"+retourDatePrise+"','"+retourDateRetour+"','"+resEtatRetour+"','"+retourDateRemise+"','"+retourTempInterne+"','"+resRes+"'";
 						//AccessBDGen.executerInstruction(Projet.getConnexion(), insert);
 						//TODO Reset
 					}

@@ -149,6 +149,45 @@ public class Fenetre extends JFrame{
 					e1.printStackTrace();
 				}
 			}
+			if(e.getSource().equals(suppression)){
+				try {
+					// si l'objet connexion est vide OU qu'il est fermé
+					if(Projet.getConnexion() == null || Projet.getConnexion().isClosed()){
+						JOptionPane.showMessageDialog(null, "Vous n'êtes pas connecté à une Base de donnée!\n" +
+								"Veuillez-vous connecter.", "Attention", JOptionPane.WARNING_MESSAGE);
+						new FenetreConnexion(); // On lance la fenetre de connexion
+					}// sinon
+					else{
+						SupprimerGUI supp = new SupprimerGUI(cont);
+						cont.removeAll();
+						cont.add(supp);
+						cont.repaint();
+						cont.validate();
+					}
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+			if(e.getSource().equals(recherche)){
+				try {
+					// si l'objet connexion est vide OU qu'il est fermé
+					if(Projet.getConnexion() == null || Projet.getConnexion().isClosed()){
+						JOptionPane.showMessageDialog(null, "Vous n'êtes pas connecté à une Base de donnée!\n" +
+								"Veuillez-vous connecter.", "Attention", JOptionPane.WARNING_MESSAGE);
+						new FenetreConnexion(); // On lance la fenetre de connexion
+					}// sinon
+					else{
+						RechercheGUI rech = new RechercheGUI(cont);
+						cont.removeAll();
+						cont.add(rech);
+						cont.repaint();
+						cont.validate();
+					}
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+
 			if (e.getSource().equals(listel)){
 				try {
 					// si l'objet connexion est vide OU qu'il est fermé
