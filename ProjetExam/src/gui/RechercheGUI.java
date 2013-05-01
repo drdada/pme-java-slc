@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 public class RechercheGUI extends JPanel {
 	private JButton retour;
 	private JLabel titre;
-	private PanelFormRecherche rech;
+	private PanelTabRecherche rech;
 	private Container cont;
 	
 	public RechercheGUI(Container cont){
@@ -20,7 +20,7 @@ public class RechercheGUI extends JPanel {
 		this.setLayout(new BorderLayout());
 		retour = new JButton("Retour");
 		titre = new JLabel("Recherche d'une intervention");
-		rech = new PanelFormRecherche() ;
+		rech = new PanelTabRecherche() ;
 		
 		MyListener my = new MyListener();
 		retour.addActionListener(my);

@@ -34,9 +34,9 @@ public class PanelFormAjout extends JPanel {
 	private JButton envoi;
 	private JSpinner dateSignalement,dateContact,datePrise,dateRetour,dateRemiseService;
 	private JTextArea desciptif;
-	private Object[] tableIntervention,tablePC,tableFourn;
+	private Object[] tableIntervention,tablePC,tableFourn,resIDIntervention;
 	private int dernierEntree;
-	private String resSignal,resEtatRetour,resRes;
+	private String resSignal,resEtatRetour,resRes,resIDFournisseur2;
 	private boolean resSuivi;
 	
 	public PanelFormAjout(){
@@ -230,9 +230,6 @@ public class PanelFormAjout extends JPanel {
 		String requestPC="SELECT IdPcUnit FROM PcUnit"; //Idem pour le nom des PC
 		String requestFournisseur="SELECT NomFourn FROM Fournisseur"; //Idem pou
 		
-		String requestInterventionID = "SELECT CodeTypeInt FROM TypeIntervention"; //Code SQL pour recuperer les IDs des types d'interventions
-		String requestPCID ="SELECT IdPcUnit FROM PcUnit";
-		String requestFournisseurID ="SELECT FournisseurId FROM Fournisseur";
 		try{
 			tableFourn = AccessBDGen.creerListe1Colonne(Projet.getConnexion(), requestFournisseur);
 			tableIntervention = AccessBDGen.creerListe1Colonne(Projet.getConnexion(), requestIntervention);
@@ -371,7 +368,40 @@ public class PanelFormAjout extends JPanel {
 						resRes="Suspens";
 					}
 				}
-				//TODO Verif Jbox
+				if(fournisseur.getSelectedItem().equals("null")){
+					resIDFournisseur2="NULL";
+				}
+				else{
+					//On retrouve l'index du libele choisi
+					try{
+						String requestFournisseurID ="SELECT FournisseurId FROM Fournisseur WHERE Fournisseur.NomFourn ='"+fournisseur.getSelectedItem()+"'";
+						Object[] resIDFournisseur = AccessBDGen.creerListe1Colonne(Projet.getConnexion(), requestFournisseurID);
+						resIDFournisseur2=(String) resIDFournisseur[0];
+						//System.out.println(resIDFournisseur[0]);
+					}
+					catch(SQLException err) {
+						err.printStackTrace();
+					}
+				}
+				if(intervention.getSelectedItem().equals("null")){
+					flag=1;
+					erreurText+=" le type d'intervention, ";
+				}
+				else{
+					//On retrouve l'index du libele choisi
+					try{
+						String requestIntID ="SELECT CodeTypeInt FROM TypeIntervention WHERE TypeIntervention.LibelleTypeInt ='"+intervention.getSelectedItem()+"'";
+						resIDIntervention = AccessBDGen.creerListe1Colonne(Projet.getConnexion(), requestIntID);
+					}
+					catch(SQLException err) {
+						err.printStackTrace();
+					}
+				}
+				if(pc.getSelectedItem().equals("null")){
+					flag=1;
+					erreurText+=" la référence du pc, ";
+				}
+
 				
 				
 				if(flag==1){
@@ -379,13 +409,57 @@ public class PanelFormAjout extends JPanel {
 				}
 				else{
 					Object[] options = {"Oui","Non"};
-					int n= JOptionPane.showOptionDialog(null,"Voulez-vous vraiment ajouter cet utilisateur ?", "Vérification", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
-					if(n==0){
-						//TODO Ajout
-						String insert ="INSERT INTO Intervention(NoInterv,DateSignalement,DescriptifBrefProbleme,SignaleurIncident,PreneurEnCharge,EtatInterv,SuiviViaFournisseur,DateContact,DatePrise,DateRetour,EtatRetour,DateRemiseService,TempsInterne,Resultat,FkPcUnit,FkTypeInterv,FkFournisseurIntervenant) " +
-								"VALUES('"+dernierEntree+"','"+retourDateSignalement+"','"+desciptif+"','"+tfSignaleur.getText()+"','"+tfPreneurEnCharge+"','"+resSignal+"','"+resSuivi+"','"+retourDateContact+"','"+retourDatePrise+"','"+retourDateRetour+"','"+resEtatRetour+"','"+retourDateRemise+"','"+retourTempInterne+"','"+resRes+"'";
-						//AccessBDGen.executerInstruction(Projet.getConnexion(), insert);
-						//TODO Reset
+					int n = JOptionPane.showOptionDialog(null,
+							"Voulez-vous vraiment ajouter cet utilisateur ?",
+							"Vérification", JOptionPane.YES_NO_OPTION,
+							JOptionPane.QUESTION_MESSAGE, null, options,
+							options[0]);
+					if (n == 0) {
+						// TODO Ajout
+						String insert = "INSERT INTO Intervention(NoInterv,DateSignalement,DescriptifBrefProblème,SignaleurIncident,PreneurEnCharge,EtatInterv,SuiviViaFournisseur,DateContact,DatePrise,DateRetour,EtatRetour,DateRemiseService,TempsInterne,Résultat,FkPcUnit,FkTypeInterv,FkFournisseuIntervenant) "
+								+ "VALUES('"
+								+ dernierEntree 
+								+ "','"
+								+ retourDateSignalement
+								+ "','"
+								+ desciptif.getText()
+								+ "','"
+								+ tfSignaleur.getText()
+								+ "','"
+								+ tfPreneurEnCharge.getText()
+								+ "','"
+								+ resSignal
+								+ "','"
+								+ resSuivi
+								+ "','"
+								+ retourDateContact
+								+ "','"
+								+ retourDatePrise
+								+ "','"
+								+ retourDateRetour
+								+ "','"
+								+ resEtatRetour
+								+ "','"
+								+ retourDateRemise
+								+ "','"
+								+ retourTempInterne
+								+ "','"
+								+ resRes
+								+ "','"
+								+ pc.getSelectedItem()
+								+ "','"
+								+ resIDIntervention[0]
+								+ "','"
+								+ resIDFournisseur2 + "')";
+						System.out.println(insert);
+						try{
+							 AccessBDGen.executerInstruction(Projet.getConnexion(),insert);
+						}
+						catch(SQLException err) {
+							err.printStackTrace();
+						}
+						// TODO Reset
+						 
 					}
 				}
 			}
