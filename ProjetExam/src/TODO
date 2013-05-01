@@ -1,5 +1,9 @@
 TODO list du projet java (ProjetExam)
 
+- A faire
+/ A tester
++ Fait et testé
+
 IMPORTANT
 	+Affichage des jpanel dans le containaire !(FIXED ! cont.validate;)
 	-Commenter le code déja écrit
@@ -27,16 +31,16 @@ Ajout Intervention
 	+Jspinner -> date
 	+Recuperation de l'ID
 	/TempsInterne int à null ?
-	-Verification JcomboBoxs
-	-Ajout a la BDD
+	/Verification JcomboBoxs
 	-Remise a zero
-	-Associer jbox
+	+Associer jbox(OK)
 	
 Recherche
-	-Disposition
-	-Recherche
+	-Tab
 		-Date + lot de config
 		-temps + type d'intervention
+			-Ecrire code SQL
+			-Disposition
 
 Suppression
 	-Disposition
