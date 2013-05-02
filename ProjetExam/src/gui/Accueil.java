@@ -22,26 +22,26 @@ public class Accueil extends JPanel{
 		try {
 			// si l'objet connexion est vide OU qu'il est fermé
 			if(Projet.getConnexion() == null || Projet.getConnexion().isClosed()){
-				etat.setText("Non connecté");
+				etat.setText("Non connecté"); //On affiche le message qui indique un etat non connecté
 				etat.setForeground(Color.red);
 			}// sinon
 			else{
-				etat.setText("Connecté");
+				etat.setText("Connecté"); //On affiche le message qui indique un etat connecté
 				etat.setForeground(Color.green);
 			}
 		} catch (SQLException e1) {
-			e1.printStackTrace();
+			e1.printStackTrace(); //On affiche le message d'erreur dans la console
 		}
 		
 		this.add(texte); //ajoute le jlabel dans le panel
-		this.add(etat);
-		etat.setHorizontalAlignment(SwingConstants.CENTER);
+		this.add(etat); // on ajoute le jlabel
+		etat.setHorizontalAlignment(SwingConstants.CENTER); //On centre le texte
 		texte.setHorizontalAlignment(SwingConstants.CENTER);
 
 
 	}
-	public static void modifierEtat(int i){
-		if (i==1){
+	public static void modifierEtat(int i){ //Méthode appellée par Connexion qui change directement le message quand on est sur la page d'accueil
+		if (i==1){ // 1= Connecté
 			etat.setForeground(Color.GREEN);
 			etat.setText("Connecté");
 		}

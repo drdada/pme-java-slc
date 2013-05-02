@@ -28,14 +28,14 @@ public class Fenetre extends JFrame{
 	public Fenetre(){
 		this.parametres(); // Parametres de la fenetres
 
-		QuitListnerX quitx = new QuitListnerX();
-		this.addWindowListener(quitx);
+		QuitListnerX quitx = new QuitListnerX(); //Listener de la petite croix en rouge a droite, vous voyez ? celle qui ferme la fenetre
+		this.addWindowListener(quitx); //On associe le listener a cette fameuse petite croix
 		
-		this.barre();
+		this.barre(); //On apelle la méthode barre (soucis de structure et lisibilité
 	
 
-		Accueil accueil = new Accueil();
-		this.add(accueil, BorderLayout.CENTER);
+		Accueil accueil = new Accueil(); //On crée l'objet accueil
+		this.add(accueil, BorderLayout.CENTER); //on le met au centre de l'écran
 		
 		cont = getContentPane();
 		setVisible(true);
@@ -49,7 +49,7 @@ public class Fenetre extends JFrame{
 	
 	private void barre(){
 		
-		barre = new JMenuBar();
+		barre = new JMenuBar(); //On crée le jmenu bar
 		BarreListener barreListener = new BarreListener(); //On crée l'objet BarreListener qui va ecouter les boutons de la barre
 		
 		
@@ -60,13 +60,13 @@ public class Fenetre extends JFrame{
 		quitter.addActionListener(barreListener); //On ajoute l'action au bouton
 		
 		//Jmenu Intervention
-		intervention = new JMenu("Intervention");
-		ajout = new JMenuItem("Ajouter une intervention");
+		intervention = new JMenu("Intervention"); //Menu
+		ajout = new JMenuItem("Ajouter une intervention"); //liste dans le menu
 		suppression= new JMenuItem("Supprimer une intervention");
-		ajout.addActionListener(barreListener);
-		suppression.addActionListener(barreListener);
-		intervention.add(ajout);
-		intervention.add(suppression);
+		ajout.addActionListener(barreListener); //liaison Listener
+		suppression.addActionListener(barreListener); //idem
+		intervention.add(ajout); //on ajoute l'item dans le menu
+		intervention.add(suppression); //idem
 		
 		//Jmenu Liste
 		liste = new JMenu("Recherche");
