@@ -37,10 +37,14 @@ Ajout Intervention
 	-Champs NULL !
 	
 Recherche
-	-Tab
+	+Tab
 		-Date + lot de config
+			-Champs table
+			-Code SQL
+			-Comparer date
 		-temps + type d'intervention
-			-Ecrire code SQL
+			-Champs table
+			+Ecrire code SQL
 			-Disposition
 
 Suppression

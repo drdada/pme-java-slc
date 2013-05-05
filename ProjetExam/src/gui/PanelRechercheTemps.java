@@ -24,6 +24,7 @@ public class PanelRechercheTemps extends JPanel {
 	private JComboBox cbType;
 	private JTextField tfTemps;
 	private JScrollPane js;
+	private Object[] idType;
 	
 	
 	public PanelRechercheTemps(){
@@ -31,13 +32,14 @@ public class PanelRechercheTemps extends JPanel {
 		rechercher = new JButton("Rechercher");
 		lTemps = new JLabel("Temps: ");
 		lType = new JLabel("Type d'intervention: ");
-		tfTemps = new JTextField();
+		tfTemps = new JTextField("0");
 		MyListener ml = new MyListener();
 		rechercher.addActionListener(ml);
 		tableRes = new JTable();
 		buildJcomboBox();
 
-		
+		js = new JScrollPane(tableRes);
+		add(js);
 		
 		this.add(lTemps);
 		this.add(tfTemps);
@@ -58,12 +60,14 @@ public class PanelRechercheTemps extends JPanel {
 	}
 	private class MyListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			String request = "SELECT Intervention.* FROM Intervention";
+			String requestTyInt ="SELECT CodeTypeInt FROM TypeIntervention WHERE LibelleTypeInt = '"+cbType.getSelectedItem()+"'";
 			try{
+			idType = AccessBDGen.creerListe1Colonne(Projet.getConnexion(), requestTyInt);
+			String request = "SELECT Intervention.* FROM Intervention WHERE Intervention.TempsInterne > "+tfTemps.getText()+" AND Intervention.FkTypeInterv = '"+idType[0]+"'";
 			MyTableModel tab = AccessBDGen.creerTableModel(Projet.getConnexion(), request);
 			tableRes.setModel(tab);
-			js = new JScrollPane(tableRes);
-			add(tableRes);
+			PanelRechercheTemps.this.validate();
+			PanelRechercheTemps.this.repaint();
 			}catch (SQLException er) {
 				er.printStackTrace();
 			}

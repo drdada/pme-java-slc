@@ -288,7 +288,7 @@ public class PanelFormAjout extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource().equals(envoi)){
 				int flag=0;
-				String erreurText=" ";
+				String erreurText="";
 				//Si on a appuyé sur le bouton envoi
 				if(desciptif.getText().length()==0){ //Si on ne remplis pas le champs descriptif
 					desciptif.setText("NULL"); //On écrit un blanc dedans
