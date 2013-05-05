@@ -20,7 +20,7 @@ Aide
 	+Disposition (probleme de centrageà(Fait)
 
 Liste
-	/Organisation a faire(a verifier)
+	+Organisation a faire
 	+Valeurs d'arguments non valides(FAIT, la requete etais mal placée)
 	
 Ajout Intervention
@@ -34,6 +34,7 @@ Ajout Intervention
 	/Verification JcomboBoxs
 	-Remise a zero
 	+Associer jbox(OK)
+	-Champs NULL !
 	
 Recherche
 	-Tab

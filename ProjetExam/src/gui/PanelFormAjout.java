@@ -35,9 +35,10 @@ public class PanelFormAjout extends JPanel {
 	private JSpinner dateSignalement,dateContact,datePrise,dateRetour,dateRemiseService;
 	private JTextArea desciptif;
 	private Object[] tableIntervention,tablePC,tableFourn,resIDIntervention;
-	private int dernierEntree;
+	private Object[] dernierEntree;
 	private String resSignal,resEtatRetour,resRes,resIDFournisseur2;
 	private boolean resSuivi;
+	private int lastEntree;
 	
 	public PanelFormAjout(){
 		this.setLayout(new GridLayout(15,2,5,5));
@@ -91,18 +92,25 @@ public class PanelFormAjout extends JPanel {
 	}
 	
 	private void setID(){
-		String requete = "SELECT TOP 1 NoInterv FROM Intervention ORDER BY NoInterv DESC"; //Récupere la derniere entrée de la table
+		String requete = "SELECT NoInterv FROM Intervention"; //Récupere la derniere entrée de la table
 		try{
-			dernierEntree = AccessBDGen.executerInstruction(Projet.getConnexion(), requete);
-			dernierEntree++;
-			//System.out.println(dernierEntree);
-			tfNoInterv.setText(""+dernierEntree);//On met le champ tfNoINterv avec la valeur de l'id (dernier id + 1)
+			dernierEntree = AccessBDGen.creerListe1Colonne(Projet.getConnexion(), requete);
+			int i=0;
+			while(dernierEntree[i] != null){
+				i++;
+			}
+			if(i==0){ //Table vide
+				lastEntree=0;
+			}
+			else{
+				lastEntree = (Integer) dernierEntree[i-1];
+				lastEntree++;
+			}
+
+			tfNoInterv.setText(""+lastEntree);
 		}
-		catch (SQLException er) { //Si la table est vide il renvoie une erreur
-			//er.printStackTrace();
-			int dernierEntree = 0; //C'est donc l'entrée 0, la premiere entrée de la table
-			tfNoInterv.setText(""+dernierEntree); //On affiche le 0 (concaténation moin ennuyante qu'une transformation int -> String)
-			
+		catch (SQLException er) { 
+			er.printStackTrace();			
 		}
 	}
 	private void buildJTextField(){
@@ -346,12 +354,11 @@ public class PanelFormAjout extends JPanel {
 					}
 				}
 				//Probleme champ int à null
-				Integer retourTempInterne; //Classe Integer
+				String retourTempInterne;
 				if(tfTempsInterne.getText().length()==0){
-					retourTempInterne=null;
+					retourTempInterne="NULL";
 				}else{
-					String text =tfTempsInterne.getText();
-					retourTempInterne= Integer.parseInt(text);
+					retourTempInterne =tfTempsInterne.getText();
 				}
 				
 				if(!ok2.isSelected() && !declasse2.isSelected() && !suspens2.isSelected()){
@@ -368,7 +375,8 @@ public class PanelFormAjout extends JPanel {
 						resRes="Suspens";
 					}
 				}
-				if(fournisseur.getSelectedItem().equals("null")){
+				//System.out.println(fournisseur.getSelectedItem());
+				if(fournisseur.getSelectedItem() == null){
 					resIDFournisseur2="NULL";
 				}
 				else{
@@ -376,14 +384,16 @@ public class PanelFormAjout extends JPanel {
 					try{
 						String requestFournisseurID ="SELECT FournisseurId FROM Fournisseur WHERE Fournisseur.NomFourn ='"+fournisseur.getSelectedItem()+"'";
 						Object[] resIDFournisseur = AccessBDGen.creerListe1Colonne(Projet.getConnexion(), requestFournisseurID);
-						resIDFournisseur2=(String) resIDFournisseur[0];
+						resIDFournisseur2="'";
+						resIDFournisseur2+=(String) resIDFournisseur[0];
+						resIDFournisseur2+="'";
 						//System.out.println(resIDFournisseur[0]);
 					}
 					catch(SQLException err) {
 						err.printStackTrace();
 					}
 				}
-				if(intervention.getSelectedItem().equals("null")){
+				if(intervention.getSelectedItem() == null){
 					flag=1;
 					erreurText+=" le type d'intervention, ";
 				}
@@ -397,7 +407,7 @@ public class PanelFormAjout extends JPanel {
 						err.printStackTrace();
 					}
 				}
-				if(pc.getSelectedItem().equals("null")){
+				if(pc.getSelectedItem() == null){
 					flag=1;
 					erreurText+=" la référence du pc, ";
 				}
@@ -415,11 +425,10 @@ public class PanelFormAjout extends JPanel {
 							JOptionPane.QUESTION_MESSAGE, null, options,
 							options[0]);
 					if (n == 0) {
-						// TODO Ajout
 						String insert = "INSERT INTO Intervention(NoInterv,DateSignalement,DescriptifBrefProblème,SignaleurIncident,PreneurEnCharge,EtatInterv,SuiviViaFournisseur,DateContact,DatePrise,DateRetour,EtatRetour,DateRemiseService,TempsInterne,Résultat,FkPcUnit,FkTypeInterv,FkFournisseuIntervenant) "
-								+ "VALUES('"
-								+ dernierEntree 
-								+ "','"
+								+ "VALUES("
+								+ lastEntree
+								+ ",'"
 								+ retourDateSignalement
 								+ "','"
 								+ desciptif.getText()
@@ -429,9 +438,9 @@ public class PanelFormAjout extends JPanel {
 								+ tfPreneurEnCharge.getText()
 								+ "','"
 								+ resSignal
-								+ "','"
+								+ "',"
 								+ resSuivi
-								+ "','"
+								+ ",'"
 								+ retourDateContact
 								+ "','"
 								+ retourDatePrise
@@ -441,16 +450,16 @@ public class PanelFormAjout extends JPanel {
 								+ resEtatRetour
 								+ "','"
 								+ retourDateRemise
-								+ "','"
+								+ "',"
 								+ retourTempInterne
-								+ "','"
+								+ ",'"
 								+ resRes
 								+ "','"
 								+ pc.getSelectedItem()
 								+ "','"
 								+ resIDIntervention[0]
-								+ "','"
-								+ resIDFournisseur2 + "')";
+								+ "',"
+								+ resIDFournisseur2 + ")";
 						System.out.println(insert);
 						try{
 							 AccessBDGen.executerInstruction(Projet.getConnexion(),insert);
