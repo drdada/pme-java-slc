@@ -25,13 +25,13 @@ Liste
 	
 Ajout Intervention
 	-Disposition
-	-Code d'insert dans la BDD
+	+Code d'insert dans la BDD
 	+Jcombobox -> fournisseur, pc et types d'interventions (+code BDD)
 	/Caratere facultatif (gestion des jtextfield)(A TESTER)
 	+Jspinner -> date
 	+Recuperation de l'ID
-	/TempsInterne int à null ?
-	/Verification JcomboBoxs
+	+TempsInterne int à null ?
+	+Verification JcomboBoxs
 	-Remise a zero
 	+Associer jbox(OK)
 	-Champs NULL !
@@ -41,7 +41,8 @@ Recherche
 		-Date + lot de config
 			-Champs table
 			-Code SQL
-			-Comparer date
+			+Comparer date
+			-Disposition
 		-temps + type d'intervention
 			-Champs table
 			+Ecrire code SQL

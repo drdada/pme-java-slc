@@ -67,7 +67,7 @@ public class PanelRechercheDate extends JPanel{
 	private class MyListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			String retourDateSignalement = new SimpleDateFormat("dd/MM/yyyy").format(sDate.getValue());
-			String request ="SELECT Intervention.* FROM Intervention WHERE Intervention.DateSignalement > "+retourDateSignalement+"";
+			String request ="SELECT Intervention.* FROM Intervention WHERE Intervention.DateSignalement > #"+retourDateSignalement+"#";
 			try{
 				MyTableModel tab = AccessBDGen.creerTableModel(Projet.getConnexion(), request);
 				table.setModel(tab);

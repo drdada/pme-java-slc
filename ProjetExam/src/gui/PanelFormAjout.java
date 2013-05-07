@@ -427,39 +427,39 @@ public class PanelFormAjout extends JPanel {
 					if (n == 0) {
 						String insert = "INSERT INTO Intervention(NoInterv,DateSignalement,DescriptifBrefProblème,SignaleurIncident,PreneurEnCharge,EtatInterv,SuiviViaFournisseur,DateContact,DatePrise,DateRetour,EtatRetour,DateRemiseService,TempsInterne,Résultat,FkPcUnit,FkTypeInterv,FkFournisseuIntervenant) "
 								+ "VALUES("
-								+ lastEntree
-								+ ",'"
-								+ retourDateSignalement
+								+ lastEntree //int
+								+ ",#"
+								+ retourDateSignalement //Date
+								+ "#,'"
+								+ desciptif.getText() //String
 								+ "','"
-								+ desciptif.getText()
+								+ tfSignaleur.getText() //String
 								+ "','"
-								+ tfSignaleur.getText()
+								+ tfPreneurEnCharge.getText() //String
 								+ "','"
-								+ tfPreneurEnCharge.getText()
-								+ "','"
-								+ resSignal
+								+ resSignal //String
 								+ "',"
-								+ resSuivi
+								+ resSuivi //String
+								+ ",#"
+								+ retourDateContact //date
+								+ "#,#"
+								+ retourDatePrise //date
+								+ "#,#"
+								+ retourDateRetour //date
+								+ "#,'"
+								+ resEtatRetour //String
+								+ "',#"
+								+ retourDateRemise //date
+								+ "#,"
+								+ retourTempInterne //int
 								+ ",'"
-								+ retourDateContact
+								+ resRes //String
 								+ "','"
-								+ retourDatePrise
+								+ pc.getSelectedItem() //String
 								+ "','"
-								+ retourDateRetour
-								+ "','"
-								+ resEtatRetour
-								+ "','"
-								+ retourDateRemise
+								+ resIDIntervention[0] //String
 								+ "',"
-								+ retourTempInterne
-								+ ",'"
-								+ resRes
-								+ "','"
-								+ pc.getSelectedItem()
-								+ "','"
-								+ resIDIntervention[0]
-								+ "',"
-								+ resIDFournisseur2 + ")";
+								+ resIDFournisseur2 + ")"; //String
 						System.out.println(insert);
 						try{
 							 AccessBDGen.executerInstruction(Projet.getConnexion(),insert);
