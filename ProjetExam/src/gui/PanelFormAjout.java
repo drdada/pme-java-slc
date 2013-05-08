@@ -36,7 +36,7 @@ public class PanelFormAjout extends JPanel {
 	private JTextArea desciptif;
 	private Object[] tableIntervention,tablePC,tableFourn,resIDIntervention;
 	private Object[] dernierEntree;
-	private String resSignal,resEtatRetour,resRes,resIDFournisseur2;
+	private String resSignal,resEtatRetour,resRes,resIDFournisseur2,signaleur,description;
 	private boolean resSuivi;
 	private int lastEntree;
 	
@@ -291,15 +291,26 @@ public class PanelFormAjout extends JPanel {
 				String erreurText="";
 				//Si on a appuyé sur le bouton envoi
 				if(desciptif.getText().length()==0){ //Si on ne remplis pas le champs descriptif
-					desciptif.setText("NULL"); //On écrit un blanc dedans
+					description="NULL"; //On écrit un blanc dedans
 				}
-				if(tfSignaleur.getText().length()==0){
-					tfSignaleur.setText("NULL");
+				else{
+					description="'";
+					description+=desciptif.getText()+"'";
 				}
+				
+				if(tfSignaleur.getText().length()==0){ //Si on n'a pas mit le nom du signaleur
+					signaleur="NULL";
+				}
+				else{
+					signaleur="'";
+					signaleur+=tfSignaleur.getText()+"'";
+				}
+				
 				if(tfPreneurEnCharge.getText().length()==0){
 					flag=1;
 					erreurText+=" l'administrateur prenant en charge, ";
 				}
+				
 				if(!signale.isSelected() && !encours.isSelected() && !cloture.isSelected()){
 					flag=1;
 					erreurText+=" l'état de l'intervention, ";
@@ -315,6 +326,7 @@ public class PanelFormAjout extends JPanel {
 						resSignal="Clôturé";
 					}
 				}
+				
 				if(!suivi.isSelected() && !nonSuivi.isSelected()){
 					flag=1;
 					erreurText+=" suivi via le fournisseur, ";
@@ -328,6 +340,7 @@ public class PanelFormAjout extends JPanel {
 					}
 					//On associe la réponse a un int
 				}
+				
 				String retourDateSignalement = new SimpleDateFormat("dd/MM/yyyy").format(dateSignalement.getValue());
 				if(retourDateSignalement.equals("01/01/1970")){
 					flag=1;
@@ -335,25 +348,52 @@ public class PanelFormAjout extends JPanel {
 				}
 				
 				String retourDateContact = new SimpleDateFormat("dd/MM/yyyy").format(dateContact.getValue());
+				if(retourDateContact.equals("01/01/1970")){
+					retourDateContact="NULL";
+				}
+				else{
+					retourDateContact="#"+retourDateContact+"#";
+				}
+				
 				String retourDatePrise = new SimpleDateFormat("dd/MM/yyyy").format(datePrise.getValue());
+				if(retourDatePrise.equals("01/01/1970")){
+					retourDatePrise="NULL";
+				}
+				else{
+					retourDatePrise="#"+retourDatePrise+"#";
+				}
+				
 				String retourDateRetour = new SimpleDateFormat("dd/MM/yyyy").format(dateRetour.getValue());
+				if(retourDateRetour.equals("01/01/1970")){
+					retourDateRetour="NULL";
+				}
+				else{
+					retourDateRetour="#"+retourDateRetour+"#";
+				}
+				
 				String retourDateRemise = new SimpleDateFormat("dd/MM/yyyy").format(dateRemiseService.getValue());
-
+				if(retourDateRemise.equals("01/01/1970")){
+					retourDateRemise="NULL";
+				}
+				else{
+					retourDateRemise="#"+retourDateRemise+"#";
+				}
+				
 				if(!ok1.isSelected() && !declasse1.isSelected() && !suspens1.isSelected()){
 					resEtatRetour="NULL";
 				}
 				else{
 					if(ok1.isSelected()){
-						resEtatRetour="OK";
+						resEtatRetour="'OK'";
 					}
 					else if(declasse1.isSelected()){
-						resEtatRetour="Déclassé";
+						resEtatRetour="'Déclassé'";
 					}
 					else{
-						resEtatRetour="Suspens";
+						resEtatRetour="'Suspens'";
 					}
 				}
-				//Probleme champ int à null
+
 				String retourTempInterne;
 				if(tfTempsInterne.getText().length()==0){
 					retourTempInterne="NULL";
@@ -366,13 +406,13 @@ public class PanelFormAjout extends JPanel {
 				}
 				else{
 					if(ok2.isSelected()){
-						resRes="OK";
+						resRes="'OK'";
 					}
 					else if(declasse2.isSelected()){
-						resRes="Déclassé";
+						resRes="'Déclassé'";
 					}
 					else{
-						resRes="Suspens";
+						resRes="'Suspens'";
 					}
 				}
 				//System.out.println(fournisseur.getSelectedItem());
@@ -430,31 +470,31 @@ public class PanelFormAjout extends JPanel {
 								+ lastEntree //int
 								+ ",#"
 								+ retourDateSignalement //Date
-								+ "#,'"
-								+ desciptif.getText() //String
-								+ "','"
-								+ tfSignaleur.getText() //String
-								+ "','"
+								+ "#,"
+								+ description //String
+								+ ","
+								+ signaleur //String
+								+ ",'"
 								+ tfPreneurEnCharge.getText() //String
 								+ "','"
 								+ resSignal //String
 								+ "',"
 								+ resSuivi //String
-								+ ",#"
+								+ ","
 								+ retourDateContact //date
-								+ "#,#"
+								+ ","
 								+ retourDatePrise //date
-								+ "#,#"
+								+ ","
 								+ retourDateRetour //date
-								+ "#,'"
+								+ ","
 								+ resEtatRetour //String
-								+ "',#"
+								+ ","
 								+ retourDateRemise //date
-								+ "#,"
+								+ ","
 								+ retourTempInterne //int
-								+ ",'"
+								+ ","
 								+ resRes //String
-								+ "','"
+								+ ",'"
 								+ pc.getSelectedItem() //String
 								+ "','"
 								+ resIDIntervention[0] //String

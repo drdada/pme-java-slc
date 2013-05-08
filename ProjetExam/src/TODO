@@ -34,7 +34,7 @@ Ajout Intervention
 	+Verification JcomboBoxs
 	-Remise a zero
 	+Associer jbox(OK)
-	-Champs NULL !
+	/Champs NULL !
 	
 Recherche
 	+Tab

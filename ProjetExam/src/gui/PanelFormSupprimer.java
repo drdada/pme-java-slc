@@ -35,6 +35,7 @@ public class PanelFormSupprimer extends JPanel{
 		this.add(fourn);
 		this.add(raff);
 		this.add(supprimer);
+		this.add(tableRes);
 	}
 	
 	private void remplirJcomboBox(){
@@ -55,9 +56,12 @@ public class PanelFormSupprimer extends JPanel{
 				String requestIdFour ="SELECT FournisseurId FROM Fournisseur WHERE NomFourn = '"+fourn.getSelectedItem()+"'";
 				try{
 					idFour = AccessBDGen.creerListe1Colonne(Projet.getConnexion(), requestIdFour);
-					String request = "SELECT Intervention.* FROM Intervention WHERE FkFournisseurIntervenant = '"+idFour[0]+"' ";
+					String request = "SELECT Intervention.* FROM Intervention WHERE FkFournisseuIntervenant = '"+idFour[0]+"' ";
+					System.out.println(request);
 					MyTableModel tab = AccessBDGen.creerTableModel(Projet.getConnexion(), request);
 					tableRes.setModel(tab);
+					PanelFormSupprimer.this.repaint();
+					PanelFormSupprimer.this.validate();
 				}catch (SQLException er){
 					er.printStackTrace();
 				}
