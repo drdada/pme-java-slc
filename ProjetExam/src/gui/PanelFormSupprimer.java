@@ -57,15 +57,15 @@ public class PanelFormSupprimer extends JPanel{
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource().equals(raff)) {
 				String requestIdFour = "SELECT FournisseurId FROM Fournisseur WHERE NomFourn = '"
-						+ fourn.getSelectedItem() + "'";
+						+ fourn.getSelectedItem() + "'";// Requete suppression intervention
 				try {
 					idFour = AccessBDGen.creerListe1Colonne(
-							Projet.getConnexion(), requestIdFour);
+							Projet.getConnexion(), requestIdFour);// Envois de la requete a la db
 					String request = "SELECT Intervention.* FROM Intervention WHERE FkFournisseuIntervenant = '"
-							+ idFour[0] + "' ";
+							+ idFour[0] + "' ";// Requete suppression intervention
 					MyTableModel tab = AccessBDGen.creerTableModel(
-							Projet.getConnexion(), request);
-					tableRes.setModel(tab);
+							Projet.getConnexion(), request);// Envois de la requete a la db
+					tableRes.setModel(tab); // remplir la table avec resusltat de la requete
 					PanelFormSupprimer.this.repaint();
 					PanelFormSupprimer.this.validate();
 				} catch (SQLException er) {
@@ -74,30 +74,30 @@ public class PanelFormSupprimer extends JPanel{
 			}
 			if (e.getSource().equals(supprimer)) {
 				if (textNoInt.getText().length() != 0) {
-					Object[] options = { "Oui", "Non" };
+					Object[] options = { "Oui", "Non" }; // Demande de confirmation de suppression
 					int n = JOptionPane.showOptionDialog(null,
 							"Voulez-vous vraiment supprimer cette intervention ?",
 							"Vérification", JOptionPane.YES_NO_OPTION,
 							JOptionPane.QUESTION_MESSAGE, null, options,
 							options[0]);
-					if (n == 0) {
+					if (n == 0) {// Comfirmation de la suppression
 						try {
 
 							String request = "DELETE FROM Intervention WHERE NoInterv = "
-									+ textNoInt.getText() + "";
+									+ textNoInt.getText() + ""; // Requete suppression intervention
 							// System.out.println(request);
 							int res = AccessBDGen.executerInstruction(
-									Projet.getConnexion(), request);
+									Projet.getConnexion(), request); // Envois de la requete a la db
 							// System.out.println(res);
-							if(res==0){
+							if(res==0){ // Si la suppression ne s'est pas faite
 								JOptionPane.showMessageDialog(null, 
-										"Erreur", "Erreur", JOptionPane.ERROR_MESSAGE);
+										"Erreur", "L'éléments n'est pas présent dans la base de données.", JOptionPane.ERROR_MESSAGE);
 							}
-							else{
+							else{// Si la suppression a été faite
 								JOptionPane.showMessageDialog(null, 
-										"Ok", "Réussi", JOptionPane.INFORMATION_MESSAGE);
+										"Ok", "Vous avez supprimer l'intervention numéro"+textNoInt.getText()+".", JOptionPane.INFORMATION_MESSAGE);
 							}
-							textNoInt.setText("0");
+							textNoInt.setText("0");// Remet la valeur par défaut du No d'intervention
 						} catch (SQLException er) {
 							er.printStackTrace();
 						}
