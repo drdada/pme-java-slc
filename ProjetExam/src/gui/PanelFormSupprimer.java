@@ -4,10 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JPanel;
-import javax.swing.JTable;
+import javax.swing.*;
 
 import main.Projet;
 import dal.AccessBDGen;
@@ -18,6 +15,8 @@ public class PanelFormSupprimer extends JPanel{
 	private JComboBox fourn;
 	private Object[] tableFourn,idFour;
 	private JTable tableRes;
+	private JTextField textNoInt;
+	private JLabel labelNoInt;
 	
 	public PanelFormSupprimer(){
 		
@@ -25,7 +24,8 @@ public class PanelFormSupprimer extends JPanel{
 		supprimer = new JButton("Supprimer");
 		raff = new JButton("Raffraichir");
 		tableRes = new JTable();
-		
+		textNoInt = new JTextField();
+		labelNoInt = new JLabel();
 		
 		
 		MyListener myListener = new MyListener();
@@ -35,6 +35,8 @@ public class PanelFormSupprimer extends JPanel{
 		this.add(fourn);
 		this.add(raff);
 		this.add(supprimer);
+		this.add(labelNoInt);
+		this.add(textNoInt);
 		this.add(tableRes);
 	}
 	
@@ -57,7 +59,6 @@ public class PanelFormSupprimer extends JPanel{
 				try{
 					idFour = AccessBDGen.creerListe1Colonne(Projet.getConnexion(), requestIdFour);
 					String request = "SELECT Intervention.* FROM Intervention WHERE FkFournisseuIntervenant = '"+idFour[0]+"' ";
-					System.out.println(request);
 					MyTableModel tab = AccessBDGen.creerTableModel(Projet.getConnexion(), request);
 					tableRes.setModel(tab);
 					PanelFormSupprimer.this.repaint();
@@ -67,7 +68,15 @@ public class PanelFormSupprimer extends JPanel{
 				}
 			}
 			if(e.getSource().equals(supprimer)){
-				
+				if(textNoInt.getText().length()==0)
+					try{
+						
+						String request = "DELETE FROM Intervention WHERE NoInterv = '"+textNoInt.getText()+"'";
+						int res = AccessBDGen.executerInstruction(Projet.getConnexion(), request);
+						System.out.println(res);
+					}catch (SQLException er){
+						er.printStackTrace();
+					}
 			}
 
 		}
