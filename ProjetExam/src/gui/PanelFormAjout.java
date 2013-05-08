@@ -507,7 +507,8 @@ public class PanelFormAjout extends JPanel {
 						catch(SQLException err) {
 							err.printStackTrace();
 						}
-						// TODO Reset
+						//reset
+						
 						 
 					}
 				}
