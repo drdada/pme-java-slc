@@ -460,7 +460,7 @@ public class PanelFormAjout extends JPanel {
 				else{
 					Object[] options = {"Oui","Non"};
 					int n = JOptionPane.showOptionDialog(null,
-							"Voulez-vous vraiment ajouter cet utilisateur ?",
+							"Voulez-vous vraiment ajouter cette intervention ?",
 							"Vérification", JOptionPane.YES_NO_OPTION,
 							JOptionPane.QUESTION_MESSAGE, null, options,
 							options[0]);
@@ -501,15 +501,30 @@ public class PanelFormAjout extends JPanel {
 								+ "',"
 								+ resIDFournisseur2 + ")"; //String
 						System.out.println(insert);
+						
 						try{
 							 AccessBDGen.executerInstruction(Projet.getConnexion(),insert);
+							 lastEntree++; // on incremente l'id au cas ou on remplirais directement une autre entree
 						}
 						catch(SQLException err) {
 							err.printStackTrace();
 						}
 						//reset
+						tfNoInterv.setText(""+lastEntree);
 						
-						 
+						Calendar calendarr = new GregorianCalendar(1970,Calendar.JANUARY,1);
+						dateSignalement.setValue(calendarr.getTime());
+						
+						desciptif.setText("");
+						
+						tfSignaleur.setText("");
+						
+						
+						dateContact.setValue(calendarr.getTime());
+						datePrise.setValue(calendarr.getTime());
+						dateRemiseService.setValue(calendarr.getTime());
+						dateRetour.setValue(calendarr.getTime());
+						
 					}
 				}
 			}
