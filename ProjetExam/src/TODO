@@ -24,7 +24,7 @@ Liste
 	+Valeurs d'arguments non valides(FAIT, la requete etais mal placée)
 	
 Ajout Intervention
-	-Disposition
+	+Disposition
 	+Code d'insert dans la BDD
 	+Jcombobox -> fournisseur, pc et types d'interventions (+code BDD)
 	/Caratere facultatif (gestion des jtextfield)(A TESTER)
@@ -35,23 +35,25 @@ Ajout Intervention
 	-Remise a zero
 	+Associer jbox(OK)
 	/Champs NULL !
+	- Confirmation d'ajout ou echec
 	
 Recherche
 	+Tab
 		-Date + lot de config
 			-Champs table
-			-Code SQL
+			+Code SQL
 			+Comparer date
-			-Disposition
+			+Disposition
 		-temps + type d'intervention
 			-Champs table
 			+Ecrire code SQL
-			-Disposition
+			+Disposition
 
 Suppression
-	-Disposition
-	-Code delete BDD
-	-Recherche par Fournisseur
-	-Jtable en fonction de la recherche
-	-Suppression bouton et verification
+	-Champs table
+	+Disposition
+	+Code delete BDD
+	+Recherche par Fournisseur
+	+Jtable en fonction de la recherche
+	+Suppression bouton et verification
 	

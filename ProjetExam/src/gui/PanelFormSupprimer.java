@@ -25,7 +25,7 @@ public class PanelFormSupprimer extends JPanel{
 		raff = new JButton("Raffraichir");
 		tableRes = new JTable();
 		textNoInt = new JTextField("0",5);
-		labelNoInt = new JLabel();
+		labelNoInt = new JLabel("Numéro Intervention : ");
 		
 		
 		MyListener myListener = new MyListener();
@@ -91,11 +91,11 @@ public class PanelFormSupprimer extends JPanel{
 							// System.out.println(res);
 							if(res==0){ // Si la suppression ne s'est pas faite
 								JOptionPane.showMessageDialog(null, 
-										"Erreur", "L'éléments n'est pas présent dans la base de données.", JOptionPane.ERROR_MESSAGE);
+										"L'éléments n'est pas présent dans la base de données.", "Erreur", JOptionPane.ERROR_MESSAGE);
 							}
 							else{// Si la suppression a été faite
 								JOptionPane.showMessageDialog(null, 
-										"Ok", "Vous avez supprimer l'intervention numéro"+textNoInt.getText()+".", JOptionPane.INFORMATION_MESSAGE);
+										"Vous avez supprimer l'intervention numéro"+textNoInt.getText()+".", "Ok", JOptionPane.INFORMATION_MESSAGE);
 							}
 							textNoInt.setText("0");// Remet la valeur par défaut du No d'intervention
 						} catch (SQLException er) {

@@ -17,6 +17,8 @@ import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.SpinnerDateModel;
 
+import com.sun.org.apache.xpath.internal.FoundIndex;
+
 import main.Projet;
 
 import dal.AccessBDGen;
@@ -33,8 +35,8 @@ public class PanelRechercheDate extends JPanel{
 	
 	public PanelRechercheDate(){
 		table = new JTable();
-		lDate = new JLabel();
-		lLot = new JLabel();
+		lDate = new JLabel("Date: ");
+		lLot = new JLabel("Lot: ");
 		Calendar calendarr = new GregorianCalendar(1970,Calendar.JANUARY,1);
 		SpinnerDateModel modelDate = new SpinnerDateModel(new Date(), null, null, Calendar.DATE); //modele de data + initialisation
 		sDate = new JSpinner(modelDate); //Création JSpinner
@@ -46,13 +48,14 @@ public class PanelRechercheDate extends JPanel{
 		raffraichir.addActionListener(my);
 		
 		js = new JScrollPane(table);
-		add(js);
+		
 		
 		this.add(lLot);
 		this.add(cblot);
 		this.add(lDate);
 		this.add(sDate);
 		this.add(raffraichir);
+		add(js);
 	}
 	private void buildCBLot(){
 		String requestLot="SELECT NoLot FROM LotConfiguration";
@@ -66,9 +69,13 @@ public class PanelRechercheDate extends JPanel{
 	}
 	private class MyListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			String requestFourn="SELECT FkFournisseurLot FROM LotConfiguration WHERE LotConfiguration.NoLot = "+cblot.getSelectedItem()+"";
+			System.out.println(requestFourn);
 			String retourDateSignalement = new SimpleDateFormat("dd/MM/yyyy").format(sDate.getValue());
-			String request ="SELECT Intervention.* FROM Intervention WHERE Intervention.DateSignalement > #"+retourDateSignalement+"#";
 			try{
+				Object[] fourn = AccessBDGen.creerListe1Colonne(Projet.getConnexion(), requestFourn);
+				String request ="SELECT Intervention.* FROM Intervention WHERE Intervention.DateSignalement > #"+retourDateSignalement+"# AND FkFournisseuIntervenant ='"+fourn[0]+"'";
+				System.out.println(request);
 				MyTableModel tab = AccessBDGen.creerTableModel(Projet.getConnexion(), request);
 				table.setModel(tab);
 				PanelRechercheDate.this.repaint();
