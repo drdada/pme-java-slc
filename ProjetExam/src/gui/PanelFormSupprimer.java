@@ -24,7 +24,7 @@ public class PanelFormSupprimer extends JPanel{
 		supprimer = new JButton("Supprimer");
 		raff = new JButton("Raffraichir");
 		tableRes = new JTable();
-		textNoInt = new JTextField("0");
+		textNoInt = new JTextField("0",5);
 		labelNoInt = new JLabel();
 		
 		
@@ -34,9 +34,9 @@ public class PanelFormSupprimer extends JPanel{
 		
 		this.add(fourn);
 		this.add(raff);
-		this.add(supprimer);
 		this.add(labelNoInt);
 		this.add(textNoInt);
+		this.add(supprimer);
 		this.add(tableRes);
 	}
 	

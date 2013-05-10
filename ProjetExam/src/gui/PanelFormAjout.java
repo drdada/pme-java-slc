@@ -39,9 +39,10 @@ public class PanelFormAjout extends JPanel {
 	private String resSignal,resEtatRetour,resRes,resIDFournisseur2,signaleur,description;
 	private boolean resSuivi;
 	private int lastEntree;
+	private JLabel vide1,vide2,vide3,vide4,vide5,vide6;
 	
 	public PanelFormAjout(){
-		this.setLayout(new GridLayout(15,2,5,5));
+		this.setLayout(new GridLayout(12,4,1,1));
 		buildJlabel();
 		buildJcomboBox();
 		buildJTextField();
@@ -49,6 +50,12 @@ public class PanelFormAjout extends JPanel {
 		buildDate();
 		buildTextArea();
 		setID();
+		vide1 = new JLabel("");
+		vide2 = new JLabel("");
+		vide3 = new JLabel("");
+		vide4 = new JLabel("");
+		vide5 = new JLabel("");
+		vide6 = new JLabel("");
 		
 		MyListener ml = new MyListener();
 		envoi = new JButton("Envoi");
@@ -64,16 +71,21 @@ public class PanelFormAjout extends JPanel {
 		this.add(tfSignaleur);
 		this.add(lPreneurEnCharge);
 		this.add(tfPreneurEnCharge);
+		this.add(vide1);
+		this.add(vide2);
 		this.add(lEtatInterv);
 		this.add(signale);this.add(encours);this.add(cloture);
 		this.add(lSuiviViaFournisseur);
 		this.add(suivi);this.add(nonSuivi);
+		this.add(vide3);
 		this.add(lDateContact);
 		this.add(dateContact);
 		this.add(lDatePrise);
 		this.add(datePrise);
 		this.add(lDateRetour);
 		this.add(dateRetour);
+		this.add(vide4);
+		this.add(vide5);
 		this.add(lEtatRetour);
 		this.add(ok1);this.add(declasse1);this.add(suspens1);
 		this.add(lDateRemiseService);
@@ -88,6 +100,7 @@ public class PanelFormAjout extends JPanel {
 		this.add(intervention);
 		this.add(lFkPcUnit);
 		this.add(pc);
+		this.add(vide6);
 		this.add(envoi);
 	}
 	
