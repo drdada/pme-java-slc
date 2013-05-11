@@ -61,7 +61,7 @@ public class PanelFormSupprimer extends JPanel{
 				try {
 					idFour = AccessBDGen.creerListe1Colonne(
 							Projet.getConnexion(), requestIdFour);// Envois de la requete a la db
-					String request = "SELECT Intervention.* FROM Intervention WHERE FkFournisseuIntervenant = '"
+					String request = "SELECT NoInterv,DateSignalement,Résultat,FkFournisseuIntervenant FROM Intervention WHERE FkFournisseuIntervenant = '"
 							+ idFour[0] + "' ";// Requete suppression intervention
 					MyTableModel tab = AccessBDGen.creerTableModel(
 							Projet.getConnexion(), request);// Envois de la requete a la db

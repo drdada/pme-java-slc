@@ -38,7 +38,7 @@ public class PanelFormAjout extends JPanel {
 	private Object[] dernierEntree;
 	private String resSignal,resEtatRetour,resRes,resIDFournisseur2,signaleur,description;
 	private boolean resSuivi;
-	private int lastEntree;
+	private int lastEntree,res=0;
 	private JLabel vide1,vide2,vide3,vide4,vide5,vide6;
 	
 	public PanelFormAjout(){
@@ -108,15 +108,19 @@ public class PanelFormAjout extends JPanel {
 		String requete = "SELECT NoInterv FROM Intervention"; //Récupere la derniere entrée de la table
 		try{
 			dernierEntree = AccessBDGen.creerListe1Colonne(Projet.getConnexion(), requete);
-			int i=0;
+			int i=0,max=0;
 			while(dernierEntree[i] != null){
+				if(max< (Integer) dernierEntree[i]){
+					max= (Integer) dernierEntree[i];
+				}
 				i++;
 			}
 			if(i==0){ //Table vide
 				lastEntree=0;
 			}
 			else{
-				lastEntree = (Integer) dernierEntree[i-1];
+				
+				lastEntree = max;
 				lastEntree++;
 			}
 
@@ -516,27 +520,48 @@ public class PanelFormAjout extends JPanel {
 						System.out.println(insert);
 						
 						try{
-							 AccessBDGen.executerInstruction(Projet.getConnexion(),insert);
-							 lastEntree++; // on incremente l'id au cas ou on remplirais directement une autre entree
+							res = AccessBDGen.executerInstruction(Projet.getConnexion(),insert);
+							lastEntree++; // on incremente l'id au cas ou on remplirais directement une autre entree
+
 						}
 						catch(SQLException err) {
 							err.printStackTrace();
 						}
-						//reset
-						tfNoInterv.setText(""+lastEntree);
+						//On test le résultat
+						if(res==0){//L'insert a fail
+							JOptionPane.showMessageDialog(null, "Erreur dans l'insertion!","Erreur", JOptionPane.ERROR_MESSAGE);
+							
+						}else{//L'insert est OK
+							JOptionPane.showMessageDialog(null, "Intervention bien ajoutée","OK", JOptionPane.INFORMATION_MESSAGE);
+							//On reset les champs pour une insertion direct aprés
+							tfNoInterv.setText(""+lastEntree);
+							
+							Calendar calendarr = new GregorianCalendar(1970,Calendar.JANUARY,1);
+							dateSignalement.setValue(calendarr.getTime());
+							
+							desciptif.setText("");
+							
+							tfSignaleur.setText("");
+							
+							tfPreneurEnCharge.setText("");
+							
+							bgEtatInterv.clearSelection();//décoche les choix
+							
+							bgSuiviViaFournisseur.clearSelection();
+							
+							bgEtatRetour.clearSelection();
+							
+							tfTempsInterne.setText(""); 
+							
+							bgResulstat.clearSelection();
+							
+							dateContact.setValue(calendarr.getTime());
+							datePrise.setValue(calendarr.getTime());
+							dateRemiseService.setValue(calendarr.getTime());
+							dateRetour.setValue(calendarr.getTime());
+							
+						}
 						
-						Calendar calendarr = new GregorianCalendar(1970,Calendar.JANUARY,1);
-						dateSignalement.setValue(calendarr.getTime());
-						
-						desciptif.setText("");
-						
-						tfSignaleur.setText("");
-						
-						
-						dateContact.setValue(calendarr.getTime());
-						datePrise.setValue(calendarr.getTime());
-						dateRemiseService.setValue(calendarr.getTime());
-						dateRetour.setValue(calendarr.getTime());
 						
 					}
 				}

@@ -68,7 +68,7 @@ public class PanelRechercheTemps extends JPanel {
 				String requestTyInt ="SELECT CodeTypeInt FROM TypeIntervention WHERE LibelleTypeInt = '"+cbType.getSelectedItem()+"'";
 				try{
 				idType = AccessBDGen.creerListe1Colonne(Projet.getConnexion(), requestTyInt);
-				String request = "SELECT Intervention.* FROM Intervention WHERE Intervention.TempsInterne > "+tfTemps.getText()+" AND Intervention.FkTypeInterv = '"+idType[0]+"'";
+				String request = "SELECT NoInterv,FkTypeInterv,TempsInterne FROM Intervention WHERE Intervention.TempsInterne > "+tfTemps.getText()+" AND Intervention.FkTypeInterv = '"+idType[0]+"'";
 				MyTableModel tab = AccessBDGen.creerTableModel(Projet.getConnexion(), request);
 				tableRes.setModel(tab);
 				PanelRechercheTemps.this.validate();

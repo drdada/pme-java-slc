@@ -32,25 +32,25 @@ Ajout Intervention
 	+Recuperation de l'ID
 	+TempsInterne int à null ?
 	+Verification JcomboBoxs
-	-Remise a zero
+	+Remise a zero
 	+Associer jbox(OK)
 	/Champs NULL !
-	- Confirmation d'ajout ou echec
+	/Confirmation d'ajout ou echec
 	
 Recherche
 	+Tab
-		-Date + lot de config
-			-Champs table
+		+Date + lot de config
+			+Champs table
 			+Code SQL
 			+Comparer date
 			+Disposition
-		-temps + type d'intervention
-			-Champs table
+		+Temps + type d'intervention
+			+Champs table
 			+Ecrire code SQL
 			+Disposition
 
 Suppression
-	-Champs table
+	+Champs table
 	+Disposition
 	+Code delete BDD
 	+Recherche par Fournisseur

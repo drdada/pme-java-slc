@@ -74,7 +74,7 @@ public class PanelRechercheDate extends JPanel{
 			String retourDateSignalement = new SimpleDateFormat("dd/MM/yyyy").format(sDate.getValue());
 			try{
 				Object[] fourn = AccessBDGen.creerListe1Colonne(Projet.getConnexion(), requestFourn);
-				String request ="SELECT Intervention.* FROM Intervention WHERE Intervention.DateSignalement > #"+retourDateSignalement+"# AND FkFournisseuIntervenant ='"+fourn[0]+"'";
+				String request ="SELECT NoInterv,DateSignalement,FkFournisseuIntervenant FROM Intervention WHERE Intervention.DateSignalement > #"+retourDateSignalement+"# AND FkFournisseuIntervenant ='"+fourn[0]+"'";
 				System.out.println(request);
 				MyTableModel tab = AccessBDGen.creerTableModel(Projet.getConnexion(), request);
 				table.setModel(tab);
