@@ -4,8 +4,10 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -19,11 +21,15 @@ public class ClientGUI extends JPanel{
 	private JTextField tfid,tfnom,tfprenom,tfadresse,tfcodep,tfpays,tftelfixe,tftelportable;
 	private Sonson sonson;
 	private JCheckBox editable;
+	private JButton enreg,ajout,retour;
+	private JPanel pan;
 	
-	public ClientGUI(int id){
+	
+	public ClientGUI(int id,JPanel pan){
 		this.id= id;
 		int flag=0;
 		this.arrayclient = sonson.getArrayclient();
+		this.pan = pan;
 
 		declaration();
 		
@@ -43,10 +49,19 @@ public class ClientGUI extends JPanel{
 		}
 		if(flag==0){
 			//TODO boite d'erreur et redirection
-			System.out.println("Element  non trouvé");
+			JOptionPane.showMessageDialog(null, "Oups,id non trouvé, veuillez vérifier!","Erreur", JOptionPane.ERROR_MESSAGE); //On affiche un seul message d'erreur
+			pan.removeAll();
+			RechercheClient rc = new RechercheClient(sonson, pan);
+			pan.add(rc);
+			pan.repaint();
+			pan.validate();
+			//System.out.println("Element  non trouvé");
+		}
+		else{
+			ajout();
 		}
 		
-		ajout();
+		
 	}
 
 	private void declaration(){
@@ -108,9 +123,21 @@ public class ClientGUI extends JPanel{
 			// TODO Auto-generated method stub
 			if(editable.isSelected()){
 				tfnom.setEditable(true);
+				tfprenom.setEditable(true);
+				tfadresse.setEditable(true);
+				tfcodep.setEditable(true);
+				tfpays.setEditable(true);
+				tftelfixe.setEditable(true);
+				tftelportable.setEditable(true);
 			}
 			else{
 				tfnom.setEditable(false);
+				tfprenom.setEditable(false);
+				tfadresse.setEditable(false);
+				tfcodep.setEditable(false);
+				tfpays.setEditable(false);
+				tftelfixe.setEditable(false);
+				tftelportable.setEditable(false);
 			}
 		}
     }

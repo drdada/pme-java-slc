@@ -1,26 +1,29 @@
 package org.sonson.gui;
 
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-
-import javax.swing.*;
-
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JLabel;
+import javax.swing.JScrollBar;
+import javax.swing.JEditorPane;
+import javax.swing.ScrollPaneConstants;
 
-public class Aide extends JPanel{
-	private JEditorPane jep;	
-	public Aide(){
-		jep = new JEditorPane();
-		jep.setEditable(false);
-		jep.setContentType("text/html");
-		//jep.setText("coucou");
-		//TODO Aide
-		//this.setPreferredSize(new Dimension(200,200));
-		//jep = new JEditorPane();
-		JScrollPane js = new JScrollPane();
-		js.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		js.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		jep.setText("<html>"+
+
+public class Aide extends JFrame{
+	public Aide() {
+		getContentPane().setLayout(null);
+		this.setTitle("Aide");
+		this.setBounds(0, 0, 620, 640);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setBounds(0, 0, 600, 600);
+		getContentPane().add(scrollPane);
+		
+		JEditorPane editorPane = new JEditorPane();
+		editorPane.setContentType("text/html");
+		editorPane.setText("<html>"+
 				"<body>"+
 				"<h1>Bienvenue dans l'aide</h1>"+
 				"<h2>Table des matiéres</h2>"+
@@ -188,8 +191,7 @@ public class Aide extends JPanel{
 				""+
 				"</body>"+
 				"</html>");
-		js.setViewportView(jep);
-		this.add(js);
-		
+		scrollPane.setViewportView(editorPane);
+		this.setVisible(true);
 	}
 }

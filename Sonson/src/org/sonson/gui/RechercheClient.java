@@ -94,7 +94,7 @@ public class RechercheClient extends JPanel{
 				id= Integer.parseInt(form.getText());
 				//System.out.println(id);
 				pan.removeAll();
-				ClientGUI cligui = new ClientGUI(id);
+				ClientGUI cligui = new ClientGUI(id,pan);
 				pan.add(cligui);
 				pan.repaint();
 				pan.validate();
