@@ -19,14 +19,14 @@ public class Inventaire extends JPanel{
 
 	private ButtonGroup choixProduit;
 	private JRadioButton service, produit;
-	private JLabel texte;
+	private JLabel texte,empty;
 	private JTextField nom, description, prix;
 	private JButton envoi;
 	private Sonson ss;
 	
 	public Inventaire(Sonson ss){
 		this.ss = ss;
-		this.setLayout(new GridLayout(5,2,5,5));
+		this.setLayout(new GridLayout(3,3));
 		
 		texte = new JLabel("Type :");
 		choixProduit = new ButtonGroup();
@@ -36,6 +36,7 @@ public class Inventaire extends JPanel{
 		description = new JTextField("Description du produit");
 		prix = new JTextField("Prix");
 		envoi = new JButton("Enregistrer");
+		empty= new JLabel("");
 		
 		produit.setSelected(true); //Selectionne le choix "produit" par défaut
 		choixProduit.add(produit);
@@ -48,7 +49,8 @@ public class Inventaire extends JPanel{
 		this.add(produit);
 		this.add(service);
 		this.add(nom);
-		this.add(description);
+		this.add(description);	
+		this.add(empty);
 		this.add(prix);
 		this.add(envoi);
 		
@@ -94,7 +96,16 @@ public class Inventaire extends JPanel{
 				else
 				{
 					//Si c'est un service
-					
+					Object[] options = {"Oui","Non"};
+					int n= JOptionPane.showOptionDialog(null,"Voulez-vous vraiment ajouter ce service ?", "Vérification", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+					if(n==0){
+						ss.addServiceBdd(nomb, desc, prixb1); //On insere dans la bdd
+						ss.updateService(); //On recalcule l'arraylist
+						JOptionPane.showMessageDialog(null, "Service bien ajouté","Bravo!", JOptionPane.INFORMATION_MESSAGE);
+						nom.setText("");
+						description.setText("");
+						prix.setText("");
+					}
 				}
 			}
 			else{

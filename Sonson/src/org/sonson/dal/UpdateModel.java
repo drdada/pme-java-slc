@@ -8,6 +8,7 @@ import javax.naming.spi.DirStateFactory.Result;
 import org.sonson.main.Sonson;
 import org.sonson.model.Client;
 import org.sonson.model.Produit;
+import org.sonson.model.Service;
 
 public class UpdateModel {
 	Sonson sonson;
@@ -38,6 +39,7 @@ public class UpdateModel {
 			e.printStackTrace();
 		}
 	}
+	//Produit
 	public void updateProduits() {
 		try {
 			ResultSet rs = Dal.getInstance().getResult("SELECT * FROM produit");
@@ -57,5 +59,25 @@ public class UpdateModel {
 			e.printStackTrace();
 		}
 	}
-				//Matt: j'ai retirer les autres méthodes, je ferrais du copier coller apres que la methode updateclient serra finie.
+	//Service
+	public void updateService() {
+		try {
+			ResultSet rs = Dal.getInstance().getResult("SELECT * FROM service");
+			while(rs.next()) {
+				Service s = new Service(rs.getInt("id"),rs.getString("nom"),rs.getString("description"),rs.getDouble("prix"));
+				sonson.setService(s);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public void addService(String noml, String descriptionl, double prixl) {
+		try {
+			Dal.getInstance().insert("INSERT INTO service(nom,description,prix) VALUES('"+noml+"','"+descriptionl+"','"+prixl+"')");
+				
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }

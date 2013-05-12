@@ -1,18 +1,14 @@
 package org.sonson.gui;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridLayout;
+import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -26,19 +22,22 @@ public class RechercheClient extends JPanel{
 	private JTextField form;
 	private ArrayList<Client> arrayclient;
 	private JButton fiche;
+	private JPanel pan;
 	
-	public RechercheClient(Sonson sonson){
+	
+	public RechercheClient(Sonson sonson,JPanel pan){
 
-		this.setLayout(new GridLayout(2, 0));
+		//this.setLayout(new GridLayout(4, 0));
 		
-		this.setBorder(BorderFactory.createLineBorder(Color.black));
-		this.setBackground(Color.orange);
-
-		/*	
-		form = new JTextField("Recherche");
+		//this.setBorder(BorderFactory.createLineBorder(Color.black));
+		//this.setBackground(Color.orange);
+		this.pan=pan;
+		
+		form = new JTextField("Id du client",7);
 		fiche = new JButton("Fiche Client");
 		EnvoiListener envList = new EnvoiListener();
-		*/
+		fiche.addActionListener(envList);
+		
 
 		JLabel text = new JLabel("Recherche d'un client");
 
@@ -63,14 +62,12 @@ public class RechercheClient extends JPanel{
 		
 		JTable table = new JTable(data, title);
 		
-		table.setPreferredSize(new Dimension(800, 200));
-		
-		this.add(table);
-		
-		/*
+		//table.setPreferredSize(new Dimension(800, 200));
 		table.setEnabled(false);
-		table.setRowSelectionAllowed(true);
-		table.setCellSelectionEnabled(true);
+		this.add(table);
+		this.add(form);
+		this.add(fiche);
+		/*
 
 		this.add(new JScrollPane(table),BorderLayout.CENTER);
 		this.add(fiche,BorderLayout.SOUTH);
@@ -84,10 +81,26 @@ public class RechercheClient extends JPanel{
 		}
 	
 	private class EnvoiListener implements ActionListener  {
+		private String num="([0-9 ]*)";
+		private int id;
 		public void actionPerformed (ActionEvent e){
 			//Ecouteur du bouton envoi
-
-			System.out.println(table.getSelectedRow());
+			if(!form.getText().matches(num)||form.getText().length()==0){
+				//erreur
+				JOptionPane.showMessageDialog(null, "Oups,id non correct, veuillez vérifier!","Erreur", JOptionPane.ERROR_MESSAGE); //On affiche un seul message d'erreur
+			}
+			else{
+				//OK
+				id= Integer.parseInt(form.getText());
+				//System.out.println(id);
+				pan.removeAll();
+				ClientGUI cligui = new ClientGUI(id);
+				pan.add(cligui);
+				pan.repaint();
+				pan.validate();
+				
+			}
+			
 		}
 
 	}

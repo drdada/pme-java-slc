@@ -93,7 +93,7 @@ private class EnvoiListener implements ActionListener  {
 					flag=1;
 					erreur+="code postal, ";
 				}
-				if(!adresse.getText().matches(alpha)|| adresse.getText().length()==0){
+				if(!adresse.getText().matches(alphanum)|| adresse.getText().length()==0){
 					flag=1;
 					erreur+="adresse, ";
 				}

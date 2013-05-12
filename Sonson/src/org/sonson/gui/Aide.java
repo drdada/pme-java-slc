@@ -1,5 +1,6 @@
 package org.sonson.gui;
 
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 
 import javax.swing.*;
@@ -7,13 +8,18 @@ import javax.swing.*;
 import javax.swing.JScrollPane;
 
 public class Aide extends JPanel{
-	private JEditorPane jep;
-			
+	private JEditorPane jep;	
 	public Aide(){
-		//TODO Aide
-		
 		jep = new JEditorPane();
+		jep.setEditable(false);
 		jep.setContentType("text/html");
+		//jep.setText("coucou");
+		//TODO Aide
+		//this.setPreferredSize(new Dimension(200,200));
+		//jep = new JEditorPane();
+		JScrollPane js = new JScrollPane();
+		js.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		js.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		jep.setText("<html>"+
 				"<body>"+
 				"<h1>Bienvenue dans l'aide</h1>"+
@@ -182,6 +188,8 @@ public class Aide extends JPanel{
 				""+
 				"</body>"+
 				"</html>");
-		this.add(jep);
+		js.setViewportView(jep);
+		this.add(js);
+		
 	}
 }

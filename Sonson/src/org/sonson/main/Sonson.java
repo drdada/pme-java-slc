@@ -7,6 +7,7 @@ import org.sonson.dal.UpdateModel;
 import org.sonson.gui.Accueil;
 import org.sonson.model.Client;
 import org.sonson.model.Produit;
+import org.sonson.model.Service;
 
 /**
  * Controller class for this application Sonson
@@ -15,13 +16,15 @@ import org.sonson.model.Produit;
  */
 public class Sonson extends AbstractApplication {
 	private Dal dal; 
-	private ArrayList<Client> arrayclient;
-	private ArrayList<Produit> arrayproduit;
+	private static ArrayList<Client> arrayclient;
+	private static ArrayList<Produit> arrayproduit;
+	private ArrayList<Service> arrayService;
 	private UpdateModel um;
 	
 	public Sonson() {
 		arrayclient = new ArrayList<Client>();
 		arrayproduit = new ArrayList<Produit>();
+		arrayService = new ArrayList<Service>();
 	}
 
 	
@@ -33,10 +36,11 @@ public class Sonson extends AbstractApplication {
 		um = new UpdateModel(this);
 		um.updateClients();
 		um.updateProduits();
-//		um.updateServices();
+		um.updateService();
 //		um.updateAchats();
 		Accueil accueil = new Accueil(this);
 	}
+	// PARTIE CLIENTS
 	public void updateClients(){
 		um.updateClients();
 	}
@@ -63,8 +67,13 @@ public class Sonson extends AbstractApplication {
 	{
 		um.addClient(noml, prenoml, codePostall, adressel, paysl, telFixel, telPortablel);
 	}
-
-	public void setProduit(Produit p){
+	
+	public static ArrayList<Client> getArrayclient() {
+		return arrayclient;
+	}
+	
+	//PARTIE PRODUIT
+	public static void setProduit(Produit p){
 		int flag=0,savecl = 0;
 
 		for (Produit pr : arrayproduit){
@@ -90,7 +99,32 @@ public class Sonson extends AbstractApplication {
 		um.updateProduits();
 	}
 	
-	public ArrayList<Client> getArrayclient() {
-		return arrayclient;
+	
+	//PARTIE SERVICE
+	public void setService(Service s){
+		int flag=0,savecl = 0;
+
+		for (Service sr : arrayService){
+			if (sr.getId() == (s.getId())){
+					flag=1;
+					savecl=arrayService.indexOf(sr);
+				}
+			}
+		if(flag == 1){
+			//Le produit existe donc on le modifie
+			arrayService.remove(savecl);
+			arrayService.add(savecl, s);
+		}else{
+			//Le produit n'exite pas encore, donc on le rajoute
+			arrayService.add(s);
+		}
 	}
+	
+	public void addServiceBdd(String noml,String descriptionl,double prixl){
+		um.addService(noml, descriptionl, prixl);
+	}
+	public void updateService(){
+		um.updateService();
+	}
+	
 }
