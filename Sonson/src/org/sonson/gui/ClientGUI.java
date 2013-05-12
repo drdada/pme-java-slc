@@ -1,5 +1,8 @@
 package org.sonson.gui;
 
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
@@ -30,6 +33,8 @@ public class ClientGUI extends JPanel{
 		int flag=0;
 		this.arrayclient = sonson.getArrayclient();
 		this.pan = pan;
+		
+		this.setPreferredSize(new Dimension(800, 200));
 
 		declaration();
 		
@@ -65,8 +70,19 @@ public class ClientGUI extends JPanel{
 	}
 
 	private void declaration(){
-		edition = new JLabel("Edition");
+		edition = new JLabel("Mode Edition");
 		editable = new JCheckBox();
+		
+		EnvoiListener ev = new EnvoiListener();
+		
+		enreg = new JButton("Enrengistrer les modifications");
+		ajout = new JButton("Ajouter un Produit/Service");
+		retour = new JButton("Retour");
+		
+		enreg.addActionListener(ev);
+		ajout.addActionListener(ev);
+		retour.addActionListener(ev);
+		
 		CheckBoxListener chl = new CheckBoxListener();
 		editable.addItemListener(chl);
 		lid=new JLabel("L'id: ");
@@ -78,21 +94,21 @@ public class ClientGUI extends JPanel{
 		ltelfixe = new JLabel("Telephone fixe: ");
 		ltelportable = new JLabel("GSM :");
 		
-		tfid = new JTextField();
+		tfid = new JTextField(2);
 		tfid.setEnabled(false);
-		tfnom = new JTextField();
+		tfnom = new JTextField(5);
 		tfnom.setEditable(false);
-		tfprenom = new JTextField();
+		tfprenom = new JTextField(5);
 		tfprenom.setEditable(false);
-		tfadresse = new JTextField();
+		tfadresse = new JTextField(10);
 		tfadresse.setEditable(false);
-		tfcodep = new JTextField();
+		tfcodep = new JTextField(5);
 		tfcodep.setEditable(false);
-		tfpays = new JTextField();
+		tfpays = new JTextField(8);
 		tfpays.setEditable(false);
-		tftelfixe = new JTextField();
+		tftelfixe = new JTextField(8);
 		tftelfixe.setEditable(false);
-		tftelportable = new JTextField();
+		tftelportable = new JTextField(8);
 		tftelportable.setEditable(false);
 		
 	}
@@ -116,6 +132,9 @@ public class ClientGUI extends JPanel{
 		this.add(tftelfixe);
 		this.add(ltelportable);
 		this.add(tftelportable);
+		this.add(enreg);
+		this.add(ajout);
+		this.add(retour);
 	}
     private class CheckBoxListener implements ItemListener{
 		@Override
@@ -141,5 +160,27 @@ public class ClientGUI extends JPanel{
 			}
 		}
     }
-	
+    private class EnvoiListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			// Ecouteur
+			if(e.getSource().equals(enreg)){
+				//Si on modifie les infos
+				
+			}
+			else if(e.getSource().equals(ajout)){
+				//si on ajoute un nouveau produit/service
+				
+			}
+			else{
+				//Si on appuie sur retour
+				pan.removeAll();
+				RechercheClient rc = new RechercheClient(sonson, pan);
+				pan.add(rc);
+				pan.repaint();
+				pan.validate();
+			}
+
+		}
+
+	}
 }

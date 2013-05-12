@@ -1,11 +1,7 @@
 package org.sonson.gui;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JLabel;
-import javax.swing.JScrollBar;
 import javax.swing.JEditorPane;
 import javax.swing.ScrollPaneConstants;
 

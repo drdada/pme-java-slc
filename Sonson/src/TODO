@@ -4,19 +4,19 @@ Accueil :
 - message d'accueil (arnaud)
 
 Aide: 
-- Affichage correct du message d'accueil (probleme!)
++Affichage correct du message d'accueil (probleme!) réparé => mise dans un jframe(nouvelle fenetre)
 - Terminer les explications (quand programme fini)
 
 Recherche d'un client: 
 - Filtre de recherche sur la table
-- Accés a la fiche client
++ Accés a la fiche client
 	Clic sur une personne et pop up d'une fiche contenant ses informations
 	
 Fiche client: a faire
 	- derniers achats
 	- date dernier achat
-	- infos perso
-	- Modification des client(bouton pour pouvoir modifier les infos clients.
+	+ infos perso
+	+ Modification des client(bouton pour pouvoir modifier les infos clients.
 	- Ajout de Produits, Services
 	
 	Ajout de Produits, Services à un clients : 

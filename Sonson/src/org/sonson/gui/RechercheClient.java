@@ -80,27 +80,30 @@ public class RechercheClient extends JPanel{
 		
 		}
 	
-	private class EnvoiListener implements ActionListener  {
-		private String num="([0-9 ]*)";
+	private class EnvoiListener implements ActionListener {
+		private String num = "([0-9 ]*)";
 		private int id;
-		public void actionPerformed (ActionEvent e){
-			//Ecouteur du bouton envoi
-			if(!form.getText().matches(num)||form.getText().length()==0){
-				//erreur
-				JOptionPane.showMessageDialog(null, "Oups,id non correct, veuillez vérifier!","Erreur", JOptionPane.ERROR_MESSAGE); //On affiche un seul message d'erreur
-			}
-			else{
-				//OK
-				id= Integer.parseInt(form.getText());
-				//System.out.println(id);
+
+		public void actionPerformed(ActionEvent e) {
+			// Ecouteur du bouton envoi
+			if (!form.getText().matches(num) || form.getText().length() == 0) {
+				// erreur
+				JOptionPane.showMessageDialog(null,
+						"Oups,id non correct, veuillez vérifier!", "Erreur",
+						JOptionPane.ERROR_MESSAGE); // On affiche un seul
+													// message d'erreur
+			} else {
+				// OK
+				id = Integer.parseInt(form.getText());
+				// System.out.println(id);
 				pan.removeAll();
-				ClientGUI cligui = new ClientGUI(id,pan);
+				ClientGUI cligui = new ClientGUI(id, pan);
 				pan.add(cligui);
 				pan.repaint();
 				pan.validate();
-				
+
 			}
-			
+
 		}
 
 	}
