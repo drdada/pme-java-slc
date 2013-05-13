@@ -18,7 +18,7 @@ public class Sonson extends AbstractApplication {
 	private Dal dal; 
 	private static ArrayList<Client> arrayclient;
 	private static ArrayList<Produit> arrayproduit;
-	private ArrayList<Service> arrayService;
+	private static ArrayList<Service> arrayService;
 	private UpdateModel um;
 	
 	public Sonson() {
@@ -98,6 +98,9 @@ public class Sonson extends AbstractApplication {
 	public void updateProduit(){
 		um.updateProduits();
 	}
+	public static ArrayList<Produit> getArrayProduit(){
+		return arrayproduit;
+	}
 	
 	
 	//PARTIE SERVICE
@@ -125,6 +128,10 @@ public class Sonson extends AbstractApplication {
 	}
 	public void updateService(){
 		um.updateService();
+	}
+	
+	public static ArrayList<Service> getArrayService(){
+		return arrayService;
 	}
 	
 }

@@ -8,7 +8,7 @@ Aide:
 - Terminer les explications (quand programme fini)
 
 Recherche d'un client: 
-- Filtre de recherche sur la table
+$ Filtre de recherche sur la table (abandonné)
 + Accés a la fiche client
 	Clic sur une personne et pop up d'une fiche contenant ses informations
 	
@@ -18,14 +18,15 @@ Fiche client: a faire
 	+ infos perso
 	+ Modification des client(bouton pour pouvoir modifier les infos clients.
 	- Ajout de Produits, Services
+	- Mise a jour de la fiche
 	
 	Ajout de Produits, Services à un clients : 
 		- Recherche d'un produit
 		- Bouton ajout au client
 	
 	Modification client : 
-		- Panel avec fiche client
-		- Panel avec champ pour modifier
+		+ Panel avec fiche client
+		+ Panel avec champ pour modifier
 	
 Ajout d'un client : 
 	+ Verification des données (Fait et a tester !) Precision: Accent et max lenght ?

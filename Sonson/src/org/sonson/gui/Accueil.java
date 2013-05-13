@@ -21,6 +21,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
+import javax.swing.SwingConstants;
+
 import org.sonson.main.Sonson;
 
 public class Accueil extends JFrame {
@@ -45,7 +47,9 @@ public class Accueil extends JFrame {
 		QuitListnerX quitx = new QuitListnerX();
 		this.addWindowListener(quitx);
 		
-		wlcm = new JLabel("Bienvenue");
+		wlcm = new JLabel("<html><body><center><h1>Projet Y</h1><h2>Explication ici</h2><p>Coucou</p></center></body></html>");
+		wlcm.setHorizontalAlignment(SwingConstants.CENTER);
+		wlcm.setVerticalAlignment(SwingConstants.CENTER);
 		
 		BaListener baListener = new BaListener(sonson);
 		
