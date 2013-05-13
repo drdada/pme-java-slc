@@ -24,7 +24,7 @@ public class StatistiqueClientGUI extends JPanel {
 	public void statClient(){
 		labTotClient = new JLabel("Total de clients:");
 		arrayClient = new ArrayList<Client>(Sonson.getArrayclient());
-		textFieldTotClient = new JTextField(String.valueOf(arrayClient.size()));
+		textFieldTotClient = new JTextField(String.valueOf(arrayClient.size()),4);
 		textFieldTotClient.setEditable(false);
 		this.add(labTotClient);
 		this.add(textFieldTotClient);

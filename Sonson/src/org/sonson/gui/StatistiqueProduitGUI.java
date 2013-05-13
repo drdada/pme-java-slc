@@ -32,15 +32,15 @@ public class StatistiqueProduitGUI extends JPanel{
 		textProduitV = new JLabel("Nombre de produits vendus: ");
 		textServiceV = new JLabel("Nombre de services venuds: ");
 		
-		nbServiceP = new JTextField();
+		nbServiceP = new JTextField(3);
 		nbServiceP.setText(String.valueOf(arrayService.size()));
 		nbServiceP.setEditable(false);
-		nbProduitP = new JTextField();
+		nbProduitP = new JTextField(3);
 		nbProduitP.setText(String.valueOf(arrayProduit.size()));
 		nbProduitP.setEditable(false);
-		nbProduitV = new JTextField();
+		nbProduitV = new JTextField(3);
 		nbProduitV.setEditable(false);
-		nbServiceV = new JTextField();
+		nbServiceV = new JTextField(3);
 		nbServiceV.setEditable(false);
 		
 		this.add(textProduitP);

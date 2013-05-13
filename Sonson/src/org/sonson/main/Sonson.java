@@ -41,11 +41,11 @@ public class Sonson extends AbstractApplication {
 		Accueil accueil = new Accueil(this);
 	}
 	// PARTIE CLIENTS
-	public void updateClients(){
+	public void updateClients(){ //Permet de mettre a jour l'arraylist (BDD -> cache)
 		um.updateClients();
 	}
 	
-	public void setClient(Client c){
+	public void setClient(Client c){ //Permet d'ajouter un client et de le modifier le cas échéant (on parle ici de l'arrayliste uniquement)
 		int flag=0,savecl = 0;
 		//boucle de recherche sur l'id du client
 		for (Client cl : arrayclient){
@@ -70,6 +70,10 @@ public class Sonson extends AbstractApplication {
 	
 	public static ArrayList<Client> getArrayclient() {
 		return arrayclient;
+	}
+	
+	public void updateClientBDD(int idl,String noml, String prenoml, String codePostall, String adressel, String paysl, String telFixel, String telPortablel){ //Met a jour un client dans la BDD
+		um.majClient(idl, noml, prenoml, codePostall, adressel, paysl, telFixel, telPortablel);
 	}
 	
 	//PARTIE PRODUIT

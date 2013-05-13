@@ -17,30 +17,30 @@ import javax.swing.JTextField;
 import org.sonson.main.Sonson;
 import org.sonson.model.Client;
 
-public class ClientGUI extends JPanel{
+public class ClientGUI extends JPanel {
 	private int id;
 	private ArrayList<Client> arrayclient;
-	private JLabel lid,lnom,lprenom,laddresse,lcodep,lpays,ltelfixe,ltelportable,edition;
-	private JTextField tfid,tfnom,tfprenom,tfadresse,tfcodep,tfpays,tftelfixe,tftelportable;
+	private JLabel lid, lnom, lprenom, laddresse, lcodep, lpays, ltelfixe,
+			ltelportable, edition;
+	private JTextField tfid, tfnom, tfprenom, tfadresse, tfcodep, tfpays,
+			tftelfixe, tftelportable;
 	private Sonson sonson;
 	private JCheckBox editable;
-	private JButton enreg,ajout,retour;
+	private JButton enreg, ajout, retour;
 	private JPanel pan;
-	
-	
-	public ClientGUI(int id,JPanel pan){
-		this.id= id;
-		int flag=0;
+
+	public ClientGUI(int id, JPanel pan,Sonson ss) {
+		this.id = id;
+		int flag = 0;
 		this.arrayclient = sonson.getArrayclient();
 		this.pan = pan;
-		
 		this.setPreferredSize(new Dimension(800, 200));
-
+		this.sonson =ss;
 		declaration();
-		
-		//System.out.println(sonson.getArrayclient());
-		for (Client cl : arrayclient){
-			if(cl.getId()==id){
+
+		// System.out.println(sonson.getArrayclient());
+		for (Client cl : arrayclient) {
+			if (cl.getId() == id) {
 				tfid.setText(String.valueOf(cl.getId()));
 				tfnom.setText(cl.getNom());
 				tfprenom.setText(cl.getPrenom());
@@ -49,51 +49,51 @@ public class ClientGUI extends JPanel{
 				tfpays.setText(cl.getPays());
 				tftelfixe.setText(cl.getTelFixe());
 				tftelportable.setText(cl.getTelPortable());
-				flag=1;
+				flag = 1;
 			}
 		}
-		if(flag==0){
-			//TODO boite d'erreur et redirection
-			JOptionPane.showMessageDialog(null, "Oups,id non trouvé, veuillez vérifier!","Erreur", JOptionPane.ERROR_MESSAGE); //On affiche un seul message d'erreur
+		if (flag == 0) {
+			// TODO boite d'erreur et redirection
+			JOptionPane.showMessageDialog(null,
+					"Oups,id non trouvé, veuillez vérifier!", "Erreur",
+					JOptionPane.ERROR_MESSAGE); // On affiche un seul message
+												// d'erreur
 			pan.removeAll();
 			RechercheClient rc = new RechercheClient(sonson, pan);
 			pan.add(rc);
 			pan.repaint();
 			pan.validate();
-			//System.out.println("Element  non trouvé");
-		}
-		else{
+			// System.out.println("Element  non trouvé");
+		} else {
 			ajout();
 		}
-		
-		
+
 	}
 
-	private void declaration(){
+	private void declaration() {
 		edition = new JLabel("Mode Edition");
 		editable = new JCheckBox();
-		
-		EnvoiListener ev = new EnvoiListener();
-		
+
+		EnvoiListener ev = new EnvoiListener(sonson);
 		enreg = new JButton("Enrengistrer les modifications");
 		ajout = new JButton("Ajouter un Produit/Service");
 		retour = new JButton("Retour");
-		
+
 		enreg.addActionListener(ev);
 		ajout.addActionListener(ev);
 		retour.addActionListener(ev);
-		
+
 		CheckBoxListener chl = new CheckBoxListener();
 		editable.addItemListener(chl);
-		lid=new JLabel("L'id: ");
+		lid = new JLabel("L'id: ");
 		lnom = new JLabel("Le nom: ");
 		lprenom = new JLabel("Le prénom :");
-		laddresse = new  JLabel("L'adresse: ");
+		laddresse = new JLabel("L'adresse: ");
 		lcodep = new JLabel("Le code postal: ");
 		lpays = new JLabel("Le pays: ");
 		ltelfixe = new JLabel("Telephone fixe: ");
 		ltelportable = new JLabel("GSM :");
-		
+
 		tfid = new JTextField(2);
 		tfid.setEnabled(false);
 		tfnom = new JTextField(5);
@@ -110,10 +110,10 @@ public class ClientGUI extends JPanel{
 		tftelfixe.setEditable(false);
 		tftelportable = new JTextField(8);
 		tftelportable.setEditable(false);
-		
+
 	}
-	
-	private void ajout(){
+
+	private void ajout() {
 		this.add(edition);
 		this.add(editable);
 		this.add(lid);
@@ -136,11 +136,12 @@ public class ClientGUI extends JPanel{
 		this.add(ajout);
 		this.add(retour);
 	}
-    private class CheckBoxListener implements ItemListener{
+
+	private class CheckBoxListener implements ItemListener {
 		@Override
 		public void itemStateChanged(ItemEvent arg0) {
 			// TODO Auto-generated method stub
-			if(editable.isSelected()){
+			if (editable.isSelected()) {
 				tfnom.setEditable(true);
 				tfprenom.setEditable(true);
 				tfadresse.setEditable(true);
@@ -148,8 +149,7 @@ public class ClientGUI extends JPanel{
 				tfpays.setEditable(true);
 				tftelfixe.setEditable(true);
 				tftelportable.setEditable(true);
-			}
-			else{
+			} else {
 				tfnom.setEditable(false);
 				tfprenom.setEditable(false);
 				tfadresse.setEditable(false);
@@ -159,20 +159,95 @@ public class ClientGUI extends JPanel{
 				tftelportable.setEditable(false);
 			}
 		}
-    }
-    private class EnvoiListener implements ActionListener {
+	}
+
+	private class EnvoiListener implements ActionListener {
+		private Sonson ss;
+		
+
+		public EnvoiListener(Sonson sonson) {
+			EnvoiListener.this.ss = sonson;
+		}
+
+
 		public void actionPerformed(ActionEvent e) {
 			// Ecouteur
-			if(e.getSource().equals(enreg)){
-				//Si on modifie les infos
-				
-			}
-			else if(e.getSource().equals(ajout)){
-				//si on ajoute un nouveau produit/service
-				
-			}
-			else{
-				//Si on appuie sur retour
+			if (e.getSource().equals(enreg)) {
+				// Si on modifie les infos
+				if (editable.isSelected()) {
+					// OK
+					String alphanum = "([a-zA-Z0-9 ]*)";
+					String alpha = "([a-zA-Z ]*)";
+					String num = "([0-9 ]*)";
+					int flag;
+					String erreur = "";
+					flag = 0;
+					// Vérification
+					if (!tfnom.getText().matches(alpha)
+							|| tfnom.getText().length() == 0) { // Si le champ
+																// ne rentre pas
+																// dans le regex
+																// ou si il est
+																// vide
+						flag = 1;
+						erreur += "nom, ";
+					}
+					if (!tfprenom.getText().matches(alpha)
+							|| tfprenom.getText().length() == 0) {
+						flag = 1;
+						erreur += "prénom, ";
+					}
+					if (tfcodep.getText().length() == 0) {
+						flag = 1;
+						erreur += "code postal, ";
+					}
+					if (!tfadresse.getText().matches(alphanum)
+							|| tfadresse.getText().length() == 0) {
+						flag = 1;
+						erreur += "adresse, ";
+					}
+					if (!tfpays.getText().matches(alpha)
+							|| tfpays.getText().length() == 0) {
+						flag = 1;
+						erreur += "pays, ";
+					}
+					if (!tftelfixe.getText().matches(num)
+							|| tftelfixe.getText().length() == 0) {
+						flag = 1;
+						erreur += "telephone fixe, ";
+					}
+					if (!tftelportable.getText().matches(num)
+							|| tftelportable.getText().length() == 0) {
+						flag = 1;
+						erreur += "telephone portable, ";
+					}
+
+					if (flag == 0) {
+						ss.updateClientBDD(Integer.valueOf(tfid.getText()),
+								tfnom.getText(), tfprenom.getText(),
+								tfcodep.getText(), tfadresse.getText(),
+								tfpays.getText(), tftelfixe.getText(),
+								tftelportable.getText());
+						ss.updateClients();
+						JOptionPane.showMessageDialog(null, "Client mit à jour","OK", JOptionPane.INFORMATION_MESSAGE); //On affiche un seul message d'erreur
+
+					}else{
+						JOptionPane.showMessageDialog(null, "Oups, le/les champs "+erreur+" a/ont un soucis, veuillez vérifier!","Erreur", JOptionPane.ERROR_MESSAGE); //On affiche un seul message d'erreur
+						erreur=""; //On reinitialise erreur a blanc
+					}
+				} else {
+					// Message d'erreur
+					JOptionPane.showMessageDialog(null,
+							"Oups, il n'y a rien à changer!", "Erreur",
+							JOptionPane.ERROR_MESSAGE); // On affiche un seul
+														// message d'erreur
+
+				}
+			} else if (e.getSource().equals(ajout)) {
+				// si on ajoute un nouveau produit/service
+
+			} else {
+				// Si on appuie sur retour
 				pan.removeAll();
 				RechercheClient rc = new RechercheClient(sonson, pan);
 				pan.add(rc);

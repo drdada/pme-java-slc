@@ -39,7 +39,7 @@ Ajout de produit service
 	+ Messages de confirmation (Fait)
 	
 Modification des produits et services
-	- Recherche d'un produit
+	+ Recherche d'un produit
 	- Clic pour afficher la fiche
 		- Panel avec fiche produit
 		- Panel avec champ pour modifier
@@ -50,6 +50,7 @@ Statistiques des clients :
 	- Nom clients plus récurents
 	
 Stat des produit :
+	+ Quantités de produit proposés
 	- Quantités vendus (produits et services)
 	
 Stat des finances :

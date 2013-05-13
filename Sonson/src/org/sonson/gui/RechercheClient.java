@@ -33,7 +33,7 @@ public class RechercheClient extends JPanel{
 		//this.setBorder(BorderFactory.createLineBorder(Color.black));
 		//this.setBackground(Color.orange);
 		this.pan=pan;
-		
+		this.sonson=sonson;
 		form = new JTextField("Id du client",7);
 		fiche = new JButton("Fiche Client");
 		EnvoiListener envList = new EnvoiListener();
@@ -99,7 +99,7 @@ public class RechercheClient extends JPanel{
 				id = Integer.parseInt(form.getText());
 				// System.out.println(id);
 				pan.removeAll();
-				ClientGUI cligui = new ClientGUI(id, pan);
+				ClientGUI cligui = new ClientGUI(id, pan,sonson);
 				pan.add(cligui);
 				pan.repaint();
 				pan.validate();

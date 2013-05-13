@@ -175,7 +175,7 @@ public class Accueil extends JFrame {
 				if(e.getSource().equals(bRechercheClient)){
 					pan1.removeAll();
 					cont.repaint();
-					RechercheClient rcl =  new RechercheClient(sonson,pan1);
+					RechercheClient rcl =  new RechercheClient(ss,pan1);
 					pan1.add(rcl);
 					Accueil.this.setVisible(true);
 				}

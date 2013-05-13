@@ -39,6 +39,16 @@ public class UpdateModel {
 			e.printStackTrace();
 		}
 	}
+	public void majClient(int idl,String noml, String prenoml, String codePostall, String adressel, String paysl, String telFixel, String telPortablel){
+		String request="UPDATE client SET nom='"+noml+"', prenom='"+prenoml+"', codePostal='"+codePostall+"', adresse='"+adressel+"', pays='"+paysl+"',telFixe='"+telFixel+"', telPortable='"+telPortablel+"' WHERE id="+idl+" ";
+		//System.out.println(request);
+		try {
+			Dal.getInstance().update(request);
+				
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	//Produit
 	public void updateProduits() {
 		try {
