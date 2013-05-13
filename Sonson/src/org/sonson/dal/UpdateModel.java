@@ -53,7 +53,7 @@ public class UpdateModel {
 	}
 	public void addProduit(String noml, String descriptionl, double prixl) {
 		try {
-			Dal.getInstance().insert("INSERT INTO produit(nom,description,prix) VALUES('"+noml+"','"+descriptionl+"','"+prixl+"')");
+			Dal.getInstance().insert("INSERT INTO produit(nom,description,prix) VALUES('"+noml+"','"+descriptionl+"',"+prixl+")");
 				
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -73,7 +73,7 @@ public class UpdateModel {
 	}
 	public void addService(String noml, String descriptionl, double prixl) {
 		try {
-			Dal.getInstance().insert("INSERT INTO service(nom,description,prix) VALUES('"+noml+"','"+descriptionl+"','"+prixl+"')");
+			Dal.getInstance().insert("INSERT INTO service(nom,description,prix) VALUES('"+noml+"','"+descriptionl+"',"+prixl+")");
 				
 		} catch (SQLException e) {
 			e.printStackTrace();

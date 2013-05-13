@@ -196,7 +196,7 @@ public class Accueil extends JFrame {
 				if(e.getSource().equals(bStatClient)){
 					pan1.removeAll();
 					cont.repaint();
-					StatistiqueClientGUI sc = new StatistiqueClientGUI(ss);
+					StatistiqueClientGUI sc = new StatistiqueClientGUI();
 					pan1.add(sc);
 					
 					Accueil.this.setVisible(true);

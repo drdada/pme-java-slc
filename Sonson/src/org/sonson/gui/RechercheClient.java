@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -64,7 +65,8 @@ public class RechercheClient extends JPanel{
 		
 		//table.setPreferredSize(new Dimension(800, 200));
 		table.setEnabled(false);
-		this.add(table);
+		JScrollPane jst = new JScrollPane(table);
+		this.add(jst);
 		this.add(form);
 		this.add(fiche);
 		/*
