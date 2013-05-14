@@ -26,7 +26,7 @@ public class PanelFormSupprimer extends JPanel{
 		tableRes = new JTable();
 		textNoInt = new JTextField("0",5);
 		labelNoInt = new JLabel("Numéro Intervention : ");
-		
+		JScrollPane jsp = new JScrollPane(tableRes);
 		
 		MyListener myListener = new MyListener();
 		raff.addActionListener(myListener);
@@ -37,7 +37,7 @@ public class PanelFormSupprimer extends JPanel{
 		this.add(labelNoInt);
 		this.add(textNoInt);
 		this.add(supprimer);
-		this.add(tableRes);
+		this.add(jsp);
 	}
 	
 	private void remplirJcomboBox(){
@@ -73,7 +73,7 @@ public class PanelFormSupprimer extends JPanel{
 				}
 			}
 			if (e.getSource().equals(supprimer)) {
-				if (textNoInt.getText().length() != 0) {
+				if (textNoInt.getText().length() != 0 && textNoInt.getText().matches("([0-9]*)")) {
 					Object[] options = { "Oui", "Non" }; // Demande de confirmation de suppression
 					int n = JOptionPane.showOptionDialog(null,
 							"Voulez-vous vraiment supprimer cette intervention ?",
@@ -103,6 +103,12 @@ public class PanelFormSupprimer extends JPanel{
 						}
 					}
 					
+				}
+				else{
+					//Print erreur
+					JOptionPane.showMessageDialog(null, 
+							"Erreur dans l'id.", "Erreur", JOptionPane.ERROR_MESSAGE);
+				
 				}
 
 			}

@@ -61,7 +61,7 @@ public class PanelRechercheTemps extends JPanel {
 	}
 	private class MyListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			if(tfTemps.getText().length()==0){
+			if(tfTemps.getText().length()==0 || !tfTemps.getText().matches("([0-9]*)")){
 				JOptionPane.showMessageDialog(null, "Temps incorrect","Erreur", JOptionPane.ERROR_MESSAGE);
 
 			}else{

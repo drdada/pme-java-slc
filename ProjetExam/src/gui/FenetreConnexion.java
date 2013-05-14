@@ -13,7 +13,7 @@ public class FenetreConnexion extends JFrame{
 		
 		contDB = this.getContentPane(); // initialise le container de la fenetre DB
 		
-		this.parametres(); //apelle la fonction parametres qui regle les parametres de la fenetre
+		this.parametres(); //apelle la fonct ion parametres qui regle les parametres de la fenetre
 		
 		Connexion fenConnexion = new Connexion(this); // On crée un objet Jpanel de la classe Connexion
 		contDB.add(fenConnexion); // On ajoute ce jpanel dans le conteneur
