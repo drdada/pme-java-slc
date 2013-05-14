@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.sonson.dal.Dal;
 import org.sonson.dal.UpdateModel;
 import org.sonson.gui.Accueil;
+import org.sonson.model.Achat;
 import org.sonson.model.Client;
 import org.sonson.model.Produit;
 import org.sonson.model.Service;
@@ -19,12 +20,14 @@ public class Sonson extends AbstractApplication {
 	private static ArrayList<Client> arrayclient;
 	private static ArrayList<Produit> arrayproduit;
 	private static ArrayList<Service> arrayService;
+	private static ArrayList<Achat> arrayAchat;
 	private UpdateModel um;
 	
 	public Sonson() {
 		arrayclient = new ArrayList<Client>();
 		arrayproduit = new ArrayList<Produit>();
 		arrayService = new ArrayList<Service>();
+		arrayAchat = new ArrayList<Achat>();
 	}
 
 	
@@ -37,7 +40,7 @@ public class Sonson extends AbstractApplication {
 		um.updateClients();
 		um.updateProduits();
 		um.updateService();
-//		um.updateAchats();
+		um.updateAchat();
 		Accueil accueil = new Accueil(this);
 	}
 	// PARTIE CLIENTS
@@ -136,6 +139,36 @@ public class Sonson extends AbstractApplication {
 	
 	public static ArrayList<Service> getArrayService(){
 		return arrayService;
+	}
+	
+	
+	//PARTIE ACHAT
+	public void setAchat(Achat a){
+		int flag=0,savecl = 0;
+
+		for (Achat ac : arrayAchat){
+			if (ac.getIdAchat() == (a.getIdAchat())){
+					flag=1;
+					savecl=arrayAchat.indexOf(ac);
+				}
+			}
+		if(flag == 1){
+			arrayAchat.remove(savecl);
+			arrayAchat.add(savecl, a);
+		}else{
+			arrayAchat.add(a);
+		}
+	}
+	
+//	public void addAchatBdd(String noml, String descriptionl, double prixl) {
+//		um.addService(noml, descriptionl, prixl);
+//	}
+	public void updateAchat(){
+		um.updateAchat();
+	}
+	
+	public static ArrayList<Achat> getArrayAchat(){
+		return arrayAchat;
 	}
 	
 }

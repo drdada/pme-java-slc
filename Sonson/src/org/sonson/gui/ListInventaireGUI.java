@@ -1,6 +1,8 @@
 package org.sonson.gui;
 
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -31,6 +33,9 @@ public class ListInventaireGUI extends JPanel{
 		idp = new JTextField(3);
 		ids = new JTextField(3);
 		envoi = new JButton("Envoi");
+		
+		EnvoiListener ev = new EnvoiListener();
+		envoi.addActionListener(ev);
 		
 		arrayProduit = new ArrayList<Produit>(Sonson.getArrayProduit());
 		arrayService = new ArrayList<Service>(Sonson.getArrayService());
@@ -77,5 +82,16 @@ public class ListInventaireGUI extends JPanel{
 		this.add(lids);
 		this.add(ids);
 		this.add(envoi);
+	}
+	private class EnvoiListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if(){
+				//TODO verification
+			}
+			else{
+				//TODO modification
+			}
+			
+		}
 	}
 }

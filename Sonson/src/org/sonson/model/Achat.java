@@ -1,18 +1,17 @@
 package org.sonson.model;
 
-import java.util.GregorianCalendar;
-
+import java.sql.Date;
 import org.sonson.main.AbstractApplication;
 
 public class Achat extends AbstractApplication {
 
 	private int idAchat;
-	private GregorianCalendar date;
+	private Date date;
 	private int idClient;
 	private int idService;
 	private int idProduit;
 
-	public Achat(int idAchat, GregorianCalendar date, int idClient,
+	public Achat(int idAchat, Date date, int idClient,
 			int idService, int idProduit) {
 		super();
 		this.idAchat = idAchat;
@@ -20,11 +19,6 @@ public class Achat extends AbstractApplication {
 		this.idClient = idClient;
 		this.idService = idService;
 		this.idProduit = idProduit;
-	}
-	
-// Commentaire inutile
-	public void ajouterAchat(){
-		//TODO ajouter un achat a la bdd ?
 	}
 
 	
@@ -39,12 +33,12 @@ public class Achat extends AbstractApplication {
 	}
 
 
-	public GregorianCalendar getDate() {
+	public Date getDate() {
 		return date;
 	}
 
 
-	public void setDate(GregorianCalendar date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 

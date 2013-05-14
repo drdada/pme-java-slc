@@ -1,11 +1,13 @@
 package org.sonson.dal;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.naming.spi.DirStateFactory.Result;
 
 import org.sonson.main.Sonson;
+import org.sonson.model.Achat;
 import org.sonson.model.Client;
 import org.sonson.model.Produit;
 import org.sonson.model.Service;
@@ -84,6 +86,26 @@ public class UpdateModel {
 	public void addService(String noml, String descriptionl, double prixl) {
 		try {
 			Dal.getInstance().insert("INSERT INTO service(nom,description,prix) VALUES('"+noml+"','"+descriptionl+"',"+prixl+")");
+				
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	//ACHAT
+	public void updateAchat() {
+		try {
+			ResultSet rs = Dal.getInstance().getResult("SELECT * FROM achat");
+			while(rs.next()) {
+				Achat a = new Achat(rs.getInt("id"),rs.getDate("date"),rs.getInt("client"),rs.getInt("service"),rs.getInt("produit"));
+				sonson.setAchat(a);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public void addAchat(Date date,int client,int service,int produit) {
+		try {
+			Dal.getInstance().insert("INSERT INTO Achat(date,client,service,produit) VALUES(#"+date+"#,"+client+","+service+","+produit+")");
 				
 		} catch (SQLException e) {
 			e.printStackTrace();

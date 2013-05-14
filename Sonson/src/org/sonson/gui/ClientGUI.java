@@ -245,7 +245,7 @@ public class ClientGUI extends JPanel {
 				}
 			} else if (e.getSource().equals(ajout)) {
 				// si on ajoute un nouveau produit/service
-
+				new AjoutAchat(Integer.valueOf(tfid.getText()), ss);
 			} else {
 				// Si on appuie sur retour
 				pan.removeAll();
