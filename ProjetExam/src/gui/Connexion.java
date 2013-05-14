@@ -1,13 +1,11 @@
 package gui;
 
 
-import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.SQLException;
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -17,6 +15,11 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import dal.AccessBDGen;
+
+/**
+ * @author Matteo D'Addamio & Arnaud Booms
+ * Henallux 2012-2013 2TIA
+ */
 
 public class Connexion extends JPanel { 
 private JLabel connexionLabel,user,mdp,address;
@@ -77,7 +80,7 @@ private FenetreConnexion fenCon;
 							"Connexion établie", "Connexion DB", JOptionPane.INFORMATION_MESSAGE); // On affiche le message de bonne connexion
 					main.Projet.setConnexion(connexionDB); //On envoi l'objet connexion a l'objet Projet pour s'en reservir plus tard
 					fenCon.dispose(); //On ferme la fenetre
-					Accueil.modifierEtat(1); //On modifie le texte "Non connecté" à " Connecté" dans l'acceuil
+					Accueil.modifierEtat(1); //On modifie le texte "Non connecté" à " Connecté" dans l'acceuil (changement direct)
 				}
 				catch(SQLException ex)					//Si une erreur a la base de donnée se produit	
 				{	JOptionPane.showMessageDialog(null, ex,	 

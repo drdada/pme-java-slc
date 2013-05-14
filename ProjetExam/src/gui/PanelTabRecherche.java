@@ -4,7 +4,10 @@ import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
-
+/**
+ * @author Matteo D'Addamio & Arnaud Booms
+ * Henallux 2012-2013 2TIA
+ */
 public class PanelTabRecherche extends JPanel {
 	private JTabbedPane tab;
 	private PanelRechercheDate panDate;

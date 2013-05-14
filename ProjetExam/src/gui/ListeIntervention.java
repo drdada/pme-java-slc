@@ -2,14 +2,12 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -17,6 +15,10 @@ import javax.swing.JTable;
 import dal.*;
 import main.*;
 
+/**
+ * @author Matteo D'Addamio & Arnaud Booms
+ * Henallux 2012-2013 2TIA
+ */
 
 public class ListeIntervention extends JPanel{
 

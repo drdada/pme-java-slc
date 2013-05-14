@@ -36,7 +36,7 @@ Ajout Intervention
 	+Associer jbox(OK)
 	+Champs NULL !
 	/Confirmation d'ajout ou echec
-	
+	*temps presté jformatedtf
 	
 Recherche
 	+Tab
@@ -49,7 +49,7 @@ Recherche
 			+Champs table
 			+Ecrire code SQL
 			+Disposition
-			
+			*temp jformatedtf
 
 Suppression
 	+Champs table
@@ -58,4 +58,5 @@ Suppression
 	+Recherche par Fournisseur
 	+Jtable en fonction de la recherche
 	+Suppression bouton et verification
+	*id jformatedtf
 	

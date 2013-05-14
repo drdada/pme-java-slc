@@ -18,6 +18,11 @@ import main.Projet;
 import dal.AccessBDGen;
 import dal.MyTableModel;
 
+/**
+ * @author Matteo D'Addamio & Arnaud Booms
+ * Henallux 2012-2013 2TIA
+ */
+
 public class PanelRechercheTemps extends JPanel {
 	private JButton rechercher;
 	private JTable tableRes;

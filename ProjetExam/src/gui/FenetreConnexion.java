@@ -2,8 +2,12 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
-
 import javax.swing.JFrame;
+
+/**
+ * @author Matteo D'Addamio & Arnaud Booms
+ * Henallux 2012-2013 2TIA
+ */
 
 public class FenetreConnexion extends JFrame{
 	

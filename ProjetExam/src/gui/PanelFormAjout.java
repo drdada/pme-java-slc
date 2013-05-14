@@ -25,6 +25,11 @@ import javax.swing.SwingConstants;
 import main.Projet;
 import dal.AccessBDGen;
 
+/**
+ * @author Matteo D'Addamio & Arnaud Booms
+ * Henallux 2012-2013 2TIA
+ */
+
 public class PanelFormAjout extends JPanel {
 	private JComboBox fournisseur,intervention,pc;
 	private JLabel lDateSignalement,lDescriptifbref,lSignaleur,lPreneurEnCharge,lEtatInterv,lSuiviViaFournisseur,lDateContact,lDatePrise,lDateRetour,lEtatRetour,lDateRemiseService,lTempsInterne,lResultat,lFkPcUnit,lFkTypeInterv,lFkFournisseurIntervenant,lNoInterv;

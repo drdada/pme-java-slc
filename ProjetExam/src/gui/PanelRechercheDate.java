@@ -17,12 +17,15 @@ import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.SpinnerDateModel;
 
-import com.sun.org.apache.xpath.internal.FoundIndex;
-
 import main.Projet;
 
 import dal.AccessBDGen;
 import dal.MyTableModel;
+
+/**
+ * @author Matteo D'Addamio & Arnaud Booms
+ * Henallux 2012-2013 2TIA
+ */
 
 public class PanelRechercheDate extends JPanel{
 	private JTable table;
@@ -47,7 +50,7 @@ public class PanelRechercheDate extends JPanel{
 		MyListener my = new MyListener();
 		raffraichir.addActionListener(my);
 		
-		js = new JScrollPane(table);
+		js = new JScrollPane(table); //On met la table dans un jscrollpane
 		
 		
 		this.add(lLot);
@@ -55,7 +58,7 @@ public class PanelRechercheDate extends JPanel{
 		this.add(lDate);
 		this.add(sDate);
 		this.add(raffraichir);
-		add(js);
+		add(js); //On ajoute le jscrollpane (pas la table)
 	}
 	private void buildCBLot(){
 		String requestLot="SELECT NoLot FROM LotConfiguration";

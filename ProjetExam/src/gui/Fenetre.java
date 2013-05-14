@@ -17,6 +17,10 @@ import javax.swing.JOptionPane;
 
 import main.Projet;
 
+/**
+ * @author Matteo D'Addamio & Arnaud Booms
+ * Henallux 2012-2013 2TIA
+ */
 
 public class Fenetre extends JFrame{
 
@@ -99,9 +103,6 @@ public class Fenetre extends JFrame{
 		barre.add(bdd);
 		barre.add(aide);
 		this.setJMenuBar(barre);
-	}
-	public Container getCont(){
-		return cont;
 	}
 	
 	private class QuitListnerX extends WindowAdapter{
@@ -241,7 +242,7 @@ public class Fenetre extends JFrame{
 						
 						JOptionPane.showMessageDialog(null, "Vous êtes maintenant déconnecté !",
 								"Success", JOptionPane.INFORMATION_MESSAGE); // message de déconnexion réussie
-						Accueil.modifierEtat(2);
+						Accueil.modifierEtat(2); //On met le message "déconnecté" dans l'accueil (direct)
 					}
 					else JOptionPane.showMessageDialog(null, "Vous n'êtes pas connecté !",
 							"Attention", JOptionPane.WARNING_MESSAGE); // Message d'erreur, on n'a pas pu se déconnecter
