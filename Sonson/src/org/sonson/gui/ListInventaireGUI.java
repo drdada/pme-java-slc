@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -84,12 +85,40 @@ public class ListInventaireGUI extends JPanel{
 		this.add(envoi);
 	}
 	private class EnvoiListener implements ActionListener {
+		String id;
+		int type;
+		String num="([0-9 ]*)";
 		public void actionPerformed(ActionEvent e) {
-			if(){
-				//TODO verification
+			if(idp.getText().length()==0 && ids.getText().length()==0){ //champs vide
+				JOptionPane.showMessageDialog(null, "Il faut rentrer un ID","Ah non!", JOptionPane.ERROR_MESSAGE);
 			}
 			else{
-				//TODO modification
+				if(idp.getText().length()!=0){
+					//on a rentré un produit
+					id=idp.getText();
+					type=1;
+				}
+				else{
+					//on a rentré un service
+					id=ids.getText();
+					type=0;
+				}
+				
+				if(!id.matches(num)){
+					//on a rentré autre chose qu'un int
+					JOptionPane.showMessageDialog(null, "Il faut rentrer un ID, donc un nombre...","Ah non!", JOptionPane.ERROR_MESSAGE);
+
+				}
+				else{
+					//On a rentré un int
+					if(type==1){//si c'est un produit
+						//ModifierProduit(id);
+					}
+					else{
+						//ModifierService(id);
+					}
+				}
+				
 			}
 			
 		}

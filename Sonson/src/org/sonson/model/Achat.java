@@ -5,11 +5,11 @@ import org.sonson.main.AbstractApplication;
 
 public class Achat extends AbstractApplication {
 
-	private int idAchat;
+	private Integer idAchat;
 	private Date date;
-	private int idClient;
-	private int idService;
-	private int idProduit;
+	private Integer idClient;
+	private Integer idService;
+	private Integer idProduit;
 
 	public Achat(int idAchat, Date date, int idClient,
 			int idService, int idProduit) {
@@ -66,7 +66,6 @@ public class Achat extends AbstractApplication {
 	public int getIdProduit() {
 		return idProduit;
 	}
-
 
 	public void setIdProduit(int idProduit) {
 		this.idProduit = idProduit;

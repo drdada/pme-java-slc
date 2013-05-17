@@ -103,9 +103,17 @@ public class UpdateModel {
 			e.printStackTrace();
 		}
 	}
-	public void addAchat(Date date,int client,int service,int produit) {
+	public void addAchatProduit(int client,int produit) {
 		try {
-			Dal.getInstance().insert("INSERT INTO Achat(date,client,service,produit) VALUES(#"+date+"#,"+client+","+service+","+produit+")");
+			Dal.getInstance().insert("INSERT INTO achat(client,produit) VALUES("+client+","+produit+")");
+				
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public void addAchatService(int client,int service){
+		try {
+			Dal.getInstance().insert("INSERT INTO achat(client,service) VALUES("+client+","+service+")");
 				
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -18,7 +18,7 @@ public class AbstractApplication {
         try {
             log4jFile.load(AbstractApplication.class.getClassLoader().getResourceAsStream(filePath));
             PropertyConfigurator.configure(log4jFile);
-            logger.info("Log client initializated");
+           // logger.info("Log client initializated");
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(
             		AbstractApplication.class.getName()).log(

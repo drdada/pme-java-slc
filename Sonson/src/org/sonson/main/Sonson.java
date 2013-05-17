@@ -1,5 +1,6 @@
 package org.sonson.main;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 import org.sonson.dal.Dal;
@@ -160,9 +161,12 @@ public class Sonson extends AbstractApplication {
 		}
 	}
 	
-//	public void addAchatBdd(String noml, String descriptionl, double prixl) {
-//		um.addService(noml, descriptionl, prixl);
-//	}
+	public void addAchatProduitBdd(int client,int produit) {
+		um.addAchatProduit(client, produit);
+	}
+	public void addAchatServiceBdd(int client,int service){
+		um.addAchatService(client, service);
+	}
 	public void updateAchat(){
 		um.updateAchat();
 	}
