@@ -105,6 +105,8 @@ public class AjoutAchat extends JFrame{
 					sonson.addAchatServiceBdd(idClient, id);
 					sonson.updateAchat();
 				}
+				JOptionPane.showMessageDialog(null, "Achat effectué","Ah oui!", JOptionPane.INFORMATION_MESSAGE);
+				AjoutAchat.this.dispose();
 			}
 			else{
 				JOptionPane.showMessageDialog(null, "Il faut choisir entre produit et service...","Ah non!", JOptionPane.ERROR_MESSAGE);

@@ -15,8 +15,8 @@ import org.sonson.model.Service;
 
 public class StatistiqueProduitGUI extends JPanel{
 
-	private JTextField nbServiceP, nbProduitP, nbServiceV, nbProduitV;
-	private JLabel textServiceP, textProduitP, textServiceV, textProduitV;
+	private JTextField nbServiceP, nbProduitP, nbServiceV, nbProduitV,nbTotalP,nbTotalV;
+	private JLabel textServiceP, textProduitP, textServiceV, textProduitV,textTotalP,textTotalV;
 	private ArrayList<Produit> arrayProduit;
 	private ArrayList<Service> arrayService;
 	private ArrayList<Achat> arrayAchat;
@@ -34,6 +34,8 @@ public class StatistiqueProduitGUI extends JPanel{
 		textProduitP = new JLabel("Nombre de produits proposés: ");
 		textProduitV = new JLabel("Nombre de produits vendus: ");
 		textServiceV = new JLabel("Nombre de services vendus: ");
+		textTotalV = new JLabel("Nombre d'achats (Service et Produit) vendus: ");
+		textTotalP = new JLabel("Nombre d'achats (Service et Produits) proposés");
 		
 		calculProduit();
 		
@@ -43,19 +45,30 @@ public class StatistiqueProduitGUI extends JPanel{
 		nbProduitP = new JTextField(3);
 		nbProduitP.setText(String.valueOf(arrayProduit.size()));
 		nbProduitP.setEditable(false);
+		int totalp = arrayProduit.size()+arrayService.size();
+		nbTotalP = new JTextField(String.valueOf(totalp),3);
+		nbTotalP.setEditable(false);
+		
 		nbProduitV = new JTextField(String.valueOf(cptP),3);
 		nbProduitV.setEditable(false);
 		nbServiceV = new JTextField(String.valueOf(cptS),3);
 		nbServiceV.setEditable(false);
+		int totalv = cptP+cptS;
+		nbTotalV = new JTextField(String.valueOf(totalv),3);
+		nbTotalV.setEditable(false);
 		
 		this.add(textProduitP);
 		this.add(nbProduitP);
 		this.add(textServiceP);
 		this.add(nbServiceP);
+		this.add(textTotalP);
+		this.add(nbTotalP);
 		this.add(textProduitV);
 		this.add(nbProduitV);
 		this.add(textServiceV);
 		this.add(nbServiceV);
+		this.add(textTotalV);
+		this.add(nbTotalV);
 		
 	}
 

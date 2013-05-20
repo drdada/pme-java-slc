@@ -17,7 +17,8 @@ public class StatistiquesFinancesGUI extends JPanel{
 	private JLabel textTotal,textProduit,textService;
 	private ArrayList<Produit> arrayProduit;
 	private ArrayList<Service> arrayService;
-	private double sumP,sumS;
+	private ArrayList<Achat> arrayAchat;
+	private double sumP,sumS,sumT;
 	
 	public StatistiquesFinancesGUI(){
 		
@@ -26,10 +27,12 @@ public class StatistiquesFinancesGUI extends JPanel{
 		textService = new JLabel("Chiffre d'affaire pour les services : ");
 		arrayProduit = Sonson.getArrayProduit();
 		arrayService = Sonson.getArrayService();
+		arrayAchat = Sonson.getArrayAchat();
 		calcul();
-		chiffreProduit = new JTextField();
-		chiffreTotal = new JTextField();
-		chiffreService = new JTextField();
+		sumT=sumP+sumS;
+		chiffreProduit = new JTextField(String.valueOf(sumP));
+		chiffreTotal = new JTextField(String.valueOf(sumT));
+		chiffreService = new JTextField(String.valueOf(sumS));
 		chiffreProduit.setEditable(false);
 		chiffreTotal.setEditable(false);
 		chiffreService.setEditable(false);
@@ -43,15 +46,27 @@ public class StatistiquesFinancesGUI extends JPanel{
 	}
 	
 	private void calcul(){
-//		sumP=0;
-//		sumS=0;
-//		for (Produit p : arrayProduit) { // recherche de l'id du
-//			// produit selectionné
-//			sumP+=p.getPrix();
-//		}
-//		for (Service s : arrayService){
-//			sumS+=s.getPrix();
-//		}
+		 sumP=0;
+		 sumS=0;
+		 for(Achat a : arrayAchat){ //On parcourt tout les achats
+			 if(a.getIdProduit()!=0){
+				 //c'est un produit
+				 for(Produit p : arrayProduit){ //On retrouve l'id correspondant
+					 if(p.getId()==a.getIdProduit()){
+						 sumP+=p.getPrix();
+					 }
+				 }
+			 }
+			 else{
+				 //c'est un service
+				 for(Service s : arrayService){
+					 if(s.getId()==a.getIdService()){
+						 sumS+=s.getPrix();
+					 }
+				 }
+			 }
+		 }
+
 	}
 
 }

@@ -18,7 +18,7 @@ Fiche client: a faire
 	+ infos perso
 	+ Modification des client(bouton pour pouvoir modifier les infos clients.
 	+ Ajout de Produits, Services
-	- Mise a jour de la fiche
+	+ Mise a jour de la fiche
 	
 	Ajout de Produits, Services à un clients : 
 		+ Recherche d'un produit
@@ -54,6 +54,6 @@ Stat des produit :
 	+ Quantités vendus (produits et services)
 	
 Stat des finances :
-	- Revenu total 
-	- Revenu Services
-	- Revenu Produits
+	+ Revenu total 
+	+ Revenu Services
+	+ Revenu Produits
