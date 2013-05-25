@@ -218,8 +218,8 @@ public class Accueil extends JFrame {
 					Accueil.this.setVisible(true);
 				}
 				if(e.getSource().equals(bAide)){
-					pan1.removeAll();
-					cont.repaint();
+					//pan1.removeAll();
+					//cont.repaint();
 					Aide aide = new Aide();
 					//pan1.add(aide);
 					//Accueil.this.setVisible(true);
