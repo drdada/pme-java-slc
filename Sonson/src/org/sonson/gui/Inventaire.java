@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import org.sonson.main.Sonson;
 
@@ -19,24 +20,30 @@ public class Inventaire extends JPanel{
 
 	private ButtonGroup choixProduit;
 	private JRadioButton service, produit;
-	private JLabel texte,empty;
+	private JLabel texte,empty1,empty2,empty3,empty4, name,desc,price;
 	private JTextField nom, description, prix;
 	private JButton envoi;
 	private Sonson ss;
 	
 	public Inventaire(Sonson ss){
 		this.ss = ss;
-		this.setLayout(new GridLayout(3,3));
+		this.setLayout(new GridLayout(5,3));
 		
-		texte = new JLabel("Type :");
+		texte = new JLabel("Type :", SwingConstants.RIGHT);
+		name = new JLabel("Nom :", SwingConstants.RIGHT);
+		desc = new JLabel("Description :", SwingConstants.RIGHT);
+		price = new JLabel("Prix (Euro) :", SwingConstants.RIGHT);
 		choixProduit = new ButtonGroup();
 		service = new JRadioButton("Service");
 		produit = new JRadioButton("Produit");
-		nom = new JTextField("Nom du produit");
-		description = new JTextField("Description du produit");
-		prix = new JTextField("Prix");
+		nom = new JTextField("");
+		description = new JTextField("");
+		prix = new JTextField("");
 		envoi = new JButton("Enregistrer");
-		empty= new JLabel("");
+		empty1= new JLabel("");
+		empty2= new JLabel("");
+		empty3= new JLabel("");
+		empty4= new JLabel("");
 		
 		produit.setSelected(true); //Selectionne le choix "produit" par défaut
 		choixProduit.add(produit);
@@ -48,10 +55,16 @@ public class Inventaire extends JPanel{
 		this.add(texte);
 		this.add(produit);
 		this.add(service);
+		this.add(name);
 		this.add(nom);
+		this.add(empty2);
+		this.add(desc);
 		this.add(description);	
-		this.add(empty);
+		this.add(empty1);
+		this.add(price);
 		this.add(prix);
+		this.add(empty3);
+		this.add(empty4);
 		this.add(envoi);
 		
 	}
