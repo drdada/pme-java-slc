@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
+import javax.swing.SwingConstants;
 
 import org.sonson.main.Sonson;
 import org.sonson.model.Achat;
@@ -21,7 +22,7 @@ import org.sonson.model.Produit;
 import org.sonson.model.Service;
 
 public class AjoutAchat extends JFrame{
-	private JLabel titre;
+	private JLabel titre,lType,lAchat,empty1,empty2,empty3,empty4;
 	private JButton envoi ;
 	private int idClient;
 	private ArrayList<Produit> arrayProduit;
@@ -38,9 +39,9 @@ public class AjoutAchat extends JFrame{
 		this.idClient=id;
 		this.sonson=ss;
 		cont = getContentPane();
-		cont.setLayout(new GridLayout(3,3));
+		this.setLayout(new GridLayout(4,3));
 		this.setTitle("Ajout d'un produit/service");
-		this.setSize(400, 400);
+		this.setSize(750, 400);
 		
 		EnvoiListener ev= new EnvoiListener();
 		
@@ -48,7 +49,13 @@ public class AjoutAchat extends JFrame{
 		arrayService=Sonson.getArrayService();
 		arrayAchat=Sonson.getArrayAchat();
 		
-		titre= new JLabel("Ajouter un produit/service a l'utilisateur "+id+" ");
+		titre= new JLabel("Ajouter un produit/service au client "+id+" ");
+		empty1 = new JLabel(" ");
+		empty2 = new JLabel(" ");
+		empty3 = new JLabel(" ");
+		empty4 = new JLabel(" ");
+		lType = new JLabel("Type : ", SwingConstants.RIGHT);
+		lAchat = new JLabel("Achat : ", SwingConstants.RIGHT);
 		envoi = new JButton("Ajout");
 		envoi.addActionListener(ev);
 		rbProduit = new JRadioButton("Produit");
@@ -60,10 +67,15 @@ public class AjoutAchat extends JFrame{
 		buildJComboBox();
 		
 		this.add(titre);
+		this.add(empty1);
+		this.add(empty2);
+		this.add(lType);
 		this.add(rbProduit);
 		this.add(rbService);
+		this.add(lAchat);
 		this.add(cbProduit);
 		this.add(cbService);
+		this.add(empty4);
 		this.add(envoi);
 		this.setVisible(true);
 	}

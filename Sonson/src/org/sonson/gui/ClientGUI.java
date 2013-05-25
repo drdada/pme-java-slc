@@ -1,6 +1,7 @@
 package org.sonson.gui;
 
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -20,10 +21,11 @@ import org.sonson.model.Achat;
 import org.sonson.model.Client;
 
 public class ClientGUI extends JPanel {
+	
 	private int id;
 	private ArrayList<Client> arrayclient;
 	private JLabel lid, lnom, lprenom, laddresse, lcodep, lpays, ltelfixe,
-			ltelportable, edition;
+			ltelportable, edition,empty1;
 	private JTextField tfid, tfnom, tfprenom, tfadresse, tfcodep, tfpays,
 			tftelfixe, tftelportable;
 	private Sonson sonson;
@@ -34,6 +36,7 @@ public class ClientGUI extends JPanel {
 	private ArrayList<Achat> arrayAchat;
 	
 	public ClientGUI(int id, JPanel pan,Sonson ss) {
+		this.setLayout(new GridLayout(12,2));
 		this.id = id;
 		int flag = 0;
 		this.arrayclient = sonson.getArrayclient();
@@ -105,14 +108,15 @@ public class ClientGUI extends JPanel {
 
 		CheckBoxListener chl = new CheckBoxListener();
 		editable.addItemListener(chl);
-		lid = new JLabel("L'id: ");
-		lnom = new JLabel("Le nom: ");
-		lprenom = new JLabel("Le prénom :");
-		laddresse = new JLabel("L'adresse: ");
-		lcodep = new JLabel("Le code postal: ");
-		lpays = new JLabel("Le pays: ");
-		ltelfixe = new JLabel("Telephone fixe: ");
-		ltelportable = new JLabel("GSM :");
+		lid = new JLabel("Id: ");
+		lnom = new JLabel("Nom: ");
+		lprenom = new JLabel("Prénom :");
+		laddresse = new JLabel("Adresse: ");
+		lcodep = new JLabel("Code postal: ");
+		lpays = new JLabel("Pays: ");
+		ltelfixe = new JLabel("Téléphone fixe: ");
+		ltelportable = new JLabel("Téléphone portable :");
+		empty1 = new JLabel(" ");
 
 		tfid = new JTextField(2);
 		tfid.setEnabled(false);
@@ -155,6 +159,7 @@ public class ClientGUI extends JPanel {
 		this.add(enreg);
 		this.add(ajout);
 		this.add(retour);
+		this.add(empty1);
 		this.add(table);
 	}
 
