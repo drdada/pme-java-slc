@@ -19,6 +19,7 @@ public class Aide extends JFrame{
 		
 		JEditorPane editorPane = new JEditorPane();
 		editorPane.setContentType("text/html");
+		editorPane.setEditable(false);
 		editorPane.setText("<html>"+
 				"<body>"+
 				"<h1>Bienvenue dans l'aide</h1>"+

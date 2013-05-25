@@ -59,7 +59,7 @@ public class RechercheClient extends JPanel{
 			data[i][7]=object.getTelPortable();
 			i++;
 		}
-		String  title[] = {"Id", "Nom", "Prenom", "Code Postal", "Adresse","Pays", "Telephone Fixe", "Telephone Portable"};
+		String  title[] = {"Id", "Nom", "Prenom", "Adresse", "Code Postal","Pays", "Telephone Fixe", "Telephone Portable"};
 		
 		JTable table = new JTable(data, title);
 		

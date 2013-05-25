@@ -89,8 +89,8 @@ public class ListInventaireGUI extends JPanel{
 		int type;
 		String num="([0-9 ]*)";
 		public void actionPerformed(ActionEvent e) {
-			if(idp.getText().length()==0 && ids.getText().length()==0){ //champs vide
-				JOptionPane.showMessageDialog(null, "Il faut rentrer un ID","Ah non!", JOptionPane.ERROR_MESSAGE);
+			if((idp.getText().length()==0 && ids.getText().length()==0)||(idp.getText().length()!=0 && ids.getText().length()!=0)){ //champs vide
+				JOptionPane.showMessageDialog(null, "Il faut rentrer UN ID","Ah non!", JOptionPane.ERROR_MESSAGE);
 			}
 			else{
 				if(idp.getText().length()!=0){
@@ -112,10 +112,18 @@ public class ListInventaireGUI extends JPanel{
 				else{
 					//On a rentré un int
 					if(type==1){//si c'est un produit
-						//ModifierProduit(id);
+						ListInventaireGUI.this.removeAll();
+						ModifierProduit mod = new ModifierProduit(Integer.valueOf(id));
+						ListInventaireGUI.this.add(mod);
+						ListInventaireGUI.this.repaint();
+						ListInventaireGUI.this.validate();
 					}
 					else{
-						//ModifierService(id);
+						ListInventaireGUI.this.removeAll();
+						ModifierService mov = new ModifierService(Integer.valueOf(id));
+						ListInventaireGUI.this.add(mov);
+						ListInventaireGUI.this.repaint();
+						ListInventaireGUI.this.validate();
 					}
 				}
 				

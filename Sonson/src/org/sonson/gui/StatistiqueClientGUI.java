@@ -16,22 +16,46 @@ public class StatistiqueClientGUI extends JPanel {
 	private JTextField textFieldTotClient, tfBestClient;
 	private ArrayList<Client> arrayClient;
 	private ArrayList<Achat> arrayAchat;
+	private String nomMax;
 
 	public StatistiqueClientGUI() {
-		lBestClient = new JLabel("Nom du client le plus réccurent:");
+		lBestClient = new JLabel("Nom du meilleur client:");
 		arrayAchat = Sonson.getArrayAchat();
+		tfBestClient = new JTextField();
+		tfBestClient.setEditable(false);
 		// On affiche les stats client
 		this.statClient();
-
+		this.meilleurClient();
+		
+		tfBestClient.setText(nomMax);
 		this.add(labTotClient);
 		this.add(textFieldTotClient);
+		this.add(lBestClient);
+		this.add(tfBestClient);
 	}
 
-	public void statClient() {
+	private void statClient() {
 		labTotClient = new JLabel("Total de clients:");
 		arrayClient = Sonson.getArrayclient();
 		textFieldTotClient = new JTextField(String.valueOf(arrayClient.size()),4);
 		textFieldTotClient.setEditable(false);
 
+	}
+	
+	private void meilleurClient(){
+		int tmp=0,max=0;
+		for(Client c : arrayClient){
+			for(Achat a : arrayAchat){
+				if(a.getIdClient()==c.getId()){
+				tmp++;	
+				}
+			}
+			if(tmp>max){
+				max=tmp;
+				nomMax=c.getNom();
+				nomMax+=" "+c.getPrenom();
+			}
+			tmp=0;
+		}
 	}
 }
