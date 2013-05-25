@@ -47,7 +47,9 @@ public class Accueil extends JFrame {
 		QuitListnerX quitx = new QuitListnerX();
 		this.addWindowListener(quitx);
 		
-		wlcm = new JLabel("<html><body><center><h1>Projet Y</h1><h2>Explication ici</h2><p>Coucou</p></center></body></html>");
+		wlcm = new JLabel("<html><body><center><h1>Gestion simplifié de clientèle pour indépendants ou PME</h1><h2>"+
+				"Ce programme permet de gérer différents point important pour votre entreprise.<b>"+
+				"</h2><p>N'hésitez pas à consulter l'aide pour plus d'informations.</p></center></body></html>");
 		wlcm.setHorizontalAlignment(SwingConstants.CENTER);
 		wlcm.setVerticalAlignment(SwingConstants.CENTER);
 		
