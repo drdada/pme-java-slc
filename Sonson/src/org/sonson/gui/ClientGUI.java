@@ -12,9 +12,11 @@ import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import org.sonson.main.Sonson;
+import org.sonson.model.Achat;
 import org.sonson.model.Client;
 
 public class ClientGUI extends JPanel {
@@ -28,7 +30,9 @@ public class ClientGUI extends JPanel {
 	private JCheckBox editable;
 	private JButton enreg, ajout, retour;
 	private JPanel pan;
-
+	private JTable table;
+	private ArrayList<Achat> arrayAchat;
+	
 	public ClientGUI(int id, JPanel pan,Sonson ss) {
 		this.id = id;
 		int flag = 0;
@@ -37,6 +41,7 @@ public class ClientGUI extends JPanel {
 		this.setPreferredSize(new Dimension(800, 200));
 		this.sonson =ss;
 		declaration();
+		tableau();
 
 		// System.out.println(sonson.getArrayclient());
 		for (Client cl : arrayclient) {
@@ -53,7 +58,6 @@ public class ClientGUI extends JPanel {
 			}
 		}
 		if (flag == 0) {
-			// TODO boite d'erreur et redirection
 			JOptionPane.showMessageDialog(null,
 					"Oups,id non trouvé, veuillez vérifier!", "Erreur",
 					JOptionPane.ERROR_MESSAGE); // On affiche un seul message
@@ -68,6 +72,22 @@ public class ClientGUI extends JPanel {
 			ajout();
 		}
 
+	}
+	private void tableau(){
+		Object[][] data = new Object[10][4];
+		int i=0;
+		for (Achat object: arrayAchat){
+			if(object.getIdClient()==id){
+				data[i][0]=object.getIdAchat();
+				data[i][1]=object.getDate();
+				data[i][2]=object.getIdService();
+				data[i][3]=object.getIdProduit();
+				i++;
+			}
+		}
+		String  title[] = {"Id", "Date", "Service", "Produit"};
+		
+		table = new JTable(data, title);
 	}
 
 	private void declaration() {
@@ -110,7 +130,7 @@ public class ClientGUI extends JPanel {
 		tftelfixe.setEditable(false);
 		tftelportable = new JTextField(8);
 		tftelportable.setEditable(false);
-
+		arrayAchat = Sonson.getArrayAchat();
 	}
 
 	private void ajout() {
@@ -135,6 +155,7 @@ public class ClientGUI extends JPanel {
 		this.add(enreg);
 		this.add(ajout);
 		this.add(retour);
+		this.add(table);
 	}
 
 	private class CheckBoxListener implements ItemListener {

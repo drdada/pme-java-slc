@@ -13,7 +13,7 @@ $ Filtre de recherche sur la table (abandonné)
 	Clic sur une personne et pop up d'une fiche contenant ses informations
 	
 Fiche client: a faire
-	- derniers achats
+	+ derniers achats
 	- date dernier achat
 	+ infos perso
 	+ Modification des client(bouton pour pouvoir modifier les infos clients.
@@ -41,9 +41,9 @@ Ajout de produit service
 Modification des produits et services
 	+ Recherche d'un produit
 	- Clic pour afficher la fiche
-		- Panel avec fiche produit
-		- Panel avec champ pour modifier
-
+		+ Panel avec fiche produit
+		+ Panel avec champ pour modifier
+		- Mise  a jour du produit
 
 Statistiques des clients : 
 	+ Nb Clients Tot (fait!)
