@@ -1,10 +1,12 @@
 package org.sonson.gui;
 
+import java.awt.GridLayout;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import org.sonson.main.Sonson;
 import org.sonson.model.Produit;
@@ -14,18 +16,20 @@ public class ModifierProduit extends JPanel{
 
 	private int id;
 	private ArrayList<Produit> arrayProduit;
-	private JLabel titre,lid,lnom,ldesc,lprix;
+	private JLabel titre,lid,lnom,ldesc,lprix,empty1;
 	private JTextField tfid,nom,desc,prix;
 	
 	public ModifierProduit(int id) {
+		this.setLayout(new GridLayout(5,2,8,8));
 		this.id = id;
 		arrayProduit=Sonson.getArrayProduit();
 		
-		titre = new JLabel("Modifier un Produit");
-		lid = new JLabel("Id: ");
-		lnom = new JLabel("Nom: ");
-		ldesc = new JLabel("Description: ");
-		lprix = new JLabel("Prix: ");
+		titre = new JLabel("Modifier un Produit", SwingConstants.RIGHT);
+		lid = new JLabel("Id: ", SwingConstants.RIGHT);
+		lnom = new JLabel("Nom: ", SwingConstants.RIGHT);
+		ldesc = new JLabel("Description: ", SwingConstants.RIGHT);
+		lprix = new JLabel("Prix: ", SwingConstants.RIGHT);
+		empty1 = new JLabel(" ");
 		
 		tfid = new JTextField(3);
 		tfid.setText(String.valueOf(id));
@@ -38,6 +42,7 @@ public class ModifierProduit extends JPanel{
 		
 		getInfos();
 		this.add(titre);
+		this.add(empty1);
 		this.add(lid);
 		this.add(tfid);
 		this.add(lnom);

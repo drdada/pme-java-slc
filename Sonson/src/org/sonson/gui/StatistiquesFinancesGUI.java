@@ -1,10 +1,12 @@
 package org.sonson.gui;
 
+import java.awt.GridLayout;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import org.sonson.main.Sonson;
 import org.sonson.model.Achat;
@@ -21,10 +23,10 @@ public class StatistiquesFinancesGUI extends JPanel{
 	private double sumP,sumS,sumT;
 	
 	public StatistiquesFinancesGUI(){
-		
-		textTotal = new JLabel("Chiffre d'affaire total : ");
-		textProduit = new JLabel("Chiffre d'affaire pour les produits : ");
-		textService = new JLabel("Chiffre d'affaire pour les services : ");
+		this.setLayout(new GridLayout(3,1,8,8));
+		textTotal = new JLabel("Chiffre d'affaire total (Euro) : ", SwingConstants.RIGHT);
+		textProduit = new JLabel("Chiffre d'affaire pour les produits (Euro) : ", SwingConstants.RIGHT);
+		textService = new JLabel("Chiffre d'affaire pour les services (Euro) : ", SwingConstants.RIGHT);
 		arrayProduit = Sonson.getArrayProduit();
 		arrayService = Sonson.getArrayService();
 		arrayAchat = Sonson.getArrayAchat();

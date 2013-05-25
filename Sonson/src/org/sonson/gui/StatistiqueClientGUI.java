@@ -1,10 +1,12 @@
 package org.sonson.gui;
 
+import java.awt.GridLayout;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import org.sonson.main.Sonson;
 import org.sonson.model.Achat;
@@ -19,7 +21,8 @@ public class StatistiqueClientGUI extends JPanel {
 	private String nomMax;
 
 	public StatistiqueClientGUI() {
-		lBestClient = new JLabel("Nom du meilleur client:");
+		this.setLayout(new GridLayout(2,1,8,8));
+		lBestClient = new JLabel("Nom du meilleur client:", SwingConstants.RIGHT);
 		arrayAchat = Sonson.getArrayAchat();
 		tfBestClient = new JTextField();
 		tfBestClient.setEditable(false);
@@ -35,7 +38,7 @@ public class StatistiqueClientGUI extends JPanel {
 	}
 
 	private void statClient() {
-		labTotClient = new JLabel("Total de clients:");
+		labTotClient = new JLabel("Total de clients:", SwingConstants.RIGHT);
 		arrayClient = Sonson.getArrayclient();
 		textFieldTotClient = new JTextField(String.valueOf(arrayClient.size()),4);
 		textFieldTotClient.setEditable(false);

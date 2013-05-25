@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import org.sonson.main.Sonson;
 import org.sonson.model.Achat;
@@ -30,12 +31,12 @@ public class StatistiqueProduitGUI extends JPanel{
 		arrayService = Sonson.getArrayService();
 		arrayAchat = Sonson.getArrayAchat();
 		
-		textServiceP = new JLabel("Nombre de services proposés: ");
-		textProduitP = new JLabel("Nombre de produits proposés: ");
-		textProduitV = new JLabel("Nombre de produits vendus: ");
-		textServiceV = new JLabel("Nombre de services vendus: ");
-		textTotalV = new JLabel("Nombre d'achats (Service et Produit) vendus: ");
-		textTotalP = new JLabel("Nombre d'achats (Service et Produits) proposés");
+		textServiceP = new JLabel("Nombre de services proposés: ", SwingConstants.RIGHT);
+		textProduitP = new JLabel("Nombre de produits proposés: ", SwingConstants.RIGHT);
+		textProduitV = new JLabel("Nombre de produits vendus: ", SwingConstants.RIGHT);
+		textServiceV = new JLabel("Nombre de services vendus: ", SwingConstants.RIGHT);
+		textTotalV = new JLabel("Nombre d'achats (Service et Produit) vendus: ", SwingConstants.RIGHT);
+		textTotalP = new JLabel("Nombre d'achats (Service et Produits) proposés", SwingConstants.RIGHT);
 		
 		calculProduit();
 		
