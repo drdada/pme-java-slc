@@ -47,7 +47,7 @@ public class ClientGUI extends JPanel {
 		this.setPreferredSize(new Dimension(800, 500));
 		this.sonson =ss;
 		declaration();
-		//getDernierPassage();
+		getDernierPassage();
 		tableau();
 		// System.out.println(sonson.getArrayclient());
 		for (Client cl : arrayclient) {
@@ -65,7 +65,7 @@ public class ClientGUI extends JPanel {
 		}
 		if (flag == 0) {
 			JOptionPane.showMessageDialog(null,
-					"Oups,id non trouvé, veuillez vérifier!", "Erreur",
+					"Oups,id non trouvï¿½, veuillez vï¿½rifier!", "Erreur",
 					JOptionPane.ERROR_MESSAGE); // On affiche un seul message
 												// d'erreur
 			pan.removeAll();
@@ -73,7 +73,7 @@ public class ClientGUI extends JPanel {
 			pan.add(rc);
 			pan.repaint();
 			pan.validate();
-			// System.out.println("Element  non trouvé");
+			// System.out.println("Element  non trouvï¿½");
 		} else {
 			ajout();
 		}
@@ -114,12 +114,12 @@ public class ClientGUI extends JPanel {
 		editable.addItemListener(chl);
 		lid = new JLabel("Id: ");
 		lnom = new JLabel("Nom: ");
-		lprenom = new JLabel("Prénom :");
+		lprenom = new JLabel("Prï¿½nom :");
 		laddresse = new JLabel("Adresse: ");
 		lcodep = new JLabel("Code postal: ");
 		lpays = new JLabel("Pays: ");
-		ltelfixe = new JLabel("Téléphone fixe: ");
-		ltelportable = new JLabel("Téléphone portable :");
+		ltelfixe = new JLabel("Tï¿½lï¿½phone fixe: ");
+		ltelportable = new JLabel("Tï¿½lï¿½phone portable :");
 		//empty1 = new JLabel(" ");
 		ldernierpassage = new JLabel("Dernier passage: ");
 
@@ -223,7 +223,7 @@ public class ClientGUI extends JPanel {
 					int flag;
 					String erreur = "";
 					flag = 0;
-					// Vérification
+					// Vï¿½rification
 					if (!tfnom.getText().matches(alpha)
 							|| tfnom.getText().length() == 0) { // Si le champ
 																// ne rentre pas
@@ -236,7 +236,7 @@ public class ClientGUI extends JPanel {
 					if (!tfprenom.getText().matches(alpha)
 							|| tfprenom.getText().length() == 0) {
 						flag = 1;
-						erreur += "prénom, ";
+						erreur += "prï¿½nom, ";
 					}
 					if (tfcodep.getText().length() == 0) {
 						flag = 1;
@@ -270,16 +270,16 @@ public class ClientGUI extends JPanel {
 								tfpays.getText(), tftelfixe.getText(),
 								tftelportable.getText());
 						ss.updateClients();
-						JOptionPane.showMessageDialog(null, "Client mit à jour","OK", JOptionPane.INFORMATION_MESSAGE); //On affiche un seul message d'erreur
+						JOptionPane.showMessageDialog(null, "Client mit ï¿½ jour","OK", JOptionPane.INFORMATION_MESSAGE); //On affiche un seul message d'erreur
 
 					}else{
-						JOptionPane.showMessageDialog(null, "Oups, le/les champs "+erreur+" a/ont un soucis, veuillez vérifier!","Erreur", JOptionPane.ERROR_MESSAGE); //On affiche un seul message d'erreur
+						JOptionPane.showMessageDialog(null, "Oups, le/les champs "+erreur+" a/ont un soucis, veuillez vï¿½rifier!","Erreur", JOptionPane.ERROR_MESSAGE); //On affiche un seul message d'erreur
 						erreur=""; //On reinitialise erreur a blanc
 					}
 				} else {
 					// Message d'erreur
 					JOptionPane.showMessageDialog(null,
-							"Oups, il n'y a rien à changer!", "Erreur",
+							"Oups, il n'y a rien ï¿½ changer!", "Erreur",
 							JOptionPane.ERROR_MESSAGE); // On affiche un seul
 														// message d'erreur
 
