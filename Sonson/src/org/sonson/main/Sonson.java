@@ -109,6 +109,9 @@ public class Sonson extends AbstractApplication {
 	public static ArrayList<Produit> getArrayProduit(){
 		return arrayproduit;
 	}
+	public void majProduit(String nom,String desc,int id){
+		um.majProduit(nom, desc,id);
+	}
 	
 	
 	//PARTIE SERVICE
@@ -140,6 +143,9 @@ public class Sonson extends AbstractApplication {
 	
 	public static ArrayList<Service> getArrayService(){
 		return arrayService;
+	}
+	public void majService(String nom,String desc,int id){
+		um.majService(nom, desc,id);
 	}
 	
 	
@@ -173,6 +179,9 @@ public class Sonson extends AbstractApplication {
 	
 	public static ArrayList<Achat> getArrayAchat(){
 		return arrayAchat;
+	}
+	public String getDernierPassage(int id){
+		return um.getLastDate(id);
 	}
 	
 }

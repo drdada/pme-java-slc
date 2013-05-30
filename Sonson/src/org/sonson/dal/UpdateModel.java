@@ -71,6 +71,15 @@ public class UpdateModel {
 			e.printStackTrace();
 		}
 	}
+	public void majProduit(String nom, String desc,int id){
+		String request = "UPDATE produit SET nom='"+nom+"', description='"+desc+"' WHERE id="+id+"";
+		try {
+			Dal.getInstance().update(request);
+				
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	//Service
 	public void updateService() {
 		try {
@@ -86,6 +95,15 @@ public class UpdateModel {
 	public void addService(String noml, String descriptionl, double prixl) {
 		try {
 			Dal.getInstance().insert("INSERT INTO service(nom,description,prix) VALUES('"+noml+"','"+descriptionl+"',"+prixl+")");
+				
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public void majService(String nom, String desc,int id){
+		String request = "UPDATE service SET nom='"+nom+"', description='"+desc+"' WHERE id="+id+"";
+		try {
+			Dal.getInstance().update(request);
 				
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -118,6 +136,19 @@ public class UpdateModel {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	public String getLastDate(int id){
+		String res;
+		res="Jamais passé";
+		try {
+			ResultSet rs = Dal.getInstance().getResult("SELECT achat.date FROM achat WHERE achat.client="+id+" ORDER BY achat.date DESC LIMIT 1;");
+			System.out.println(rs.getDate("date"));
+			res =rs.getString("date");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return res;
 	}
 	
 }

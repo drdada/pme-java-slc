@@ -23,10 +23,12 @@ public class StatistiquesFinancesGUI extends JPanel{
 	private double sumP,sumS,sumT;
 	
 	public StatistiquesFinancesGUI(){
+
 		this.setLayout(new GridLayout(3,1,8,8));
 		textTotal = new JLabel("Chiffre d'affaire total (Euro) : ", SwingConstants.RIGHT);
 		textProduit = new JLabel("Chiffre d'affaire pour les produits (Euro) : ", SwingConstants.RIGHT);
 		textService = new JLabel("Chiffre d'affaire pour les services (Euro) : ", SwingConstants.RIGHT);
+
 		arrayProduit = Sonson.getArrayProduit();
 		arrayService = Sonson.getArrayService();
 		arrayAchat = Sonson.getArrayAchat();

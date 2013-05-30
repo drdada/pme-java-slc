@@ -21,6 +21,7 @@ public class StatistiqueClientGUI extends JPanel {
 	private String nomMax;
 
 	public StatistiqueClientGUI() {
+
 		this.setLayout(new GridLayout(2,1,8,8));
 		lBestClient = new JLabel("Nom du meilleur client:", SwingConstants.RIGHT);
 		arrayAchat = Sonson.getArrayAchat();

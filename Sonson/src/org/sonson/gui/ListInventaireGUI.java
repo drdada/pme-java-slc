@@ -26,8 +26,10 @@ public class ListInventaireGUI extends JPanel{
 	private ArrayList<Produit> arrayProduit;
 	private ArrayList<Service> arrayService;
 	private JButton envoi;
+	private Sonson ss;
 	
-	public ListInventaireGUI(){
+	public ListInventaireGUI(Sonson ss){
+		this.ss=ss;
 		titre = new JLabel("Modification d'un produit/service");
 		lidp= new JLabel("Id du produit à modifier");
 		lids = new JLabel("Id du service à modifier");
@@ -113,14 +115,14 @@ public class ListInventaireGUI extends JPanel{
 					//On a rentré un int
 					if(type==1){//si c'est un produit
 						ListInventaireGUI.this.removeAll();
-						ModifierProduit mod = new ModifierProduit(Integer.valueOf(id));
+						ModifierProduit mod = new ModifierProduit(Integer.valueOf(id),ss);
 						ListInventaireGUI.this.add(mod);
 						ListInventaireGUI.this.repaint();
 						ListInventaireGUI.this.validate();
 					}
 					else{
 						ListInventaireGUI.this.removeAll();
-						ModifierService mov = new ModifierService(Integer.valueOf(id));
+						ModifierService mov = new ModifierService(Integer.valueOf(id),ss);
 						ListInventaireGUI.this.add(mov);
 						ListInventaireGUI.this.repaint();
 						ListInventaireGUI.this.validate();

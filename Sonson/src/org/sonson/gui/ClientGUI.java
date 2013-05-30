@@ -13,6 +13,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -25,15 +26,17 @@ public class ClientGUI extends JPanel {
 	private int id;
 	private ArrayList<Client> arrayclient;
 	private JLabel lid, lnom, lprenom, laddresse, lcodep, lpays, ltelfixe,
-			ltelportable, edition,empty1;
+			ltelportable, edition,ldernierpassage;
+
 	private JTextField tfid, tfnom, tfprenom, tfadresse, tfcodep, tfpays,
-			tftelfixe, tftelportable;
+			tftelfixe, tftelportable,tfdernierpassage;
 	private Sonson sonson;
 	private JCheckBox editable;
 	private JButton enreg, ajout, retour;
 	private JPanel pan;
 	private JTable table;
 	private ArrayList<Achat> arrayAchat;
+	private String date;
 	
 	public ClientGUI(int id, JPanel pan,Sonson ss) {
 		this.setLayout(new GridLayout(12,2));
@@ -41,11 +44,11 @@ public class ClientGUI extends JPanel {
 		int flag = 0;
 		this.arrayclient = sonson.getArrayclient();
 		this.pan = pan;
-		this.setPreferredSize(new Dimension(800, 200));
+		this.setPreferredSize(new Dimension(800, 500));
 		this.sonson =ss;
 		declaration();
+		//getDernierPassage();
 		tableau();
-
 		// System.out.println(sonson.getArrayclient());
 		for (Client cl : arrayclient) {
 			if (cl.getId() == id) {
@@ -91,6 +94,7 @@ public class ClientGUI extends JPanel {
 		String  title[] = {"Id", "Date", "Service", "Produit"};
 		
 		table = new JTable(data, title);
+		table.setEnabled(false);
 	}
 
 	private void declaration() {
@@ -116,7 +120,8 @@ public class ClientGUI extends JPanel {
 		lpays = new JLabel("Pays: ");
 		ltelfixe = new JLabel("Téléphone fixe: ");
 		ltelportable = new JLabel("Téléphone portable :");
-		empty1 = new JLabel(" ");
+		//empty1 = new JLabel(" ");
+		ldernierpassage = new JLabel("Dernier passage: ");
 
 		tfid = new JTextField(2);
 		tfid.setEnabled(false);
@@ -134,9 +139,15 @@ public class ClientGUI extends JPanel {
 		tftelfixe.setEditable(false);
 		tftelportable = new JTextField(8);
 		tftelportable.setEditable(false);
+		tfdernierpassage = new JTextField();
+		tfdernierpassage.setEditable(false);
 		arrayAchat = Sonson.getArrayAchat();
 	}
 
+	private void getDernierPassage(){
+		date = sonson.getDernierPassage(id);
+		tfdernierpassage.setText(date);
+	}
 	private void ajout() {
 		this.add(edition);
 		this.add(editable);
@@ -156,13 +167,18 @@ public class ClientGUI extends JPanel {
 		this.add(tftelfixe);
 		this.add(ltelportable);
 		this.add(tftelportable);
+		this.add(ldernierpassage);
+		this.add(tfdernierpassage);
+		JScrollPane jsp = new JScrollPane(table);
+		jsp.setPreferredSize(new Dimension(300, 200));
+		this.add(jsp);
 		this.add(enreg);
 		this.add(ajout);
 		this.add(retour);
-		this.add(empty1);
-		this.add(table);
-	}
 
+		//this.add(empty1);
+
+	}
 	private class CheckBoxListener implements ItemListener {
 		@Override
 		public void itemStateChanged(ItemEvent arg0) {
@@ -186,7 +202,6 @@ public class ClientGUI extends JPanel {
 			}
 		}
 	}
-
 	private class EnvoiListener implements ActionListener {
 		private Sonson ss;
 		

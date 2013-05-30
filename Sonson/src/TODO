@@ -1,7 +1,7 @@
 TODO list du projet Sonson
 
 Accueil : 
-- message d'accueil (arnaud)
++ message d'accueil (arnaud)
 
 Aide: 
 +Affichage correct du message d'accueil (probleme!) réparé => mise dans un jframe(nouvelle fenetre)
@@ -10,11 +10,11 @@ Aide:
 Recherche d'un client: 
 $ Filtre de recherche sur la table (abandonné)
 + Accés a la fiche client
-	Clic sur une personne et pop up d'une fiche contenant ses informations
+	+ Clic sur une personne et pop up d'une fiche contenant ses informations
 	
 Fiche client: a faire
 	+ derniers achats
-	- date dernier achat
+	- date dernier achat (SELECT achat.date FROM achat WHERE achat.client=id ORDER BY achat.date DESC LIMIT 1;)
 	+ infos perso
 	+ Modification des client(bouton pour pouvoir modifier les infos clients.
 	+ Ajout de Produits, Services
@@ -30,20 +30,21 @@ Fiche client: a faire
 	
 Ajout d'un client : 
 	+ Verification des données (Fait et a tester !) Precision: Accent et max lenght ?
-	- Disposition (Arnaud)
+	+ Disposition (Arnaud)
 	+ Messages de confirmation (FAIT !)
 
 Ajout de produit service
 	+ Vérification des données (il ne manque plus qu'a regler le probleme du .00 du double)
-	- Disposition (Arnaud)
+	+ Disposition (Arnaud)
 	+ Messages de confirmation (Fait)
 	
 Modification des produits et services
 	+ Recherche d'un produit
-	- Clic pour afficher la fiche
+	- Disposition
+	/ Clic pour afficher la fiche
 		+ Panel avec fiche produit
 		+ Panel avec champ pour modifier
-		- Mise  a jour du produit
+		/ Mise  a jour du produit
 
 Statistiques des clients : 
 	+ Nb Clients Tot (fait!)

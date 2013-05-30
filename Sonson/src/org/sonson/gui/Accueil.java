@@ -184,7 +184,7 @@ public class Accueil extends JFrame {
 				if(e.getSource().equals(bListInv)){
 					pan1.removeAll();
 					cont.repaint();
-					ListInventaireGUI lv = new ListInventaireGUI();
+					ListInventaireGUI lv = new ListInventaireGUI(ss);
 					pan1.add(lv);
 					Accueil.this.setVisible(true);
 				}

@@ -1,6 +1,7 @@
 package org.sonson.gui;
 
-import java.awt.Container;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class RechercheClient extends JPanel{
 	
 	public RechercheClient(Sonson sonson,JPanel pan){
 
-		//this.setLayout(new GridLayout(4, 0));
+		this.setLayout(new BorderLayout());
 		
 		//this.setBorder(BorderFactory.createLineBorder(Color.black));
 		//this.setBackground(Color.orange);
@@ -43,7 +44,7 @@ public class RechercheClient extends JPanel{
 		JLabel text = new JLabel("Recherche d'un client");
 
 	//	this.add(form,BorderLayout.SOUTH);
-		this.add(text);
+		
 		
 		arrayclient=sonson.getArrayclient();
 		Object[][] data = new Object[arrayclient.size()][8];
@@ -64,11 +65,16 @@ public class RechercheClient extends JPanel{
 		JTable table = new JTable(data, title);
 		
 		//table.setPreferredSize(new Dimension(800, 200));
+		JPanel pan2 = new JPanel();
+		pan2.add(form);
+		pan2.add(fiche);
 		table.setEnabled(false);
 		JScrollPane jst = new JScrollPane(table);
-		this.add(jst);
-		this.add(form);
-		this.add(fiche);
+		this.setPreferredSize(new Dimension(900, 600));
+		this.add(jst,BorderLayout.CENTER);
+		this.add(pan2,BorderLayout.SOUTH);
+		this.add(text,BorderLayout.NORTH);
+
 		/*
 
 		this.add(new JScrollPane(table),BorderLayout.CENTER);
