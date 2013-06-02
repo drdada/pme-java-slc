@@ -45,10 +45,10 @@ public class Aide extends JFrame{
 				"</p>"+
 				"<p>"+
 				"Ce programme va vous permettre de gérer d'une manière simple différents point important pour votre entreprise."+
-				"Commen les clients, l'inventaire et avoir une vue d'ensemble de diverses statistiques financières."+
+				"Comme les clients, l'inventaire et avoir une vue d'ensemble de diverses statistiques financières."+
 				"Tout cela se fera dans une interface épurée pour plus de simplicité et vous permettre de comprendre "+
-				"toutes les fonctionalités. Il est aussi optimisé pour un accès rapide aux différentes fonctionalités."+
-				"</p>"+
+				"toutes les fonctionalités. Il est aussi optimisé pour un accès rapide aux différentes fonctionalités grâce à ses."+
+				"raccourçis.</p>"+
 				"<a name=Menus><h2>Les menus</h2></a>"+
 				"<p>"+
 				"Notre programme est composé de cinq menus qui sont décris ci-dessous."+
@@ -66,15 +66,26 @@ public class Aide extends JFrame{
 				"- Recherche d'un client"+
 				"<p>"+
 				"Cette fonctionalité vous permet de chercher un client dans la base de données.<br>"+
-				"Cette recherche pourra se faire selon les critères suivants : Numéro d'identification, Nom, Prénom, Code Postal,"+
-				"Adresse, Pays, Numéro de téléphone fixe et portable."+
+				"Cette recherche se fera avec le  Numéro d'identification du client qui sera afficher dans un tableau"+
+				"Pour effectuer la recherche, il faut entrer l'Id du client dans la case prévue et cliquer sur fiche client "+
+				"pour afficher ses infos personnelles." +
+				"<ul>"+
+				"- Ficher client"+
+				"<p>"+
+				"C'est la fiche client qui permettra l'ajout de produit/service via le bouton du même nom.<BR>"+
+				"Elle vous permettra aussi de modifier les informations du client en cochant le Mode Edition et en enregistrant"+
+				"avec le bouton Enregistrer les modifications.<BR>"+
+				"Et pour finir, elle vous affichera le récapitulatif des achats du client en cliquant sur Tableau des achats.<BR>"+
+				"Le bouton retour vous ramenera sur l'interface de recherche des clients."+
 				""+
 				"</p>"+
-				""+
+				"</ul>"+
+				"</p>"+
+				"<br>"+
 				"- Ajouter un client"+
 				"<p>"+
 				"Cette fonctionalité vous permet d'ajouter un client à la base de données. <br>"+
-				"Il faudra rentrer ses données personnelles et vous pourrai ensuite lui ajouter les produits ou services qu'il aura pris."+
+				"Il faudra rentrer ses données personnelles."+
 				"Un numéro d'identification sera rajouter automatique de maniéres incrémentielles."+
 				"</p>"+
 				"</ul>"+
@@ -88,27 +99,27 @@ public class Aide extends JFrame{
 				"Dans un premier temps vous devez sélectionner le type (Produit ou Service)."+
 				"Ensuite, il faut completer le nom, la description et le prix."+
 				"Un numéro d'identification sera rajouter automatique de maniéres incrémentielles."+
-				"</p>"+
+				"</p><br>"+
 				"- Modifier un produit/service"+
 				"<p>"+
 				"Cette fonctionalité vous permet de modifier un produit/service.<br>"+
-				"Pour modifier un produit, il faudra le trouver en faisant une recherche soit avec le numéro d'identification ou"+
-				"avec son nom ou avec son prix. Ensuite il vous sera possible de modifier le nom et la description de ce produit."+
-				"Pour le modifier le prix, il faudra ajouter une nouveau produit pour ne pas fausser nos statistiques."+
+				"Pour modifier un produit, il faudra rentrer son numéro d'identification et cliquer sur Envoi pour afficher sa fiche."+
+				"Ensuite il vous sera possible de modifier le nom et la description de ce produit."+
+				"Pour modifier le prix, il faudra ajouter une nouveau produit pour ne pas fausser nos statistiques."+
 				"</p>"+
 				"</ul>"+
 				"</p>"+
 				"<a name=Stat><h3>Statistiques</h3></a>"+
 				"<p>"+
-				"<ul>"+
+				"<ul><br>"+
 				"- Statistiques des clients"+
 				"<p>"+
 				"Cette fonctionalité vous fournira des informations diverses sur tous vos clients."+
-				"</p>"+
+				"</p><br>"+
 				"- Statistiques des produits/services"+
 				"<p>"+
 				"Cette fonctionalité vous fournira des informations diverses sur tous vos produits/services."+
-				"</p>"+
+				"</p><br>"+
 				"- Statistiques financières"+
 				"<p>"+
 				"Cette fonctionalité vous fournira des informations diverses sur tous vos finances."+
@@ -147,6 +158,10 @@ public class Aide extends JFrame{
 				"  <TR> "+
 				" <TD> CTRL + I </TD> "+
 				" <TD> Affiche la fenètre pour l'ajout d'un produit/service </TD> "+
+				"  </TR> "+
+				"  <TR> "+
+				" <TD> CTRL + M </TD> "+
+				" <TD> Affiche la fenètre pour modifier un produit/service </TD> "+
 				"  </TR> "+
 				"  <TR> "+
 				" <TD> CTRL + N </TD> "+

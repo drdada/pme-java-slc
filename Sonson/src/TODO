@@ -6,6 +6,7 @@ Accueil :
 Aide: 
 +Affichage correct du message d'accueil (probleme!) réparé => mise dans un jframe(nouvelle fenetre)
 - Terminer les explications (quand programme fini)
+- Empecher de redimensionné la fenetre
 
 Recherche d'un client: 
 $ Filtre de recherche sur la table (abandonné)
@@ -40,6 +41,7 @@ Ajout de produit service
 	
 Modification des produits et services
 	+ Recherche d'un produit
+	- Ajouter raccourci
 	- Disposition
 	/ Clic pour afficher la fiche
 		+ Panel avec fiche produit
