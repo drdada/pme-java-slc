@@ -53,7 +53,7 @@ public class ListInventaireGUI extends JPanel{
 			data[i][3]=object.getPrix();
 			i++;
 		}
-		String  title[] = {"Id", "Nom", "Description", "Prix"};
+		String  title[] = {"Id du produit", "Nom", "Description", "Prix"};
 		
 		tableProduit = new JTable(data, title);
 		tableProduit.setEnabled(false);
@@ -69,7 +69,7 @@ public class ListInventaireGUI extends JPanel{
 			data2[h][3]=object.getPrix();
 			h++;
 		}
-		String  title2[] = {"Id", "Nom", "Description", "Prix"};
+		String  title2[] = {"Id du service", "Nom", "Description", "Prix"};
 		
 		tableService = new JTable(data2, title2);
 		tableService.setEnabled(false);
