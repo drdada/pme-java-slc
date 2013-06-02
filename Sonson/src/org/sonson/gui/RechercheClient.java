@@ -20,7 +20,7 @@ import org.sonson.model.Client;
 public class RechercheClient extends JPanel{
 	private Sonson sonson;
 	private JTable table;
-	private JLabel text;
+	private JLabel text,idClient;
 	private JTextField form;
 	private ArrayList<Client> arrayclient;
 	private JButton fiche;
@@ -35,7 +35,8 @@ public class RechercheClient extends JPanel{
 		//this.setBackground(Color.orange);
 		this.pan=pan;
 		this.sonson=sonson;
-		form = new JTextField("Id du client",7);
+		idClient = new JLabel("Id du client : ");
+		form = new JTextField(7);
 		fiche = new JButton("Fiche Client");
 		EnvoiListener envList = new EnvoiListener();
 		fiche.addActionListener(envList);
@@ -66,6 +67,7 @@ public class RechercheClient extends JPanel{
 		
 		//table.setPreferredSize(new Dimension(800, 200));
 		JPanel pan2 = new JPanel();
+		pan2.add(idClient);
 		pan2.add(form);
 		pan2.add(fiche);
 		table.setEnabled(false);
