@@ -1,5 +1,6 @@
 package org.sonson.gui;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,6 +30,7 @@ public class ListInventaireGUI extends JPanel{
 	private Sonson ss;
 	
 	public ListInventaireGUI(Sonson ss){
+		this.setLayout(new BorderLayout());
 		this.ss=ss;
 		titre = new JLabel("Modification d'un produit/service");
 		lidp= new JLabel("Id du produit à modifier");
@@ -73,18 +75,30 @@ public class ListInventaireGUI extends JPanel{
 		tableService.setEnabled(false);
 		JScrollPane jss = new JScrollPane(tableService);
 		
+		JPanel mid = new JPanel();
+		JPanel mid1 = new JPanel();
+		JPanel mid2 = new JPanel();
+		JPanel mid12 = new JPanel();
+		JPanel mid22 = new JPanel();
 		
-		this.add(jsp);
-		jsp.setPreferredSize(new Dimension(200, 300));
-		this.add(lidp);
-		this.add(idp);
+		mid1.setLayout(new BorderLayout());
+		mid1.add(jsp,BorderLayout.CENTER);
+		mid1.add(mid12,BorderLayout.SOUTH);
+		//jsp.setPreferredSize(new Dimension(200, 300));
+		mid12.add(lidp);
+		mid12.add(idp);
 		
-		this.add(jss);
-		jss.setPreferredSize(new Dimension(200,300));
-
-		this.add(lids);
-		this.add(ids);
-		this.add(envoi);
+		
+		mid2.setLayout(new BorderLayout());
+		mid2.add(jss,BorderLayout.CENTER);
+		mid2.add(mid22,BorderLayout.SOUTH);
+		//this.setPreferredSize(new Dimension(600,600));
+		mid22.add(lids);
+		mid22.add(ids);
+		mid.add(mid1);
+		mid.add(mid2);
+		this.add(mid,BorderLayout.CENTER);
+		this.add(envoi,BorderLayout.SOUTH);
 	}
 	private class EnvoiListener implements ActionListener {
 		String id;
