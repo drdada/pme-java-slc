@@ -89,6 +89,7 @@ public class Accueil extends JFrame {
 		bAjout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I,InputEvent.CTRL_MASK));
 		bAjout.addActionListener(baListener);
 		bListInv = new JMenuItem("Modifier un Produit/Service");
+		bListInv.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_M,InputEvent.CTRL_MASK));
 		bListInv.addActionListener(baListener);
 		menuInventaire.add(bAjout);
 		menuInventaire.add(bListInv);
@@ -131,7 +132,7 @@ public class Accueil extends JFrame {
 		pan1.setLayout(new FlowLayout());
 		pan1.setMinimumSize(new Dimension(1000, 800));
 		pan1.setPreferredSize(new Dimension(1000, 800));
-		pan1.setBackground(Color.red);
+		//pan1.setBackground(Color.red);
 		
 		
 		this.setJMenuBar(barre);
@@ -143,7 +144,7 @@ public class Accueil extends JFrame {
 		cont.setSize(1000, 800);
 		cont.setMinimumSize(new Dimension(1000, 800));
 		cont.setPreferredSize(new Dimension(1000, 800));
-		cont.setBackground(Color.green);
+		//cont.setBackground(Color.green);
 		cont.setLayout(new FlowLayout());
 		cont.add(pan1);
 		setVisible(true);
