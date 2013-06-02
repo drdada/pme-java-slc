@@ -41,7 +41,7 @@ public class AjoutAchat extends JFrame{
 		cont = getContentPane();
 		this.setLayout(new GridLayout(4,3));
 		this.setTitle("Ajout d'un produit/service");
-		this.setSize(750, 400);
+		this.setSize(650, 400);
 		
 		EnvoiListener ev= new EnvoiListener();
 		

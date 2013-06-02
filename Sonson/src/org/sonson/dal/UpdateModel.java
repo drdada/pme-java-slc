@@ -144,11 +144,11 @@ public class UpdateModel {
 			ResultSet rs = Dal.getInstance().getResult("SELECT achat.date FROM achat WHERE achat.client="+id+" ORDER BY achat.date DESC LIMIT 1;");
 			// Tu voulais lire un enregistrement, mais tu n'avais pas fait de next() pour te positionner dessus.
 			rs.next();
-			System.out.println("DEDANS ? WTF ? "+rs.getDate("date"));
+			//System.out.println("DEDANS ? WTF ? "+rs.getDate("date"));
 			
-			//res =rs.getString("date");
+			res =rs.getString("date");
 		} catch (SQLException e) {
-			e.printStackTrace();
+			res="Jamais passé";
 		}
 
 		return res;

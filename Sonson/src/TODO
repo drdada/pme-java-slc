@@ -14,7 +14,7 @@ $ Filtre de recherche sur la table (abandonné)
 	
 Fiche client: a faire
 	+ derniers achats
-	- date dernier achat (SELECT achat.date FROM achat WHERE achat.client=id ORDER BY achat.date DESC LIMIT 1;)
+	+ date dernier achat (SELECT achat.date FROM achat WHERE achat.client=id ORDER BY achat.date DESC LIMIT 1;)
 	+ infos perso
 	+ Modification des client(bouton pour pouvoir modifier les infos clients.
 	+ Ajout de Produits, Services

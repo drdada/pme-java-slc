@@ -32,9 +32,8 @@ public class ClientGUI extends JPanel {
 			tftelfixe, tftelportable,tfdernierpassage;
 	private Sonson sonson;
 	private JCheckBox editable;
-	private JButton enreg, ajout, retour;
+	private JButton enreg, ajout, retour,tableau;
 	private JPanel pan;
-	private JTable table;
 	private ArrayList<Achat> arrayAchat;
 	private String date;
 	
@@ -48,7 +47,6 @@ public class ClientGUI extends JPanel {
 		this.sonson =ss;
 		declaration();
 		getDernierPassage();
-		tableau();
 		// System.out.println(sonson.getArrayclient());
 		for (Client cl : arrayclient) {
 			if (cl.getId() == id) {
@@ -65,7 +63,7 @@ public class ClientGUI extends JPanel {
 		}
 		if (flag == 0) {
 			JOptionPane.showMessageDialog(null,
-					"Oups,id non trouvï¿½, veuillez vï¿½rifier!", "Erreur",
+					"Oups,id non trouvé, veuillez vérifier!", "Erreur",
 					JOptionPane.ERROR_MESSAGE); // On affiche un seul message
 												// d'erreur
 			pan.removeAll();
@@ -73,28 +71,11 @@ public class ClientGUI extends JPanel {
 			pan.add(rc);
 			pan.repaint();
 			pan.validate();
-			// System.out.println("Element  non trouvï¿½");
+			// System.out.println("Element  non trouvé");
 		} else {
 			ajout();
 		}
 
-	}
-	private void tableau(){
-		Object[][] data = new Object[10][4];
-		int i=0;
-		for (Achat object: arrayAchat){
-			if(object.getIdClient()==id){
-				data[i][0]=object.getIdAchat();
-				data[i][1]=object.getDate();
-				data[i][2]=object.getIdService();
-				data[i][3]=object.getIdProduit();
-				i++;
-			}
-		}
-		String  title[] = {"Id", "Date", "Service", "Produit"};
-		
-		table = new JTable(data, title);
-		table.setEnabled(false);
 	}
 
 	private void declaration() {
@@ -105,21 +86,23 @@ public class ClientGUI extends JPanel {
 		enreg = new JButton("Enrengistrer les modifications");
 		ajout = new JButton("Ajouter un Produit/Service");
 		retour = new JButton("Retour");
+		tableau = new JButton("Tableau des achats");
 
 		enreg.addActionListener(ev);
 		ajout.addActionListener(ev);
 		retour.addActionListener(ev);
+		tableau.addActionListener(ev);
 
 		CheckBoxListener chl = new CheckBoxListener();
 		editable.addItemListener(chl);
 		lid = new JLabel("Id: ");
 		lnom = new JLabel("Nom: ");
-		lprenom = new JLabel("Prï¿½nom :");
+		lprenom = new JLabel("Prénom :");
 		laddresse = new JLabel("Adresse: ");
 		lcodep = new JLabel("Code postal: ");
 		lpays = new JLabel("Pays: ");
-		ltelfixe = new JLabel("Tï¿½lï¿½phone fixe: ");
-		ltelportable = new JLabel("Tï¿½lï¿½phone portable :");
+		ltelfixe = new JLabel("Téléphone fixe: ");
+		ltelportable = new JLabel("Téléphone portable :");
 		//empty1 = new JLabel(" ");
 		ldernierpassage = new JLabel("Dernier passage: ");
 
@@ -169,9 +152,9 @@ public class ClientGUI extends JPanel {
 		this.add(tftelportable);
 		this.add(ldernierpassage);
 		this.add(tfdernierpassage);
-		JScrollPane jsp = new JScrollPane(table);
-		jsp.setPreferredSize(new Dimension(300, 200));
-		this.add(jsp);
+		this.add(tableau);
+//		JScrollPane jsp = new JScrollPane(table);
+//		jsp.setPreferredSize(new Dimension(300, 200));
 		this.add(enreg);
 		this.add(ajout);
 		this.add(retour);
@@ -223,7 +206,7 @@ public class ClientGUI extends JPanel {
 					int flag;
 					String erreur = "";
 					flag = 0;
-					// Vï¿½rification
+					// Vérification
 					if (!tfnom.getText().matches(alpha)
 							|| tfnom.getText().length() == 0) { // Si le champ
 																// ne rentre pas
@@ -236,7 +219,7 @@ public class ClientGUI extends JPanel {
 					if (!tfprenom.getText().matches(alpha)
 							|| tfprenom.getText().length() == 0) {
 						flag = 1;
-						erreur += "prï¿½nom, ";
+						erreur += "prénom, ";
 					}
 					if (tfcodep.getText().length() == 0) {
 						flag = 1;
@@ -270,16 +253,16 @@ public class ClientGUI extends JPanel {
 								tfpays.getText(), tftelfixe.getText(),
 								tftelportable.getText());
 						ss.updateClients();
-						JOptionPane.showMessageDialog(null, "Client mit ï¿½ jour","OK", JOptionPane.INFORMATION_MESSAGE); //On affiche un seul message d'erreur
+						JOptionPane.showMessageDialog(null, "Client mit à jour","OK", JOptionPane.INFORMATION_MESSAGE); //On affiche un seul message d'erreur
 
 					}else{
-						JOptionPane.showMessageDialog(null, "Oups, le/les champs "+erreur+" a/ont un soucis, veuillez vï¿½rifier!","Erreur", JOptionPane.ERROR_MESSAGE); //On affiche un seul message d'erreur
+						JOptionPane.showMessageDialog(null, "Oups, le/les champs "+erreur+" a/ont un soucis, veuillez vérifier!","Erreur", JOptionPane.ERROR_MESSAGE); //On affiche un seul message d'erreur
 						erreur=""; //On reinitialise erreur a blanc
 					}
 				} else {
 					// Message d'erreur
 					JOptionPane.showMessageDialog(null,
-							"Oups, il n'y a rien ï¿½ changer!", "Erreur",
+							"Oups, il n'y a rien à changer!", "Erreur",
 							JOptionPane.ERROR_MESSAGE); // On affiche un seul
 														// message d'erreur
 
@@ -287,7 +270,11 @@ public class ClientGUI extends JPanel {
 			} else if (e.getSource().equals(ajout)) {
 				// si on ajoute un nouveau produit/service
 				new AjoutAchat(Integer.valueOf(tfid.getText()), ss);
-			} else {
+			}
+			else if(e.getSource().equals(tableau)){
+				new TableauClientGUI(id);
+			}
+			else {
 				// Si on appuie sur retour
 				pan.removeAll();
 				RechercheClient rc = new RechercheClient(sonson, pan);
