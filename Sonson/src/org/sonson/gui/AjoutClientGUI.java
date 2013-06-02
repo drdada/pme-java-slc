@@ -10,10 +10,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-
-import org.sonson.dal.UpdateModel;
 import org.sonson.main.Sonson;
-import org.sonson.model.Client;
+
 
 public class AjoutClientGUI extends JPanel {
 	private Sonson ss;

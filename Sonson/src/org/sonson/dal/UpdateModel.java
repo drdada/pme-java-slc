@@ -1,11 +1,7 @@
 package org.sonson.dal;
 
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import javax.naming.spi.DirStateFactory.Result;
-
 import org.sonson.main.Sonson;
 import org.sonson.model.Achat;
 import org.sonson.model.Client;

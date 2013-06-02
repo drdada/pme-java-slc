@@ -1,8 +1,6 @@
 package org.sonson.main;
 
-import java.sql.Date;
 import java.util.ArrayList;
-
 import org.sonson.dal.Dal;
 import org.sonson.dal.UpdateModel;
 import org.sonson.gui.Accueil;
