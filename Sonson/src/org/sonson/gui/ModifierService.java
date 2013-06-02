@@ -20,23 +20,23 @@ import org.sonson.model.Service;
 public class ModifierService extends JPanel {
 	private int id;
 	private ArrayList<Service> arrayService;
-	private JLabel titre,lid,lnom,ldesc,lprix,empty1;
+	private JLabel titre,lid,lnom,ldesc,lprix,empty1,empty2;
 	private JTextField tfid,nom,desc,prix;
 	private Sonson ss;
 	private JButton envoi;
 	
 	public ModifierService(int id,Sonson ss){
 		this.ss=ss;
-		this.setLayout(new GridLayout(5,2,8,8));
+		this.setLayout(new GridLayout(8,2));
 		this.id = id;
 		arrayService=Sonson.getArrayService();
-		this.setLayout(new GridLayout(5, 5));
 		titre = new JLabel("Modifier un service", SwingConstants.RIGHT);
 		lid = new JLabel("Id: ", SwingConstants.RIGHT);
 		lnom = new JLabel("Nom: ", SwingConstants.RIGHT);
 		ldesc = new JLabel("Description: ", SwingConstants.RIGHT);
 		lprix = new JLabel("Prix: ", SwingConstants.RIGHT);
 		empty1 = new JLabel(" ");
+		empty2 = new JLabel(" ");
 		envoi = new JButton("Envoi");
 		EnvoiListener ev = new EnvoiListener(ss);
 		envoi.addActionListener(ev);
@@ -62,6 +62,7 @@ public class ModifierService extends JPanel {
 		this.add(desc);
 		this.add(lprix);
 		this.add(prix);
+		this.add(empty2);
 		this.add(envoi);
 	}
 	
@@ -90,11 +91,11 @@ public class ModifierService extends JPanel {
 					ss.majService(nom.getText(), desc.getText(),id);
 					ss.updateService();
 					JOptionPane.showMessageDialog(null, "Service bien modifié","OK", JOptionPane.INFORMATION_MESSAGE);
-					ModifierService.this.removeAll();
-					Inventaire inv = new Inventaire(ss);
-					ModifierService.this.add(inv);
-					ModifierService.this.repaint();
-					ModifierService.this.validate();
+//					ModifierService.this.removeAll();
+//					Inventaire inv = new Inventaire(ss);
+//					ModifierService.this.add(inv);
+//					ModifierService.this.repaint();
+//					ModifierService.this.validate();
 				}
 			}
 		}

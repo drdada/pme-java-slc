@@ -75,13 +75,13 @@ public class ListInventaireGUI extends JPanel{
 		
 		
 		this.add(jsp);
-		jsp.setPreferredSize(new Dimension(300, 500));
-
-		
-		this.add(jss);
-		jss.setPreferredSize(new Dimension(300,500));
+		jsp.setPreferredSize(new Dimension(200, 300));
 		this.add(lidp);
 		this.add(idp);
+		
+		this.add(jss);
+		jss.setPreferredSize(new Dimension(200,300));
+
 		this.add(lids);
 		this.add(ids);
 		this.add(envoi);

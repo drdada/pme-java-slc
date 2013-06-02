@@ -17,7 +17,7 @@ public class TableauClientGUI extends JFrame{
 	
 	
 	public TableauClientGUI(int id){
-	this.setTitle("Récapitulatif des achats de l'id "+id+"");
+	this.setTitle("Récapitulatif des achats de l'id client: "+id+"");
 	this.setSize(750, 750);
 	this.id = id;
 	arrayAchat = Sonson.getArrayAchat();
@@ -32,7 +32,7 @@ public class TableauClientGUI extends JFrame{
 			i++;
 		}
 	}
-	String  title[] = {"Id", "Date", "Service", "Produit"};
+	String  title[] = {"Id de l'achat", "Date", "Service", "Produit"};
 	
 	table = new JTable(data, title);
 	table.setEnabled(false);
