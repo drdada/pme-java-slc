@@ -198,8 +198,8 @@ public class ClientGUI extends JPanel {
 				// Si on modifie les infos
 				if (editable.isSelected()) {
 					// OK
-					String alphanum = "([a-zA-Z0-9 ]*)";
-					String alpha = "([a-zA-Z ]*)";
+					String alphanum = "([a-zA-Z0-9ιθ ]*)";
+					String alpha = "([a-zA-Zιθ ]*)";
 					String num = "([0-9 ]*)";
 					int flag;
 					String erreur = "";

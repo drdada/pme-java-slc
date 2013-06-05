@@ -70,8 +70,8 @@ public class AjoutClientGUI extends JPanel {
 
 
 private class EnvoiListener implements ActionListener  {
-	private String alphanum="([a-zA-Z0-9 ]*)";
-	private String alpha="([a-zA-Z ]*)";
+	private String alphanum="([a-zA-Z0-9ιθ ]*)";
+	private String alpha="([a-zA-Zιθ ]*)";
 	private String num="([0-9 ]*)";
 	private int flag;
 	private String erreur="";
