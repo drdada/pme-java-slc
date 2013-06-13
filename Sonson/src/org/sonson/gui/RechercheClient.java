@@ -99,7 +99,7 @@ public class RechercheClient extends JPanel{
 			if (!form.getText().matches(num) || form.getText().length() == 0) {
 				// erreur
 				JOptionPane.showMessageDialog(null,
-						"Oups,id non correct, veuillez vérifier!", "Erreur",
+						"Oups,ID incorrect, veuillez vérifier!", "Erreur",
 						JOptionPane.ERROR_MESSAGE); // On affiche un seul
 													// message d'erreur
 			} else {

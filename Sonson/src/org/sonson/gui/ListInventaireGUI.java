@@ -102,7 +102,7 @@ public class ListInventaireGUI extends JPanel{
 		String num="([0-9 ]*)";
 		public void actionPerformed(ActionEvent e) {
 			if((idp.getText().length()==0 && ids.getText().length()==0)||(idp.getText().length()!=0 && ids.getText().length()!=0)){ //champs vide
-				JOptionPane.showMessageDialog(null, "Il faut rentrer UN ID","Ah non!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Il faut rentrer un ID","Ah non!", JOptionPane.ERROR_MESSAGE);
 			}
 			else{
 				if(idp.getText().length()!=0){

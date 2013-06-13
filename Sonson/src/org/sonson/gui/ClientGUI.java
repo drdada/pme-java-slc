@@ -61,7 +61,7 @@ public class ClientGUI extends JPanel {
 		}
 		if (flag == 0) {
 			JOptionPane.showMessageDialog(null,
-					"Oups,id non trouvé, veuillez vérifier!", "Erreur",
+					"Oups,ID non trouvé, veuillez vérifier!", "Erreur",
 					JOptionPane.ERROR_MESSAGE); // On affiche un seul message
 												// d'erreur
 			pan.removeAll();
@@ -251,7 +251,7 @@ public class ClientGUI extends JPanel {
 								tfpays.getText(), tftelfixe.getText(),
 								tftelportable.getText());
 						ss.updateClients();
-						JOptionPane.showMessageDialog(null, "Client mit à jour","OK", JOptionPane.INFORMATION_MESSAGE); //On affiche un seul message d'erreur
+						JOptionPane.showMessageDialog(null, "Client mis à jour","OK", JOptionPane.INFORMATION_MESSAGE); //On affiche un seul message d'erreur
 
 					}else{
 						JOptionPane.showMessageDialog(null, "Oups, le/les champs "+erreur+" a/ont un soucis, veuillez vérifier!","Erreur", JOptionPane.ERROR_MESSAGE); //On affiche un seul message d'erreur
